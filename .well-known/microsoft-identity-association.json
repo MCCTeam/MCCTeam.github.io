@@ -1,0 +1,10 @@
+{
+   "associatedApplications": [
+        {
+            "applicationId": "{YOUR-APP-ID-HERE}"
+        },
+        {
+            "applicationId": "{YOUR-OTHER-APP-ID-HERE}"
+        }
+    ]
+}
