@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>MCC Test page</title>
+    </head>
+    
+    <body>
+        <div>Your code is <strong><span id='code'></span></strong></div>
+        <script>
+            let codeEl = document.getElementById('code')
+            let query = new URLSearchParams(window.location.search);
+            codeEl.innerText = query.get('code');
+        </script>
+    </body>
+</html>
