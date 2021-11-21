@@ -9,8 +9,7 @@
         <div>Your code is <strong><span id='code'></span></strong></div>
         <script>
             let codeEl = document.getElementById('code')
-            let query = new URLSearchParams(window.location.search);
-            codeEl.innerText = query.get('code');
+            codeEl.innerText = window.location.hash.split('=')[1];
         </script>
     </body>
 </html>
