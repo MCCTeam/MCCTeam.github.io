@@ -2,14 +2,90 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>MCC Test page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Sign-in | Minecraft Console Client</title>
     </head>
     
     <body>
-        <div>Your code is <strong><span id='code'></span></strong></div>
+        <div id="codeDisplay" style="display: none;">
+            Your code is <input id='code' onClick="this.setSelectionRange(0, this.value.length)" />
+            <button id="copyCode">Copy to clipboard</button>
+        </div>
+        <div id="errorDisplay" style="display: none;">
+            The following error was occurred:
+            <p id="error"></p>
+        </div>
         <script>
-            let codeEl = document.getElementById('code')
-            codeEl.innerText = window.location.hash.split('=')[1];
+            let rawHash = window.location.hash;
+            if (rawHash !== '') {
+                // Remove the leading #
+                rawHash = rawHash.substring(1);
+            }
+            let hash = new URLSearchParams(rawHash);
+            let query = new URLSearchParams(window.location.search);
+            
+            if (hash.has('error') || query.has('error')) {
+                // Error occurred
+                displayError(hash.get('error_description') || query.get('error_description'))
+            } else {
+                // Get code
+                if (hash.has('code')) {
+                    displayCode(hash.get('code'));
+                } else {
+                    // TODO: No error and no code
+                }
+            }
+            function displayCode(code) {
+                let codeDisplay = document.getElementById('codeDisplay')
+                let codeEl = document.getElementById('code');
+                codeEl.value = code;
+                codeDisplay.style.display = "block"
+                let copyBtn = document.getElementById('copyCode');
+                copyBtn.addEventListener('click', () => {
+                    copyTextToClipboard(code);
+                });
+            }
+            function displayError(errorText) {
+                let errorDisplay = document.getElementById('errorDisplay');
+                let errorEl = document.getElementById('error');
+                errorEl.innerText = errorText;
+                errorDisplay.style.display = "block";
+            }
+            // Clipboard. Thanks to https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
+            function fallbackCopyTextToClipboard(text) {
+              var textArea = document.createElement("textarea");
+              textArea.value = text;
+              
+              // Avoid scrolling to bottom
+              textArea.style.top = "0";
+              textArea.style.left = "0";
+              textArea.style.position = "fixed";
+
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+
+              try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Fallback: Copying text command was ' + msg);
+              } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+              }
+
+              document.body.removeChild(textArea);
+            }
+            function copyTextToClipboard(text) {
+              if (!navigator.clipboard) {
+                fallbackCopyTextToClipboard(text);
+                return;
+              }
+              navigator.clipboard.writeText(text).then(function() {
+                console.log('Async: Copying to clipboard was successful!');
+              }, function(err) {
+                console.error('Async: Could not copy text: ', err);
+              });
+            }
         </script>
     </body>
 </html>
