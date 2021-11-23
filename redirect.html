@@ -4,16 +4,35 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>Sign-in | Minecraft Console Client</title>
+        <link rel="stylesheet" href="redirect.css" />
     </head>
     
     <body>
-        <div id="codeDisplay" style="display: none;">
-            Your code is <input id='code' onClick="this.setSelectionRange(0, this.value.length)" />
-            <button id="copyCode">Copy to clipboard</button>
-        </div>
-        <div id="errorDisplay" style="display: none;">
-            The following error was occurred:
-            <p id="error"></p>
+        <h3>Minecraft Console Client</h3>
+        <div class="messageContainer">
+            <div id="codeDisplay" style="display: none;">
+                <p>
+                    Your sign-in code is <input id='code' onClick="this.setSelectionRange(0, this.value.length)" />
+                    <button id="copyCode">Copy to clipboard</button>
+                </p>
+                <p>
+                    Copy and paste the code to your client. <strong>Keep it secret!</strong>
+                </p>
+            </div>
+            <div id="errorDisplay" style="display: none;">
+                <p>
+                    The following error was occurred:
+                </p>
+                <pre><code id="error"></code></pre>
+                <p>
+                    Click here to sign-in again. If the error keep showing up, save the error message and ask for help.
+                </p>
+            </div>
+            <div id="emptyPage" style="display: none;">
+                <p>
+                    Click here to sign-in.
+                </p>
+            </div>
         </div>
         <script>
             let rawHash = window.location.hash;
@@ -26,15 +45,20 @@
             
             if (hash.has('error') || query.has('error')) {
                 // Error occurred
-                displayError(hash.get('error_description') || query.get('error_description'))
+                let errorMessage = hash.get('error') || query.get('error')
+                errorMessage += "\n\n" + (hash.get('error_description') || query.get('error_description'))
+                displayError(errorMessage);
             } else {
                 // Get code
                 if (hash.has('code')) {
                     displayCode(hash.get('code'));
                 } else {
-                    // TODO: No error and no code
+                    // No error and no code
+                    displayEmpty();
                 }
             }
+            // Lastly, remove code from URL hash
+            window.location.hash = ''
             function displayCode(code) {
                 let codeDisplay = document.getElementById('codeDisplay')
                 let codeEl = document.getElementById('code');
@@ -50,6 +74,10 @@
                 let errorEl = document.getElementById('error');
                 errorEl.innerText = errorText;
                 errorDisplay.style.display = "block";
+            }
+            function displayEmpty() {
+                let emptyPage = document.getElementById('emptyPage');
+                emptyPage.style.display = "block";
             }
             // Clipboard. Thanks to https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
             function fallbackCopyTextToClipboard(text) {
