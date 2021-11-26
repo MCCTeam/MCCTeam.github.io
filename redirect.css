@@ -4,12 +4,19 @@
     max-width: 30em;
     padding: 2em;
     margin: 0 auto;
+    background-color: white;
 }
 
 .logo {
     width: 1.5em;
     vertical-align: bottom;
     padding-right: 0.5em;
+}
+
+.brand {
+    background-color: #ffffff78;
+    padding: 0.5em;
+    border-radius: 8px;
 }
 
 code {

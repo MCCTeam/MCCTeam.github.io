@@ -8,7 +8,9 @@
     </head>
     
     <body>
-        <h3><img src="favicon.ico" class="logo">Minecraft Console Client</h3>
+        <h3>
+            <span class="brand"><img src="favicon.ico" class="logo">Minecraft Console Client</span>
+        </h3>
         <div class="messageContainer">
             <div id="codeDisplay" style="display: none;">
                 <p>
@@ -25,15 +27,27 @@
                 </p>
                 <pre><code id="error"></code></pre>
                 <p>
-                    Click here to sign-in again. If the error keep showing up, save the error message and ask for help.
+                    Click <a href="https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize?client_id=54473e32-df8f-42e9-a649-9419b0dab9d3&response_type=code&redirect_uri=https%3A%2F%2Fmccteam.github.io%2Fredirect.html&scope=XboxLive.signin%20offline_access%20openid%20email&prompt=select_account&response_mode=fragment" rel="noreferrer">here</a> to sign-in again. If the error keep showing up, save the error message and ask for help.
                 </p>
             </div>
             <div id="emptyPage" style="display: none;">
                 <p>
-                    Click here to sign-in.
+                    Click <a href="https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize?client_id=54473e32-df8f-42e9-a649-9419b0dab9d3&response_type=code&redirect_uri=https%3A%2F%2Fmccteam.github.io%2Fredirect.html&scope=XboxLive.signin%20offline_access%20openid%20email&prompt=select_account&response_mode=fragment" rel="noreferrer">here</a> to sign-in.
                 </p>
             </div>
         </div>
+        <script>
+            let imagePath = "assets/wallpaper/";
+            let numImages = 8;
+            let image = randomIntFromInterval(1, numImages);
+            let selectedImagePath = `${imagePath}${image}.png`;
+            let bodyEl = document.body
+            bodyEl.style.backgroundImage = `url("${selectedImagePath}")`;
+            function randomIntFromInterval(min, max) { 
+                // min and max included 
+                return Math.floor(Math.random() * (max - min + 1) + min)
+            }
+        </script>
         <script>
             let rawHash = window.location.hash;
             if (rawHash !== '') {
