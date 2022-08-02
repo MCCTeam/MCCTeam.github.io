@@ -1,0 +1,1 @@
+import{_ as e,o as t,c,a as n}from"./app.bb2d58d4.js";const o={},_=n("p",null,"TODO",-1),s=[_];function a(r,i){return t(),c("div",null,s)}var u=e(o,[["render",a],["__file","contibuting.html.vue"]]);export{u as default};
