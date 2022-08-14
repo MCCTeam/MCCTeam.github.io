@@ -458,7 +458,7 @@ Other-Setting=Some Value
 
     This setting allows you to define if your want to filter chat messages being logged using a Regex expression.
 
-    More on Regex expressions [here](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference).
+    More on Regex [here](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
 ### `debugfilter`
 
@@ -468,7 +468,7 @@ Other-Setting=Some Value
 
     This setting allows you to define if your want to filter debug messages being logged using a Regex expression.
 
-    More on Regex expressions [here](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference).
+    More on Regex [here](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
 ### `filtermode`
 
@@ -600,3 +600,190 @@ Connect to a server via a proxy instead of connecting directly.
     Only needed for password protected proxies.
 
 -   Default: ``
+
+## Chat Format
+
+The MCC does it best to detect chat messages, but some server have unusual chat formats.
+
+When this happens, you'll need to configure the chat format yourself using settings from this section.
+
+### `builtins`
+
+-   Description:
+
+    This setting allows you to define if your want use the default chat formats, or if you want to use the custom ones.
+
+    Set to `false` to use the custom formats defined in `public`, `private` and `tprequest`.
+
+-   Default: `true`
+
+    > **NOTE: Do not forget to un-comment `public`, `private` and `tprequest` settings if you want custom chat formats, since they're disabled/commented by default**
+
+### `public`
+
+    > **NOTE: This setting is commented/disabled by default**
+
+-   Description:
+
+    This setting allows you to specify a custom chat message format using Regex (Regular expressions).
+
+    More on Regex [here](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference).
+
+    Only works when `builtins` is set to `false`.
+
+-   Default: `^<([a-zA-Z0-9_]+)> (.+)$`
+
+### `private`
+
+    > **NOTE: This setting is commented/disabled by default**
+
+-   Description:
+
+    This setting allows you to specify a custom chat message format for private messages using Regex (Regular expressions).
+
+    More on Regex [here](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference).
+
+    Only works when `builtins` is set to `false`.
+
+-   Default: `^([a-zA-Z0-9_]+) whispers to you: (.+)$`
+
+### `tprequest`
+
+    > **NOTE: This setting is commented/disabled by default**
+
+-   Description:
+
+    This setting allows you to specify a custom chat message format for a Teleport request using Regex (Regular expressions).
+
+    More on Regex [here](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference).
+
+    Only works when `builtins` is set to `false`.
+
+-   Default: `^([a-zA-Z0-9_]+) has requested (?:to|that you) teleport to (?:you|them)\.$`
+
+## MCSettings
+
+Client settings related to language, render distance, difficutly, chat and skins.
+
+### `enabled`
+
+-   Description:
+
+    This setting allows you to specify if you want to use settings from this section.
+
+-   Default: `true`
+
+### `locale`
+
+-   Description:
+
+    Use any language implemented in Minecraft
+
+-   Default: `en_US`
+
+### `renderdistance`
+
+-   Description:
+
+    Use tiny, short, medium, far, or chunk amount (0 - 255).
+
+-   Default: `medium`
+
+### `difficulty`
+
+-   Description:
+
+    Available options:
+
+    -   `peaceful`
+    -   `easy`
+    -   `normal`
+    -   `difficult`
+
+-   Default: `normal`
+
+### `chatmode`
+
+-   Description:
+
+    This setting allows you to effectively mute yourself.
+
+    Available options:
+
+    -   `enabled` (You can chat)
+    -   `commands` (You can only do commands)
+    -   `disabled`
+
+-   Default: `enabled`
+
+### `chatcolors`
+
+-   Description:
+
+    This setting allows you to disable chat colors.
+
+-   Default: `true`
+
+### `main_hand`
+
+-   Description:
+
+    This setting allows you to specify your main hand.
+
+-   Default: `left`
+
+### `skin_cape`
+
+-   Description:
+
+    This setting allows you to specify if you want to have your skin cape shown.
+
+-   Default: `true`
+
+### `skin_hat`
+
+-   Description:
+
+    This setting allows you to specify if you want to have your skin hat shown.
+
+-   Default: `true`
+
+### `skin_jacket`
+
+-   Description:
+
+    This setting allows you to specify if you want to have your skin jacket shown.
+
+-   Default: `false`
+
+### `skin_sleeve_left`
+
+-   Description:
+
+    This setting allows you to specify if you want to have your left sleeve shown.
+
+-   Default: `false`
+
+### `skin_sleeve_right`
+
+-   Description:
+
+    This setting allows you to specify if you want to have your right sleeve shown.
+
+-   Default: `false`
+
+### `skin_pants_left`
+
+-   Description:
+
+    This setting allows you to specify if you want to have your left part of the pants shown.
+
+-   Default: `false`
+
+### `skin_pants_right`
+
+-   Description:
+
+    This setting allows you to specify if you want to have your right part of the pants shown.
+
+-   Default: `false`
