@@ -1,6 +1,10 @@
 # Introduction
 
-Minecraft Console Client (MCC) is a lightweight cross-platofrm open-source Minecraft TUI client that allows you to connect to any Minecraft server, send commands and receive text messages in a fast and easy way without having to open the main Minecraft game. It also provides various automations that you can enable for administration and other purposes, as well as extensible C# API for creating Bots.
+**Minecraft Console Client (MCC)** is a lightweight cross-platofrm open-source Minecraft TUI client that allows you to connect to any Minecraft server, send commands and receive text messages in a fast and easy way without having to open the main Minecraft game. 
+
+It also provides various automations that you can enable for administration and other purposes, as well as extensible C# API for creating Bots.
+
+It was originally made by [ORelio](https://github.com/ORelio) in 2012 on the [Minecraft Forum](http://www.minecraftforum.net/topic/1314800-/), now it's maintained by him and many other contributors from the community.
 
 ## Features
 
@@ -22,11 +26,12 @@ Minecraft Console Client (MCC) is a lightweight cross-platofrm open-source Minec
 
 ## Why Minecraft Console Client?
 
+- Easy to use
+- Helpful community
 - Open-Source
 - Fast performance
 - Cross-Platform
 - Docker Support
-- 10 years of continuous developemnt
+- 10 years of continuous development
 - Active contibutors
-- Easy to use
-- Helpful community
+- Widely used
