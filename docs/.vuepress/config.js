@@ -31,14 +31,14 @@ module.exports = {
                 text: "Usage",
                 link: "/guide/usage.md",
             },
-        
+
             {
                 text: "Configuration",
                 link: "/guide/configuration.md",
             },
         ],
 
-        sidebar: ["/guide/README.md", "/guide/installation.md", "/guide/usage.md", "/guide/configuration.md"],
+        sidebar: ["/guide/README.md", "/guide/installation.md", "/guide/usage.md", "/guide/configuration.md", "/guide/creating-bots.md", "/guide/contibuting.md"],
 
         repo: "https://github.com/MCCTeam/Minecraft-Console-Client",
     }),

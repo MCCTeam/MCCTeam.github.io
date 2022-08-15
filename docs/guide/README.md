@@ -1,9 +1,10 @@
 # Introduction
 
 -   [About](#about)
+-   [Quick Intro (Youtube Videos)](#quick-intro)
 -   [Features](#features)
 -   [Why Minecraft Console Client?](#why-minecraft-console-client)
--   [Quick Intro (Youtube Videos)](#quick-intro)
+-   [Getting Help](#getting-help)
 
 ## About
 
@@ -58,3 +59,14 @@ Using Commands, Scripts and other features:
 
 -   [Minecraft Console Client | Tutorial | Commands, Scripts, AppVars, Matches, Tasks and C# Scripts by Daenges](https://youtu.be/JbDpwwETEnU)
 -   [Console Client Tutorial - Scripting by Zixxter](https://www.youtube.com/watch?v=XE7rYBFJxn0)
+
+## Getting Help
+
+MCC has a community that is willing to help, we have a Discussions section in out Github repository.
+
+Click [here](https://github.com/MCCTeam/Minecraft-Console-Client/discussions) to access it.
+
+### Before getting help
+
+-   Please use the search option here or in the discussion section and read the documentation so we avoid duplicate questions. Thank you!\*\*
+-   Please be kind and patient, respect others as they're the ones using their time to help you
