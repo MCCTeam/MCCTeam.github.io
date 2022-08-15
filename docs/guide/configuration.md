@@ -6,7 +6,7 @@ By the default all of the configurations are stored in the configuration file na
 
 ## Notes
 
--   Some settings will be ommited from the documentation due to them being not used often, we do not want documentation to be cluttered, we advise you to manually read through the configuration file, where every setting has a description next to it.
+-   Some settings will be omited from the documentation due to them being not used often, we do not want documentation to be cluttered, we advise you to manually read through the configuration file, where every setting has a description next to it.
 -   Some plugin/bot related settings will be covered in the plugins section, not here
 
 ## Configuration File
@@ -15,7 +15,7 @@ By the default all of the configurations are stored in the configuration file na
 
 The configuration file uses the INI format, all of the options are key-value pairs separated into sections.
 
-Sections are defined in-between the square brackets (Example: `[This is a section]`), each occurence of this marks a beginning of a new section.
+Sections are defined in-between the square brackets (Example: `[This is a section]`), each occurance of this marks a beginning of a new section.
 
 The settings/options are defined as key-value pairs, where the name of the setting and the value are separated by the equals sign `=` (Example: `some-setting=some value`).
 
@@ -79,7 +79,7 @@ Other-Setting=Some Value
 
     This setting is where you define the type of your account: `mojang` or `Microsoft`
 
-    > **NOTE: Mojang accounts do not work anymore**
+    > **ℹ️ NOTE: Mojang accounts do not work anymore**
 
 -   **Default:** `mojang`
 
@@ -93,7 +93,7 @@ Other-Setting=Some Value
 
 -   **Description:**
 
-    This setting is where you define the way you will sign in with your Microsoft account, avaliable options are `mcc` and `browser`.
+    This setting is where you define the way you will sign in with your Microsoft account, available options are `mcc` and `browser`.
 
 -   **Default:** `mcc`
 
@@ -137,7 +137,7 @@ Other-Setting=Some Value
 
     This setting is where you can change the prefix character of internal MCC commands.
 
-    Avaliable options:
+    Available options:
 
     -   `none`
     -   `slash`
@@ -173,7 +173,7 @@ Other-Setting=Some Value
     botowners=Player1,Player2,Player3
     ```
 
-    > **WARNING: Admins can impersonate players on versions older than 1.19**
+    > **⚠️ WARNING: Admins can impersonate players on versions older than 1.19**
 
 ### `mcversion`
 
@@ -191,7 +191,7 @@ Other-Setting=Some Value
     mcversion=1.18.2
     ```
 
-    > **NOTE: MCC supports only 1.8 - 1.19**
+    > **ℹ️ NOTE: MCC supports only 1.8 - 1.19**
 
 ### `mcforge`
 
@@ -199,7 +199,7 @@ Other-Setting=Some Value
 
     This setting is where you can define if you're playing on a forge server.
 
-    Avaliable options:
+    Available options:
 
     -   `auto`
     -   `true`
@@ -207,7 +207,7 @@ Other-Setting=Some Value
 
 -   **Default:** `auto`
 
-    > **NOTE: Force-enabling only works for MC 1.13 +.**
+    > **ℹ️ NOTE: Force-enabling only works for MC 1.13 +.**
 
 ### `brandinfo`
 
@@ -300,7 +300,7 @@ Other-Setting=Some Value
 
 -   **Default:** `false`
 
-    > **NOTE: Sometimes the latest versions might not support this straight away, since mojang often makes changes to this.**
+    > **ℹ️ NOTE: Sometimes the latest versions might not support this straight away, since Mojang often makes changes to this.**
 
 ### `sessioncache`
 
@@ -339,7 +339,7 @@ Other-Setting=Some Value
 
 -   **Default:** `accounts.txt`
 
-    > **NOTE: This file is not created by default.**
+    > **ℹ️ NOTE: This file is not created by default.**
 
 ### `serverlist`
 
@@ -353,7 +353,7 @@ Other-Setting=Some Value
 
 -   **Default:** `servers.txt`
 
-    > **NOTE: This file is not created by default.**
+    > **ℹ️ NOTE: This file is not created by default.**
 
 ### `playerheadicon`
 
@@ -363,7 +363,7 @@ Other-Setting=Some Value
 
 -   **Default:** `true`
 
-    > **NOTE: Only works on Windows XP-8 or Windows 10 with old console**
+    > **ℹ️ NOTE: Only works on Windows XP-8 or Windows 10 with old console**
 
 ### `exitonfailure`
 
@@ -397,7 +397,7 @@ Other-Setting=Some Value
 
 -   **Default:** `false`
 
-    > **NOTE: Make sure the spawn point is safe**
+    > **ℹ️ NOTE: Make sure the spawn point is safe**
 
 ### `minecraftrealms`
 
@@ -460,7 +460,7 @@ Other-Setting=Some Value
 
 ### `chatfilter`
 
-    > **NOTE: Disabled/Commented by default**
+    > **ℹ️ NOTE: Disabled/Commented by default**
 
 -   **Description:**
 
@@ -470,7 +470,7 @@ Other-Setting=Some Value
 
 ### `debugfilter`
 
-    > **NOTE: Disabled/Commented by default**
+    > **ℹ️ NOTE: Disabled/Commented by default**
 
 -   **Description:**
 
@@ -500,11 +500,11 @@ Other-Setting=Some Value
 
 -   **Description:**
 
-    This setting allows you to define a path to a file where you want to log messages if you have enabled logging to a filewith `logtofile=true`.
+    This setting allows you to define a path to a file where you want to log messages if you have enabled logging to a file with `logtofile=true`.
 
 -   **Default:** `console-log-%username%-%serverip%.txt`
 
-    > **NOTE: %username% and %serverip% will be substituted with your username and the IP address of the server you are connected to.**
+    > **ℹ️ NOTE: %username% and %serverip% will be substituted with your username and the IP address of the server you are connected to.**
 
 ### `prependtimestamp`
 
@@ -558,7 +558,7 @@ Connect to a server via a proxy instead of connecting directly.
 
 -   **Default:** `false`
 
-    > **WARNING: Make sure your server rules allow Proxies or VPNs before setting the setting to `true`, or you may face consequences!**
+    > **⚠️ WARNING: Make sure your server rules allow Proxies or VPNs before setting the setting to `true`, or you may face consequences!**
 
 ### `type`
 
@@ -625,11 +625,11 @@ When this happens, you'll need to configure the chat format yourself using setti
 
 -   **Default:** `true`
 
-    > **NOTE: Do not forget to un-comment `public`, `private` and `tprequest` settings if you want custom chat formats, since they're disabled/commented by default**
+    > **ℹ️ NOTE: Do not forget to un-comment `public`, `private` and `tprequest` settings if you want custom chat formats, since they're disabled/commented by default**
 
 ### `public`
 
-    > **NOTE: This setting is commented/disabled by default**
+    > **ℹ️ NOTE: This setting is commented/disabled by default**
 
 -   **Description:**
 
@@ -643,7 +643,7 @@ When this happens, you'll need to configure the chat format yourself using setti
 
 ### `private`
 
-    > **NOTE: This setting is commented/disabled by default**
+    > **ℹ️ NOTE: This setting is commented/disabled by default**
 
 -   **Description:**
 
@@ -657,7 +657,7 @@ When this happens, you'll need to configure the chat format yourself using setti
 
 ### `tprequest`
 
-    > **NOTE: This setting is commented/disabled by default**
+    > **ℹ️ NOTE: This setting is commented/disabled by default**
 
 -   **Description:**
 
@@ -671,7 +671,7 @@ When this happens, you'll need to configure the chat format yourself using setti
 
 ## MCSettings
 
-Client settings related to language, render distance, difficutly, chat and skins.
+Client settings related to language, render distance, difficulty, chat and skins.
 
 ### `enabled`
 

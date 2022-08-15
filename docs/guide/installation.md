@@ -1,13 +1,13 @@
 # Installation
 
--   [Youtube Tutorials](#youtube-tutorials)
+-   [You Tube Tutorials](#youtube-tutorials)
 -   [Download a compiled binary](#download-a-compiled-binary)
 -   [Building from source](#building-from-the-source-code)
 -   [Run using Docker](#using-docker)
 
-## Youtube Tutorials
+## You Tube Tutorials
 
-If you're not the kind of person that likes textual tutorials, our community has made video tutorials available on youtube.
+If you're not the kind of person that likes textual tutorials, our community has made video tutorials available on You Tube.
 
 -   [Installation on Windows by Daenges](https://www.youtube.com/watch?v=BkCqOCa2uQw)
 -   [Installation on Windows + Auto AFK and More by Dexter113](https://www.youtube.com/watch?v=FxJ0KFIHDrY)
@@ -18,11 +18,11 @@ If you're not the kind of person that likes textual tutorials, our community has
 
 In order to run **Minecraft Console Client** on Windows you need the following software:
 
--   [.NET Framework 4.8 or higher](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
+-   [.NET Framework 4.8 or new-er](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
 
 #### Linux, Mac OS, Unix
 
-In order to run **Minecraft Console Client** on other platofrms you need the [**Mono**](https://www.mono-project.com) framework:
+In order to run **Minecraft Console Client** on other platforms you need the [**Mono**](https://www.mono-project.com) framework:
 
 -   [Linux Build](https://www.mono-project.com/download/stable/#download-lin)
 -   [MacOS Build](https://www.mono-project.com/download/stable/#download-mac)
@@ -30,7 +30,7 @@ In order to run **Minecraft Console Client** on other platofrms you need the [**
 
 #### Download
 
-You can download a compiled binary file of the latest build from our Releases section on Github: [Download](https://github.com/MCCTeam/Minecraft-Console-Client/releases)
+You can download a compiled binary file of the latest build from our Releases section on Git Hub: [Download](https://github.com/MCCTeam/Minecraft-Console-Client/releases)
 
 ## Building from the source code
 
@@ -39,20 +39,20 @@ You can download a compiled binary file of the latest build from our Releases se
 Requirements:
 
 -   [Git](https://www.git-scm.com/)
--   [.NET 6.0 or higher](https://dotnet.microsoft.com/en-us/download) or [Visual Studio](https://visualstudio.microsoft.com/) configured for C# app development
+-   [.NET 6.0 or new-er](https://dotnet.microsoft.com/en-us/download) or [Visual Studio](https://visualstudio.microsoft.com/) configured for C# app development
 
-Install [Git](https://www.git-scm.com/) and [Visual Studio](https://visualstudio.microsoft.com/) or [.NET 6.0 or higher](https://dotnet.microsoft.com/en-us/download)
+Install [Git](https://www.git-scm.com/) and [Visual Studio](https://visualstudio.microsoft.com/) or [.NET 6.0 or new-er](https://dotnet.microsoft.com/en-us/download)
 
 1. Make a new folder where you want to keep the source code
 2. Then open it up, hold `SHIFT` and do a `right-click` on the empty white space in the folder
 3. Click on `Git Bash Here` in the context menu
-4. Clone the [Github Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
+4. Clone the [Git Hub Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
 
 ```bash
 git clone https://github.com/MCCTeam/Minecraft-Console-Client.git
 ```
 
-5. Once the repositry has been cloned, you can close the `Git Bash` terminal emulator
+5. Once the repository has been cloned, you can close the `Git Bash` terminal emulator
 6. Open up the new cloned folder
 
 #### Visual Studio
@@ -91,7 +91,7 @@ If the build has succeeded, the compiled binary `MinecraftClient.exe` will be in
 
 ### Linux, Mac OS, Unix
 
-_NOTE: Since you're most likely using Linux, Unix or MacOS, I'll assume that you should be able to install git on your own. If you don't search it up for your platofrm, it should be easy_
+> **ℹ️ NOTE: Since you're most likely using Linux, Unix or MacOS, I'll assume that you should be able to install git on your own. If you don't search it up for your platofrm, it should be easy**
 
 Requirements:
 
@@ -103,7 +103,7 @@ Requirements:
 
 1. Verify that Mono is installed and can run correctly by following steps on their website
 2. Open up a terminal and navigate to the folder where you will store the MCC
-3. Clone the [Github Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
+3. Clone the [Git Hub Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
 
 ```bash
 git clone https://github.com/MCCTeam/Minecraft-Console-Client.git
@@ -122,9 +122,9 @@ Requirements:
 -   Git
 -   Docker
 
-_NOTE: This section is for more advanced users, if you do not know how to install git or docker, you can take a look at other sections for Git, and search on how to install Docker on your system._
+> **ℹ️ NOTE: This section is for more advanced users, if you do not know how to install git or docker, you can take a look at other sections for Git, and search on how to install Docker on your system.**
 
-1. Clone the [Github Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
+1. Clone the [Git Hub Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
 
 ```bash
 git clone https://github.com/MCCTeam/Minecraft-Console-Client.git

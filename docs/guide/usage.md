@@ -36,11 +36,11 @@ mono MinecraftClient.exe
 
 # Detach from the screen by pressing CTRL + A + D
 
-# Re-attach if you want to have acces again
+# Re-attach if you want to have accces again
 screen -r mcc
 ```
 
-_Learn more on how to use the screen command: [Youtube](https://www.youtube.com/watch?v=_ZJiEX4rmN4)_
+_Learn more on how to use the screen command: [You Tube](https://www.youtube.com/watch?v=_ZJiEX4rmN4)_
 
 Some potential issues:
 
@@ -55,13 +55,13 @@ See [Run using Docker](/guide/installation.md#using-docker)
 
 ## Command-line usage
 
-**Minecraft Console Client** has a plethera of useful command line parameters, here you can learn about them.
+**Minecraft Console Client** has a plethora of useful command line parameters, here you can learn about them.
 
 ### For people not familiar with the command line
 
 For people who are not familiar with the usage of programs in the command line (terminal emulators), here we will explain what every single thing means, if you're already experienced you can skip this.
 
-In command line (terminal emulators) you can run programs by specifying their name and hitting enter, usually programs have additional way of being configured, started or provided some additional data in a different maner, this is achieved by using command line parameters.
+In command line (terminal emulators) you can run programs by specifying their name and hitting enter, usually programs have additional way of being configured, started or provided some additional data in a different manner, this is achieved by using command line parameters.
 
 Command line parameters are written after the name of the program, they're spearated by space and they can have few different formats, examples:
 
@@ -141,7 +141,7 @@ MinecraftClient.exe <login> <password> <server> "/mycommand"
 ```
 
 -   This will automatically send `/mycommand` to the server and close.
--   To send several commands and/or stay connected, use the ScriptScheduler bot instead.
+-   To send several commands and/or stay connected, use the 1ScriptScheduler1 bot instead.
 
 ```bash
 MinecraftClient.exe <myconfig.ini>
@@ -156,7 +156,7 @@ MinecraftClient.exe --setting=value [--other settings]
 
 -   Specify settings on the command-line, see possible value in the configuration file
 -   Use `--section.setting=value` for settings outside the `[Main]` section
--   Example: `--antiafk.enabled=true` for enabling the AntiAFK bot
+-   Example: `--antiafk.enabled=true` for enabling the `AntiAFK` bot
 
 ```bash
 MinecraftClient.exe <myconfig.ini> <login> <password> <server> [--other settings]
@@ -172,7 +172,7 @@ From chat prompt, commands must by default be prepended with a slash, eg. `/quit
 
 In scripts and remote control, no slash is needed to perform the command, eg. `quit`.
 
-> **NOTE: Some commands may not be documented yet or are defined in description of Chat Bots, use `/help` to list them all, or you can contribute to this page.**
+> **ℹ️ NOTE: Some commands may not be documented yet or are defined in description of Chat Bots, use `/help` to list them all, or you can contribute to this page.**
 
 ### `quit`
 
@@ -193,7 +193,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /reco [account]
     ```
 
-    > **NOTE: `[account]` is an account alias defined in accounts file, for more info check out [accountlist](configuration.html#accountlist)**
+    > **ℹ️ NOTE: `[account]` is an account alias defined in accounts file, for more info check out [accountlist](configuration.html#accountlist)**
 
 ### `connect`
 
@@ -207,9 +207,9 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /connect <server> [account]
     ```
 
-    > **NOTE: `<server>` is either a server IP or a server alias defined in servers file, for more info check out [serverlist](configuration.html#serverlist)**
+    > **ℹ️ NOTE: `<server>` is either a server IP or a server alias defined in servers file, for more info check out [serverlist](configuration.html#serverlist)**
 
-    > **NOTE: `[account]` is an account alias defined in accounts file, for more info check out [accountlist](configuration.html#accountlist)**
+    > **ℹ️ NOTE: `[account]` is an account alias defined in accounts file, for more info check out [accountlist](configuration.html#accountlist)**
 
 ### `script`
 
@@ -239,7 +239,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
 -   **Description:**
 
-    Use this to respawn if you are dead (like clicking "respawn" ingame)
+    Use this to respawn if you are dead (like clicking "respawn" in-game)
 
 -   **Usage:**
 
@@ -353,7 +353,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /move gravity on
     ```
 
-    Move to cordinates:
+    Move to coordinates:
 
     ```
     /move 125 72 34
@@ -393,7 +393,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     Used for inventory manipulation when the [inventoryhandling](configuration.md#inventoryhandling) is enabled.
 
-    MCC defines inventories as containers internaly, so player's inventory, chests, droppers, dispensers, hoppers, chest minecarts, barrels, furnaces, etc... are all considered a container, and each one of them has it's ID, the words container and inventory can be used interchangeably.
+    MCC defines inventories as containers internally, so player's inventory, chests, droppers, dispensers, hoppers, chest minecarts, barrels, furnaces, etc... are all considered a container, and each one of them has it's ID, the words container and inventory can be used interchangeably.
 
     Inventory has slots and each one of them has an id.
 
@@ -409,7 +409,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /inventory <player|container|<id>> <action> [action parameters]
     ```
 
-    > **NOTE: player and container can be simplified with p and c accordingly**
+    > **ℹ️ NOTE: player and container can be simplified with p and c accordingly**
 
     Show/Preview items in an inventory:
 
@@ -423,7 +423,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /inventory <player|container|<id>> click <slot id> [left|right|middle]
     ```
 
-    > **NOTE: The default click if a left click**
+    > **ℹ️ NOTE: The default click if a left click**
 
     Close an inventory:
 
@@ -437,7 +437,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /inventory <player|id> drop <slot id> <number of items|all>
     ```
 
-    > **NOTE: Do drop all items from a slot, you can use:** `all`
+    > **ℹ️ NOTE: Do drop all items from a slot, you can use:** `all`
 
     Give an item to the player inventory from a creative menu when in the creative mode:
 
@@ -445,7 +445,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /inventory creativegive <slot id> <item type> <amount>
     ```
 
-    > **NOTE: To find item types, check out [this list](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs)**
+    > **ℹ️ NOTE: To find item types, check out [this list](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs)**
 
     Delete an item from a player's inventory when in the creative mode:
 
@@ -461,7 +461,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /inventory player
     ```
 
-    Show/Preview items in an inventory usign an id:
+    Show/Preview items in an inventory using an id:
 
     ```
     /inventory 3
@@ -503,7 +503,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /inventory creativegive 36 diamondblock 64
     ```
 
-    > **NOTE: To find item types, check out [this list](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs)**
+    > **ℹ️ NOTE: To find item types, check out [this list](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs)**
 
     Delete an item from a player's inventory in slot number/id `36` when in the creative mode:
 
@@ -523,4 +523,4 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     Show commands help.
 
-    > **NOTE: Use "/send /help" for server help**
+    > **ℹ️ NOTE: Use "/send /help" for server help**

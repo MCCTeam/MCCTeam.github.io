@@ -8,7 +8,7 @@
 
 ## Notes
 
-> **NOTE: For now this page will contain only the bare basic info until it is properly done.**
+> **ℹ️ NOTE: For now this page will contain only the bare basic info until it is properly done.**
 
 **Minecraft Console Client** has a rich C# API which allows you to create Chat Bots (effectively plugins) which can help you create complex automations which normal scripts may not be able to do.
 
@@ -32,7 +32,7 @@ More in-depth:
 
 This introduction assumes that you have the basic knowledge of C#.
 
-> **NOTE: Here we will use terms Chat Bot and Script interchangeably**
+> **ℹ️ NOTE: Here we will use terms Chat Bot and Script interchangeably**
 
 Create a new empty file and name it `ExampleChatBot.cs` in the same folder where you have your MCC installed.
 
@@ -55,7 +55,7 @@ class ExampleChatBot : ChatBot
     // Here you can initialize variables, eg. Dictionaries. etc...
 	public override void Initialize()
 	{
-		LogToConsole("An example Chat Bot has been initialised!");
+		LogToConsole("An example Chat Bot has been initialized!");
 	}
 
     // This is a function that will be run when we get a chat message from a server
@@ -110,7 +110,7 @@ MCC.LoadBot(new YourChatBotClassNameHere());
 
 **Script Metadata** section allows for including C# packages and libraries with: `//using <namespace>` and `/dll <dll name>`.
 
-> **NOTE: Avoid adding whitespace between `//` and keywords**
+> **ℹ️ NOTE: Avoid adding whitespace between `//` and keywords**
 
 By the default the following packages are loaded:
 
@@ -157,15 +157,15 @@ There are no required methods, everything is optional.
 When the Chat Bot (Script) has been initialized for the first time the `Initialize` method will be called.
 In it you can initialize variables, eg. Dictionaries, etc..
 
-> **NOTE: For allocating resources like a database connection, we recommend allocating them in `AfterGameJoined` and freeing them in `OnDisconnect`**.
+> **ℹ️ NOTE: For allocating resources like a database connection, we recommend allocating them in `AfterGameJoined` and freeing them in `OnDisconnect`**.
 
 ## Examples
 
-You can find a lot of examples in our Github Repository at [ChatBots](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/ChatBots) and [config](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/config).
+You can find a lot of examples in our Git Hub Repository at [ChatBots](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/ChatBots) and [config](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/config).
 
 ## C# API
 
-As of the time of writting, the C# API has been changed in forks that are yet to be merged, so for now you can use the [ChatBot.cs](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Scripting/ChatBot.cs) for reference.
+As of the time of writing, the C# API has been changed in forks that are yet to be merged, so for now you can use the [ChatBot.cs](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Scripting/ChatBot.cs) for reference.
 
 Each method is well documented with standard C# documentation comments.
 
