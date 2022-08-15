@@ -40,7 +40,7 @@ mono MinecraftClient.exe
 screen -r mcc
 ```
 
-_Learn more on how to use the screen command: [You Tube](https://www.youtube.com/watch?v=_ZJiEX4rmN4)_
+_Learn more on how to use the screen command: [YouTube](https://www.youtube.com/watch?v=_ZJiEX4rmN4)_
 
 Some potential issues:
 

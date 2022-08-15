@@ -1,13 +1,13 @@
 # Installation
 
--   [You Tube Tutorials](#youtube-tutorials)
+-   [YouTube Tutorials](#youtube-tutorials)
 -   [Download a compiled binary](#download-a-compiled-binary)
 -   [Building from source](#building-from-the-source-code)
 -   [Run using Docker](#using-docker)
 
-## You Tube Tutorials
+## YouTube Tutorials
 
-If you're not the kind of person that likes textual tutorials, our community has made video tutorials available on You Tube.
+If you're not the kind of person that likes textual tutorials, our community has made video tutorials available on YouTube.
 
 -   [Installation on Windows by Daenges](https://www.youtube.com/watch?v=BkCqOCa2uQw)
 -   [Installation on Windows + Auto AFK and More by Dexter113](https://www.youtube.com/watch?v=FxJ0KFIHDrY)
@@ -18,7 +18,7 @@ If you're not the kind of person that likes textual tutorials, our community has
 
 In order to run **Minecraft Console Client** on Windows you need the following software:
 
--   [.NET Framework 4.8 or new-er](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
+-   [.NET Framework 6.0 or new-er](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
 
 #### Linux, Mac OS, Unix
 

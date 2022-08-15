@@ -17,6 +17,6 @@ features:
     - title: Automation
       details: Create bots to do automated tasks
     - title: Supported Versions
-      details: 1.8 - 1.19
+      details: 1.4 - 1.19
 footer: Made by  with ❤️ by MCC Team
 ---

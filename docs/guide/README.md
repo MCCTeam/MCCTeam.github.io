@@ -1,7 +1,7 @@
 # Introduction
 
 -   [About](#about)
--   [Quick Intro (You Tube Videos)](#quick-intro)
+-   [Quick Intro (YouTube Videos)](#quick-intro)
 -   [Features](#features)
 -   [Why Minecraft Console Client?](#why-minecraft-console-client)
 -   [Getting Help](#getting-help)
