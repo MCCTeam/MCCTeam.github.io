@@ -37,35 +37,35 @@ Other-Setting=Some Value
 
 ### `login`
 
--   Description:
+-   **Description:**
 
     This setting is your in-game name (for offline accounts) or email for Microsoft accounts (Mojang accounts do not work anymore)
 
--   Example:
+-   **Example:**
 
     `login=some.random.player@gmail.com`
 
 ### `password`
 
--   Description:
+-   **Description:**
 
     This setting is your account password.
 
     > **If you're playing with an offline account, use `-`.**
 
--   Example:
+-   **Example:**
 
     `password=password123`
 
 ### `serverip`
 
--   Description:
+-   **Description:**
 
     This setting is where you provide an IP of the server on which the client will connect.
 
--   Default: `localhost`
+-   **Default:** `localhost`
 
--   Example:
+-   **Example:**
 
     ```
     serverip=us.mineplex.com
@@ -75,15 +75,15 @@ Other-Setting=Some Value
 
 ### `type`
 
--   Description:
+-   **Description:**
 
     This setting is where you define the type of your account: `mojang` or `Microsoft`
 
     > **NOTE: Mojang accounts do not work anymore**
 
--   Default: `mojang`
+-   **Default:** `mojang`
 
--   Example:
+-   **Example:**
 
     ```
     type=microsoft
@@ -91,13 +91,13 @@ Other-Setting=Some Value
 
 ### `method`
 
--   Description:
+-   **Description:**
 
     This setting is where you define the way you will sign in with your Microsoft account, avaliable options are `mcc` and `browser`.
 
--   Default: `mcc`
+-   **Default:** `mcc`
 
--   Example:
+-   **Example:**
 
     ```
     method=browser
@@ -105,13 +105,13 @@ Other-Setting=Some Value
 
 ### `language`
 
--   Description:
+-   **Description:**
 
     This setting is where you define which language you want to use.
 
--   Default: `en_GB`
+-   **Default:** `en_GB`
 
--   Example:
+-   **Example:**
 
     ```
     language=en_GB
@@ -119,13 +119,13 @@ Other-Setting=Some Value
 
 ### `consoletitle`
 
--   Description:
+-   **Description:**
 
     This setting is where you can change the title of the program window if you want to
 
--   Default: `%username%@%serverip% - Minecraft Console Client`
+-   **Default:** `%username%@%serverip% - Minecraft Console Client`
 
--   Example:
+-   **Example:**
 
     ```
     consoletitle=My Custom Window Name
@@ -133,7 +133,7 @@ Other-Setting=Some Value
 
 ### `internalcmdchar`
 
--   Description:
+-   **Description:**
 
     This setting is where you can change the prefix character of internal MCC commands.
 
@@ -143,9 +143,9 @@ Other-Setting=Some Value
     -   `slash`
     -   `backslash`
 
--   Default: `slash`
+-   **Default:** `slash`
 
--   Example:
+-   **Example:**
 
     ```
     internalcmdchar=slash
@@ -153,21 +153,21 @@ Other-Setting=Some Value
 
 ### `messagecooldown`
 
--   Description:
+-   **Description:**
 
     This setting is where you can change the minimum delay in seconds between messages to avoid being kicked for spam.
 
--   Default: `1`
+-   **Default:** `1`
 
 ### `botowners`
 
--   Description:
+-   **Description:**
 
     This setting is where you can set the owners of the bots/client which can be used by some plugins. The names are separated by a comma `,` without spaces in-between.
 
--   Default: `Player1,Player2,Player3`
+-   **Default:** `Player1,Player2,Player3`
 
--   Example:
+-   **Example:**
 
     ```
     botowners=Player1,Player2,Player3
@@ -177,15 +177,15 @@ Other-Setting=Some Value
 
 ### `mcversion`
 
--   Description:
+-   **Description:**
 
     This setting is where you can set the version you are playing on.
 
     Format: `1.X.X`
 
--   Default: `auto`
+-   **Default:** `auto`
 
--   Example:
+-   **Example:**
 
     ```
     mcversion=1.18.2
@@ -195,7 +195,7 @@ Other-Setting=Some Value
 
 ### `mcforge`
 
--   Description:
+-   **Description:**
 
     This setting is where you can define if you're playing on a forge server.
 
@@ -205,20 +205,20 @@ Other-Setting=Some Value
     -   `true`
     -   `false`
 
--   Default: `auto`
+-   **Default:** `auto`
 
     > **NOTE: Force-enabling only works for MC 1.13 +.**
 
 ### `brandinfo`
 
--   Description:
+-   **Description:**
 
     This setting is where you can change how MCC identifies itself to the server.
     It can be whatever you like, example: `vanilla`, `mcc`, `super-bot`
 
--   Default: `mcc`
+-   **Default:** `mcc`
 
--   Example:
+-   **Example:**
 
     ```
     brandinfo=my-super-duper-bot
@@ -226,13 +226,13 @@ Other-Setting=Some Value
 
 ### `chatbotlogfile`
 
--   Description:
+-   **Description:**
 
     This setting is where you can set the path to the file which will contain the logs, leave empty for no log file.
 
--   Default: ``
+-   **Default:** ``
 
--   Example:
+-   **Example:**
 
     ```
     chatbotlogfile=my-log.txt
@@ -240,33 +240,33 @@ Other-Setting=Some Value
 
 ### `showsystemmessages`
 
--   Description:
+-   **Description:**
 
     This setting is where you can define if you want to see the system messages (example command block outputs) if you're an OP.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `showxpbarmessages`
 
--   Description:
+-   **Description:**
 
     This setting is where you can define if you want to see the Boss XP Bar messages.
 
--   Default: `true`
+-   **Default:** `true`
 
     > **Note: Can create a spam if there is a bunch of withers**
 
 ### `showchatlinks`
 
--   Description:
+-   **Description:**
 
     This setting is where you can define if you want to decode links embedded in chat messages and show them in console.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `showinventorylayout`
 
--   Description:
+-   **Description:**
 
     This setting is where you can define if you want to have the MCC show you the inventory in a form of an ASCII art when using the `/inventory` internal command.
 
@@ -274,37 +274,37 @@ Other-Setting=Some Value
 
     ![ASCII Art here](http://i.pics.rs/33yn9.png "ASCII Art here")
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `terrainandmovements`
 
--   Description:
+-   **Description:**
 
     This setting is where you can set if you want to enable terrain movement, so you can use command like `/move` and some bots.
 
--   Default: `false`
+-   **Default:** `false`
 
 ### `inventoryhandling`
 
--   Description:
+-   **Description:**
 
     This setting is where you can set if you want to enable inventory handling using the `/inventory` command.
 
--   Default: `false`
+-   **Default:** `false`
 
 ### `entityhandling`
 
--   Description:
+-   **Description:**
 
     This setting is where you can set if you want to enable interactions with entities such as players, mobs, minecarts, etc..
 
--   Default: `false`
+-   **Default:** `false`
 
     > **NOTE: Sometimes the latest versions might not support this straight away, since mojang often makes changes to this.**
 
 ### `sessioncache`
 
--   Description:
+-   **Description:**
 
     This setting is where you can define is you want your session info to be stored on the disk or in memory, or not to be stored (this will make you login every time which will add some time to the process).
 
@@ -314,20 +314,20 @@ Other-Setting=Some Value
 
     The `memory` will last until you close down the program.
 
--   Default: `disk`
+-   **Default:** `disk`
 
 ### `resolvesrvrecords`
 
--   Description:
+-   **Description:**
 
     Use `false`, `fast` (5s timeout), or `true`.
     Required for joining some servers.
 
--   Default: `fast`
+-   **Default:** `fast`
 
 ### `accountlist`
 
--   Description:
+-   **Description:**
 
     This setting allows you to set the path to a file which will hold a list of your accounts and aliases.
 
@@ -337,13 +337,13 @@ Other-Setting=Some Value
 
     An example file can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/sample-accounts.txt).
 
--   Default: `accounts.txt`
+-   **Default:** `accounts.txt`
 
     > **NOTE: This file is not created by default.**
 
 ### `serverlist`
 
--   Description:
+-   **Description:**
 
     This setting allows you to set the path to a file which will hold a list of servers with their aliases.
 
@@ -351,118 +351,118 @@ Other-Setting=Some Value
 
     An example file can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/sample-servers.txt).
 
--   Default: `servers.txt`
+-   **Default:** `servers.txt`
 
     > **NOTE: This file is not created by default.**
 
 ### `playerheadicon`
 
--   Description:
+-   **Description:**
 
     This setting allows you to set the icon of the program to be the head of your in-game skin.
 
--   Default: `true`
+-   **Default:** `true`
 
     > **NOTE: Only works on Windows XP-8 or Windows 10 with old console**
 
 ### `exitonfailure`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to disable pauses on error, for using MCC in non-interactive scripts
 
--   Default: `false`
+-   **Default:** `false`
 
 ### `scriptcache`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to have MCC cache compiled scripts for faster load on low-end devices.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `timestamps`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to have MCC prepend timestamps to chat messages.
 
--   Default: `false`
+-   **Default:** `false`
 
 ### `autorespawn`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to auto respawn if you die.
 
--   Default: `false`
+-   **Default:** `false`
 
     > **NOTE: Make sure the spawn point is safe**
 
 ### `minecraftrealms`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to enable support for joining Minecraft Realms.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `moveheadwhilewalking`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to enable head movement while walking to avoid anti-cheat triggers
 
--   Default: `true`
+-   **Default:** `true`
 
 ## Logging Section
 
 ### `debugmessages`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to see debug messages while the client is running, this is useful when there is a bug and you want to report a problem, or if you're developing a script/bot and you want to debug it.
 
--   Default: `false`
+-   **Default:** `false`
 
 ### `chatmessages`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to see chat messages.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `warningmessages`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to see warning messages.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `errormessages`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to see error messages.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `infomessages`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to see info messages.
     Most of the messages from MCC.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `chatfilter`
 
     > **NOTE: Disabled/Commented by default**
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to filter chat messages being logged using a Regex expression.
 
@@ -472,7 +472,7 @@ Other-Setting=Some Value
 
     > **NOTE: Disabled/Commented by default**
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to filter debug messages being logged using a Regex expression.
 
@@ -480,49 +480,49 @@ Other-Setting=Some Value
 
 ### `filtermode`
 
--   Description:
+-   **Description:**
 
     Can be `blacklist` or `whitelist`
 
     `blacklist` hides the messages, while the `whitelist` shows the messages that match the Regex expression that you've defined.
 
--   Default: `blacklist`
+-   **Default:** `blacklist`
 
 ### `logtofile`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want to log messages to a file
 
--   Default: `false`
+-   **Default:** `false`
 
 ### `logfile`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define a path to a file where you want to log messages if you have enabled logging to a filewith `logtofile=true`.
 
--   Default: `console-log-%username%-%serverip%.txt`
+-   **Default:** `console-log-%username%-%serverip%.txt`
 
     > **NOTE: %username% and %serverip% will be substituted with your username and the IP address of the server you are connected to.**
 
 ### `prependtimestamp`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want prepend timestamps to messages that are written to the log file.
 
--   Default: `false`
+-   **Default:** `false`
 
 ### `savecolorcodes`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want keep the server color codes in the logged messages.
 
     Example: `§b`
 
--   Default: `false`
+-   **Default:** `false`
 
 ## App Vars
 
@@ -549,20 +549,20 @@ Connect to a server via a proxy instead of connecting directly.
 
 ### `enabled`
 
--   Description:
+-   **Description:**
 
     If Mojang session services are blocked on your network, set the value to
     `login` to login using proxy but connect directly to the server.
 
     If connecting to a port 25565 (Minecraft) is blocked on your network, set the value to `true` to login and connect using the proxy.
 
--   Default: `false`
+-   **Default:** `false`
 
     > **WARNING: Make sure your server rules allow Proxies or VPNs before setting the setting to `true`, or you may face consequences!**
 
 ### `type`
 
--   Description:
+-   **Description:**
 
     The type of your proxy.
 
@@ -573,11 +573,11 @@ Connect to a server via a proxy instead of connecting directly.
     -   `SOCKS4a`
     -   `SOCKS5`
 
--   Default: `HTTPT`
+-   **Default:** `HTTPT`
 
 ### `server`
 
--   Description:
+-   **Description:**
 
     The proxy server IP and port.
 
@@ -587,27 +587,27 @@ Connect to a server via a proxy instead of connecting directly.
     X.X.X.X:XXXX
     ```
 
--   Default: `0.0.0.0:0000`
+-   **Default:** `0.0.0.0:0000`
 
 ### `username`
 
--   Description:
+-   **Description:**
 
     The proxy account username.
 
     Only needed for password protected proxies.
 
--   Default: ``
+-   **Default:** ``
 
 ### `password`
 
--   Description:
+-   **Description:**
 
     The proxy account password.
 
     Only needed for password protected proxies.
 
--   Default: ``
+-   **Default:** ``
 
 ## Chat Format
 
@@ -617,13 +617,13 @@ When this happens, you'll need to configure the chat format yourself using setti
 
 ### `builtins`
 
--   Description:
+-   **Description:**
 
     This setting allows you to define if your want use the default chat formats, or if you want to use the custom ones.
 
     Set to `false` to use the custom formats defined in `public`, `private` and `tprequest`.
 
--   Default: `true`
+-   **Default:** `true`
 
     > **NOTE: Do not forget to un-comment `public`, `private` and `tprequest` settings if you want custom chat formats, since they're disabled/commented by default**
 
@@ -631,7 +631,7 @@ When this happens, you'll need to configure the chat format yourself using setti
 
     > **NOTE: This setting is commented/disabled by default**
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify a custom chat message format using Regex (Regular expressions).
 
@@ -639,13 +639,13 @@ When this happens, you'll need to configure the chat format yourself using setti
 
     Only works when `builtins` is set to `false`.
 
--   Default: `^<([a-zA-Z0-9_]+)> (.+)$`
+-   **Default:** `^<([a-zA-Z0-9_]+)> (.+)$`
 
 ### `private`
 
     > **NOTE: This setting is commented/disabled by default**
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify a custom chat message format for private messages using Regex (Regular expressions).
 
@@ -653,13 +653,13 @@ When this happens, you'll need to configure the chat format yourself using setti
 
     Only works when `builtins` is set to `false`.
 
--   Default: `^([a-zA-Z0-9_]+) whispers to you: (.+)$`
+-   **Default:** `^([a-zA-Z0-9_]+) whispers to you: (.+)$`
 
 ### `tprequest`
 
     > **NOTE: This setting is commented/disabled by default**
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify a custom chat message format for a Teleport request using Regex (Regular expressions).
 
@@ -667,7 +667,7 @@ When this happens, you'll need to configure the chat format yourself using setti
 
     Only works when `builtins` is set to `false`.
 
--   Default: `^([a-zA-Z0-9_]+) has requested (?:to|that you) teleport to (?:you|them)\.$`
+-   **Default:** `^([a-zA-Z0-9_]+) has requested (?:to|that you) teleport to (?:you|them)\.$`
 
 ## MCSettings
 
@@ -675,31 +675,31 @@ Client settings related to language, render distance, difficutly, chat and skins
 
 ### `enabled`
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify if you want to use settings from this section.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `locale`
 
--   Description:
+-   **Description:**
 
     Use any language implemented in Minecraft
 
--   Default: `en_US`
+-   **Default:** `en_US`
 
 ### `renderdistance`
 
--   Description:
+-   **Description:**
 
     Use tiny, short, medium, far, or chunk amount (0 - 255).
 
--   Default: `medium`
+-   **Default:** `medium`
 
 ### `difficulty`
 
--   Description:
+-   **Description:**
 
     Available options:
 
@@ -708,11 +708,11 @@ Client settings related to language, render distance, difficutly, chat and skins
     -   `normal`
     -   `difficult`
 
--   Default: `normal`
+-   **Default:** `normal`
 
 ### `chatmode`
 
--   Description:
+-   **Description:**
 
     This setting allows you to effectively mute yourself.
 
@@ -722,76 +722,76 @@ Client settings related to language, render distance, difficutly, chat and skins
     -   `commands` (You can only do commands)
     -   `disabled`
 
--   Default: `enabled`
+-   **Default:** `enabled`
 
 ### `chatcolors`
 
--   Description:
+-   **Description:**
 
     This setting allows you to disable chat colors.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `main_hand`
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify your main hand.
 
--   Default: `left`
+-   **Default:** `left`
 
 ### `skin_cape`
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify if you want to have your skin cape shown.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `skin_hat`
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify if you want to have your skin hat shown.
 
--   Default: `true`
+-   **Default:** `true`
 
 ### `skin_jacket`
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify if you want to have your skin jacket shown.
 
--   Default: `false`
+-   **Default:** `false`
 
 ### `skin_sleeve_left`
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify if you want to have your left sleeve shown.
 
--   Default: `false`
+-   **Default:** `false`
 
 ### `skin_sleeve_right`
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify if you want to have your right sleeve shown.
 
--   Default: `false`
+-   **Default:** `false`
 
 ### `skin_pants_left`
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify if you want to have your left part of the pants shown.
 
--   Default: `false`
+-   **Default:** `false`
 
 ### `skin_pants_right`
 
--   Description:
+-   **Description:**
 
     This setting allows you to specify if you want to have your right part of the pants shown.
 
--   Default: `false`
+-   **Default:** `false`

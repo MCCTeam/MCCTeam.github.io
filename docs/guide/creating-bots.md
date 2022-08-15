@@ -161,7 +161,7 @@ In it you can initialize variables, eg. Dictionaries, etc..
 
 ## Examples
 
-You can find a lot of examples in our [Github Repository](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/ChatBots).
+You can find a lot of examples in our Github Repository at [ChatBots](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/ChatBots) and [config](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/config).
 
 ## C# API
 

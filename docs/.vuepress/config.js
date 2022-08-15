@@ -36,9 +36,14 @@ module.exports = {
                 text: "Configuration",
                 link: "/guide/configuration.md",
             },
+
+            {
+                text: "Chat Bots",
+                link: "/guide/chat-bots.md",
+            },
         ],
 
-        sidebar: ["/guide/README.md", "/guide/installation.md", "/guide/usage.md", "/guide/configuration.md", "/guide/creating-bots.md", "/guide/contibuting.md"],
+        sidebar: ["/guide/README.md", "/guide/installation.md", "/guide/usage.md", "/guide/configuration.md", "/guide/chat-bots.md", "/guide/creating-bots.md", "/guide/contibuting.md"],
 
         repo: "https://github.com/MCCTeam/Minecraft-Console-Client",
     }),
