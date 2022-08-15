@@ -174,9 +174,107 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
 > **ℹ️ NOTE: Some commands may not be documented yet or are defined in description of Chat Bots, use `/help` to list them all, or you can contribute to this page.**
 
+### `animation`
+
+-   **Description:**
+
+    Swing your main or off hand.
+
+-   **Usage:**
+
+    ```
+    /animation <mainhand|offhand>
+    ```
+
+### `changeslot`
+
+-   **Description:**
+
+    Change your selected slot in the hotbar.
+
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this to work.**
+
+-   **Usage:**
+
+    ```
+    /changeslot <1-9>
+    ```
+
+### `dig`
+
+-   **Description:**
+
+    Dig a block on a specific coordinate.
+
+-   **Usage:**
+
+    ```
+    /dig <x> <y> <z>
+    ```
+
+-   **Example:**
+
+    ```
+    /dig 127 63 12
+    ```
+
+### `dropitem`
+
+-   **Description:**
+
+    Drop all items of a specific type from your inventory.
+
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this to work.**
+
+-   **Usage:**
+
+    ```
+    /dropitem <itemtype>
+    ```
+
+    > **ℹ️ NOTE: All item types can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs).**
+
+-   **Example:**
+
+    ```
+    /dropitem diamond
+    ```
+
+### `entity`
+
+-   **Description:**
+
+    Attack an entity, use an entity or get a list of entities around you.
+
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) and [entityhandling](configuration.md#entityhandling) enabled in order for this to work.**
+
+-   **Usage:**
+
+    Basic usage:
+
+    ```
+    /entity <id|entitytype> <attack|use>
+    ```
+
+    Get a list of entities around you:
+
+    ```
+    /entity
+    ```
+
+    > **ℹ️ NOTE: All entity types can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Mapping/EntityType.cs).**
+
+-   **Examples:**
+
+    Attack a Zombie:
+
+    ```
+    /entity Zombie attack
+    ```
+
 ### `quit`
 
--   Alias: `exit`
+-   **Alias:** `exit`
 -   **Description:**
 
     Disconnect from the server and close the application
@@ -314,6 +412,64 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     ```
 
     (Set a `%variable%` to a number from -7 to 9)
+
+### `Sneak`
+
+-   **Description:**
+
+    Toggle sneaking.
+
+-   **Usage:**
+
+    ```
+    /Sneak
+    ```
+
+### `tps`
+
+-   **Description:**
+
+    Get the server TPS (Ticks Per Second).
+
+-   **Usage:**
+
+    ```
+    /tps
+    ```
+
+### `useitem`
+
+-   **Description:**
+
+    Use item in the hand.
+
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this to work.**
+
+-   **Usage:**
+
+    ```
+    /useitem
+    ```
+
+### `useblock`
+
+-   **Description:**
+
+    Place a block from a hand on a specific coordinate.
+
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) and [terrainandmovements](configuration.md#terrainandmovements) enabled in order for this to work.**
+
+-   **Usage:**
+
+    ```
+    /useblock <x> <y> <z>
+    ```
+
+-   **Example:**
+
+    ```
+    /useblock 43 72 7
+    ```
 
 ### `wait`
 
