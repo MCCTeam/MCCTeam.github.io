@@ -284,6 +284,14 @@ Other-Setting=Some Value
 
 -   Default: `false`
 
+### `inventoryhandling`
+
+-   Description:
+
+    This setting is where you can set if you want to enable inventory handling using the `/inventory` command.
+
+-   Default: `false`
+
 ### `entityhandling`
 
 -   Description:

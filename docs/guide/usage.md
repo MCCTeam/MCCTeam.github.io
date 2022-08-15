@@ -172,169 +172,355 @@ From chat prompt, commands must by default be prepended with a slash, eg. `/quit
 
 In scripts and remote control, no slash is needed to perform the command, eg. `quit`.
 
+> **NOTE: Some commands may not be documented yet or are defined in description of Chat Bots, use `/help` to list them all, or you can contribute to this page.**
+
 ### `quit`
 
 -   Alias: `exit`
--   Description:
+-   **Description:**
 
     Disconnect from the server and close the application
 
 ### `reco`
 
--   Description:
+-   **Description:**
 
     Disconnect and reconnect to the server
 
--   Usage:
+-   **Usage:**
 
     ```
-    reco [account]
+    /reco [account]
     ```
+
+    > **NOTE: `[account]` is an account alias defined in accounts file, for more info check out [accountlist](configuration.html#accountlist)**
 
 ### `connect`
 
--   Description:
+-   **Description:**
 
     Go to the given server and resume the script
 
--   Usage:
+-   **Usage:**
 
     ```
-    connect <server> [account]
+    /connect <server> [account]
     ```
+
+    > **NOTE: `<server>` is either a server IP or a server alias defined in servers file, for more info check out [serverlist](configuration.html#serverlist)**
+
+    > **NOTE: `[account]` is an account alias defined in accounts file, for more info check out [accountlist](configuration.html#accountlist)**
 
 ### `script`
 
--   Description:
+-   **Description:**
 
     Run a script containing a list of commands
 
--   Usage:
+-   **Usage:**
 
     ```
-    script <script name>
+    /script <script name>
     ```
 
 ### `send`
 
--   Description:
+-   **Description:**
 
     Send a message or a command to the server
 
--   Usage:
+-   **Usage:**
 
     ```
-    send <text>
+    /send <text>
     ```
 
 ### `respawn`
 
--   Description:
+-   **Description:**
 
     Use this to respawn if you are dead (like clicking "respawn" ingame)
 
+-   **Usage:**
+
+    ```
+    /respawn
+    ```
+
 ### `log`
 
--   Description:
+-   **Description:**
 
     Display some text in the console (useful for scripts)
 
--   Usage:
+-   **Usage:**
 
     ```
-    log <text>
+    /log <text>
+    ```
+
+-   Example:
+
+    ```
+    /log this is some text
     ```
 
 ### `list`
 
--   Description:
+-   **Description:**
 
     List players logged in to the server (uses tab list info sent by server)
 
+-   **Usage:**
+
+    ```
+    /list
+    ```
+
 ### `set`
 
--   Description:
+-   **Description:**
 
     Set a value which can be used as `%variable%` in further commands
 
--   Usage:
+-   **Usage:**
 
     ```
-    set <variable>=<value>
+    /set <variable>=<value>
     ```
 
--   Examples:
+-   **Examples:**
 
     ```
-    set abc=123
+    /set abc=123
     ```
 
 ### `setrnd`
 
--   Description:
+-   **Description:**
 
     Set a `%variable%` randomly to one of the provided values
 
--   Usage:
+-   **Usage:**
 
     ```
-    setrnd <variable> string1 "\"string2\" string3"
+    /setrnd <variable> string1 "\"string2\" string3"
     ```
 
--   Examples:
+-   **Examples:**
 
     ```
-    setrnd <variable> -7to10
+    /setrnd <variable> -7to10
     ```
 
     (Set a `%variable%` to a number from -7 to 9)
 
 ### `wait`
 
--   Description:
+-   **Description:**
 
     Wait X ticks (10 ticks = ~1 second. Only for scripts)
 
--   Usage:
+-   **Usage:**
 
     ```
-    wait <time>
+    /wait <time>
     ```
 
--   Examples:
+-   **Examples:**
 
     ```
-    wait 20
+    /wait 20
     ```
 
 ### `move`
 
--   Description:
+-   **Description:**
 
-    Used for moving when terrain and movements feature is enabled
+    Used for moving when terrain and movements feature is enabled.
+
+-   **Usage:**
+
+    ```
+    /move <on|off|get|up|down|east|west|north|south|center|x y z|gravity [on|off]> [-f]: walk or start walking. "-f": force unsafe movements like falling or touching fire
+    ```
+
+-   **Examples:**
+
+    Enable gravity
+
+    ```
+    /move gravity on
+    ```
+
+    Move to cordinates:
+
+    ```
+    /move 125 72 34
+    ```
+
+    Move to a center of a block:
+
+    ```
+    /move center
+    ```
 
 ### `look`
 
--   Description:
+-   **Description:**
 
     Used for looking at direction when terrain and movements is enabled
 
+-   **Usage:**
+
+    ```
+    /look <x y z|yaw pitch|up|down|east|west|north|south>
+    ```
+
+-   **Examples:**
+
+    ```
+    /look up
+    ```
+
+    ```
+    /look east
+    ```
+
+### `inventory`
+
+-   **Description:**
+
+    Used for inventory manipulation when the [inventoryhandling](configuration.md#inventoryhandling) is enabled.
+
+    MCC defines inventories as containers internaly, so player's inventory, chests, droppers, dispensers, hoppers, chest minecarts, barrels, furnaces, etc... are all considered a container, and each one of them has it's ID, the words container and inventory can be used interchangeably.
+
+    Inventory has slots and each one of them has an id.
+
+    An example of player inventory with annotated IDs in ASCII art and a list of items:
+
+    ![Picture Not Loaded!](http://i.pics.rs/33yn9.png "Player Inventory")
+
+-   **Usage:**
+
+    Basic usage:
+
+    ```
+    /inventory <player|container|<id>> <action> [action parameters]
+    ```
+
+    > **NOTE: player and container can be simplified with p and c accordingly**
+
+    Show/Preview items in an inventory:
+
+    ```
+    /inventory <player|id>
+    ```
+
+    Click on an item in an inventory:
+
+    ```
+    /inventory <player|container|<id>> click <slot id> [left|right|middle]
+    ```
+
+    > **NOTE: The default click if a left click**
+
+    Close an inventory:
+
+    ```
+    /inventory <player|container|<id>> close
+    ```
+
+    Drop item(s) from an inventory:
+
+    ```
+    /inventory <player|id> drop <slot id> <number of items|all>
+    ```
+
+    > **NOTE: Do drop all items from a slot, you can use:** `all`
+
+    Give an item to the player inventory from a creative menu when in the creative mode:
+
+    ```
+    /inventory creativegive <slot id> <item type> <amount>
+    ```
+
+    > **NOTE: To find item types, check out [this list](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs)**
+
+    Delete an item from a player's inventory when in the creative mode:
+
+    ```
+    /inventory creativedelete <slot id>
+    ```
+
+-   **Examples:**
+
+    Show player's inventory:
+
+    ```
+    /inventory player
+    ```
+
+    Show/Preview items in an inventory usign an id:
+
+    ```
+    /inventory 3
+    ```
+
+    Click on an item in player's inventory in slot number/id `36`:
+
+    ```
+    /inventory player click 36
+    ```
+
+    Right-Click on an item in slot number/id `4` in an inventory with an id `2`:
+
+    ```
+    /inventory 2 click 4 right
+    ```
+
+    Close an inventory with an id `2`:
+
+    ```
+    /inventory 2 close
+    ```
+
+    Drop a single item from a player's inventory in slot number/id `36`:
+
+    ```
+    /inventory player drop 36 1
+    ```
+
+    Drop all items from a player's inventory in slot number/id `37`:
+
+    ```
+    /inventory player drop 37 all
+    ```
+
+    Give an item to the player inventory from a creative menu when in the creative mode:
+
+    ```
+    /inventory creativegive 36 diamondblock 64
+    ```
+
+    > **NOTE: To find item types, check out [this list](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs)**
+
+    Delete an item from a player's inventory in slot number/id `36` when in the creative mode:
+
+    ```
+    /inventory creativedelete 36
+    ```
+
 ### `debug`
 
--   Description:
+-   **Description:**
 
     Toggle debug messages, useful for chatbot developers
 
 ### `help`
 
--   Description:
+-   **Description:**
 
-    Show command help. Tip: Use "/send /help" for server help
+    Show commands help.
 
-**Notes:**
-
--   Some commands may not be documented yet, use `help` to list them all, or you can contribute to this page.
-
--   `[account]` is an account alias defined in accounts file, read more below.
-
--   `<server>` is either a server IP or a server alias defined in servers file
+    > **NOTE: Use "/send /help" for server help**
