@@ -2,7 +2,7 @@
 
 -   [YouTube Tutorials](#youtube-tutorials)
 -   [Download a compiled binary](#download-a-compiled-binary)
--   [Building from source](#building-from-the-source-code)
+-   [Building from the source code](#building-from-the-source-code)
 -   [Run using Docker](#using-docker)
 
 ## YouTube Tutorials
@@ -14,19 +14,13 @@ If you're not the kind of person that likes textual tutorials, our community has
 
 ## Download a compiled binary
 
-#### Windows
+In order to run **Minecraft Console Client** you need the [.NET Framework 6.0 or new-er](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
 
-In order to run **Minecraft Console Client** on Windows you need the following software:
+#### How to install .NET on your platform
 
--   [.NET Framework 6.0 or new-er](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
-
-#### Linux, Mac OS, Unix
-
-In order to run **Minecraft Console Client** on other platforms you need the [**Mono**](https://www.mono-project.com) framework:
-
--   [Linux Build](https://www.mono-project.com/download/stable/#download-lin)
--   [MacOS Build](https://www.mono-project.com/download/stable/#download-mac)
--   [Other Platforms](https://www.mono-project.com/docs/about-mono/supported-platforms/)
+-   [Install .NET on Windows](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
+-   [Install .NET on Linux](https://docs.microsoft.com/en-us/dotnet/core/install/linux)
+-   [Install .NET on macOS](https://docs.microsoft.com/en-us/dotnet/core/install/macos)
 
 #### Download
 
@@ -38,10 +32,18 @@ You can download a compiled binary file of the latest build from our Releases se
 
 Requirements:
 
--   [Git](https://www.git-scm.com/)
+-   [Git](https://www.git-scm.com/) _(Optional: Install only if you want to clone the repository with Git)_
 -   [.NET 6.0 or new-er](https://dotnet.microsoft.com/en-us/download) or [Visual Studio](https://visualstudio.microsoft.com/) configured for C# app development
 
-Install [Git](https://www.git-scm.com/) and [Visual Studio](https://visualstudio.microsoft.com/) or [.NET 6.0 or new-er](https://dotnet.microsoft.com/en-us/download)
+#### Downloading the source code as a ZIP
+
+Simply download the [source code zip archive](https://github.com/MCCTeam/Minecraft-Console-Client/archive/master.zip) and extract it wherever you like.
+
+#### Cloning using Git
+
+If you do not want to download the ZIP archive.
+
+Install [Git](https://www.git-scm.com/)
 
 1. Make a new folder where you want to keep the source code
 2. Then open it up, hold `SHIFT` and do a `right-click` on the empty white space in the folder
@@ -49,13 +51,13 @@ Install [Git](https://www.git-scm.com/) and [Visual Studio](https://visualstudio
 4. Clone the [Git Hub Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
 
 ```bash
-git clone https://github.com/MCCTeam/Minecraft-Console-Client.git
+git clone https://github.com/MCCTeam/Minecraft-Console-Client.git --recursive
 ```
 
 5. Once the repository has been cloned, you can close the `Git Bash` terminal emulator
 6. Open up the new cloned folder
 
-#### Visual Studio
+#### Building using the Visual Studio
 
 1. Open up the `MinecraftClient.sln` via Visual Studio
 2. Right click on `MinecraftClient` solution in the `Solution Explorer`
@@ -65,55 +67,68 @@ git clone https://github.com/MCCTeam/Minecraft-Console-Client.git
 6. Right click on `MinecraftClient` solution in the `Solution Explorer`
 7. Click `Build`
 
-If the build has succeeded, the compiled binary `MinecraftClient.exe` will be in `MinecraftClient/bin/Release` folder.
+If the build has succeeded, the compiled binary `MinecraftClient.exe` will be in `MinecraftClient/bin/Release/net6.0/win-x64/publish` folder.
 
-#### .NET manually without Visual Studio
+#### Building using .NET manually without Visual Studio
 
-1. Open the `MinecraftClient` folder
-2. Open the `MinecraftClient.csproj` in a text editor of your choice
-3. Find the following line
+1. Open the `Minecraft-Console-Client` folder you've cloned or downloaded
+2. Open the PowerShell (`Right-Click` on the whitespace and click `Open PowerShell`, or in Windows Explorer: `File -> Open PowerShell`)
+3. Run the following command to build the project:
 
-```csharp
-<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+```bash
+dotnet publish MinecraftClient -f net6.0 -r win-x64 --no-self-contained -c Release -p:UseAppHost=true -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=None
 ```
 
-3. Replace `Debug` with `Release` so it will be:
+If the build has succeeded, the compiled binary `MinecraftClient.exe` will be in `MinecraftClient/bin/Release/net6.0/win-x64/publish` folder.
 
-```csharp
-<Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-```
-
-4. Save and close the file
-5. Locate `MSBuild.exe` for .NET inside `C:\Windows\Microsoft.NET\Framework\vX.X.XXXXX`
-6. Drag and drop `MinecraftClient.csproj` over `MSBuild.exe` to launch the build
-
-If the build has succeeded, the compiled binary `MinecraftClient.exe` will be in `MinecraftClient/bin/Release` folder.
-
-### Linux, Mac OS, Unix
-
-> **ℹ️ NOTE: Since you're most likely using Linux, Unix or MacOS, I'll assume that you should be able to install git on your own. If you don't search it up for your platofrm, it should be easy**
+### Linux, macOS
 
 Requirements:
 
--   Git
--   Mono
-    -   [Linux Build](https://www.mono-project.com/download/stable/#download-lin)
-    -   [MacOS Build](https://www.mono-project.com/download/stable/#download-mac)
-    -   [Other Platforms](https://www.mono-project.com/docs/about-mono/supported-platforms/)
+-   Git _(Optional: Install only if you want to clone the repository with Git)_
 
-1. Verify that Mono is installed and can run correctly by following steps on their website
-2. Open up a terminal and navigate to the folder where you will store the MCC
-3. Clone the [Git Hub Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
+    -   Linux:
+
+        > **ℹ️ NOTE: If you're using Linux I'll assume that you should be able to install git on your own. If you don't know how, search it up for your distribution, it should be easy**
+
+    -   [Install Git on macOS](https://git-scm.com/download/mac)
+
+-   .NET SDK 6.0 or new-er
+
+    -   [Install .NET on Linux](https://docs.microsoft.com/en-us/dotnet/core/install/linux)
+    -   [Install .NET on macOS](https://docs.microsoft.com/en-us/dotnet/core/install/macos)
+
+#### Downloading the source code as a ZIP
+
+Simply download the [source code zip archive](https://github.com/MCCTeam/Minecraft-Console-Client/archive/master.zip) and extract it wherever you like.
+
+#### Cloning using Git
+
+1. Open up a terminal emulator and navigate to the folder where you will store the MCC
+2. Recursively clone the [Git Hub Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
 
 ```bash
-git clone https://github.com/MCCTeam/Minecraft-Console-Client.git
+git clone https://github.com/MCCTeam/Minecraft-Console-Client.git --recursive
 ```
 
-4. Go to the folder you've cloned
-5. Go to `MinecraftClient`
-6. Run the following command: `msbuild MinecraftClient.csproj` to build the project
+3. Go to the folder you've cloned (should be `Minecraft-Console-Client`)
+4. Run the following command to build the project:
 
-If the build has succeeded, the compiled binary `MinecraftClient.exe` will be in `MinecraftClient/bin/Release` folder.
+    - On Linux:
+
+        ```bash
+        dotnet publish MinecraftClient -f net6.0 -r linux-x64 --no-self-contained -c Release -p:UseAppHost=true -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=None
+        ```
+
+    - On macOS:
+        ```bash
+        dotnet publish MinecraftClient -f net6.0 -r osx-x64 --no-self-contained -c Release -p:UseAppHost=true -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=None
+        ```
+
+If the build has succeeded, the compiled binary `MinecraftClient` will be in:
+
+-   Linux: `MinecraftClient\bin\Release\net6.0\linux-x64\publish\`
+-   macOS: `MinecraftClient\bin\Release\net6.0\osx-x64\publish\`
 
 ## Using Docker
 
@@ -127,7 +142,7 @@ Requirements:
 1. Clone the [Git Hub Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
 
 ```bash
-git clone https://github.com/MCCTeam/Minecraft-Console-Client.git
+git clone https://github.com/MCCTeam/Minecraft-Console-Client.git --recursive
 ```
 
 2. Navigate to `Minecraft-Console-Client/Docker`

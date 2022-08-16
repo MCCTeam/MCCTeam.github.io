@@ -3,7 +3,7 @@
 How to run the program:
 
 -   [Running on Windows](#windows)
--   [Running on Linux, Unix, Mac](#linux-unix-mac)
+-   [Running on Linux, macOS](#linux-macos)
 -   [Running using Docker](#docker)
 
 Using the command line parameters:
@@ -16,15 +16,15 @@ Using the command line parameters:
 
 Simply run `MinecraftClient.exe`
 
-## Linux, Unix, Mac
+## Linux, macOS
 
 To run the client you need to type the following command in your terminal emulator:
 
 ```bash
-mono MinecraftClient.exe
+./MinecraftClient
 ```
 
-If you want to keep it running in the background you can use `screen` (Linux and Unix only)
+If you want to keep it running in the background you can use `screen` (Linux only)
 Example:
 
 ```bash
@@ -32,7 +32,7 @@ Example:
 screen -S mcc
 
 # Run it
-mono MinecraftClient.exe
+./MinecraftClient
 
 # Detach from the screen by pressing CTRL + A + D
 
@@ -41,13 +41,6 @@ screen -r mcc
 ```
 
 _Learn more on how to use the screen command: [YouTube](https://www.youtube.com/watch?v=_ZJiEX4rmN4)_
-
-Some potential issues:
-
--   If you cannot authenticate on Mono because you have TLS/HTTPS/Certificate errors, you'll need to run `mozroots --import --ask-remove` once or install `ca-certificates-mono` (See [#1708](https://github.com/MCCTeam/Minecraft-Console-Client/issues/1708#issuecomment-893768862)).
--   If Mono crashes, try installing `mono-complete` instead of `mono-runtime`, also use at least Mono v4.0.
-
-_Note: Commands and package names may differ depending on your distro._
 
 ## Docker
 
@@ -63,7 +56,7 @@ For people who are not familiar with the usage of programs in the command line (
 
 In command line (terminal emulators) you can run programs by specifying their name and hitting enter, usually programs have additional way of being configured, started or provided some additional data in a different manner, this is achieved by using command line parameters.
 
-Command line parameters are written after the name of the program, they're spearated by space and they can have few different formats, examples:
+Command line parameters are written after the name of the program, they're separated by spaces and they can have a few different formats, examples:
 
 -   `someparameter`
 -   `-some-parameter`
@@ -94,6 +87,8 @@ MinecraftClient.exe --help
 ```
 
 ### Quick usage of MCC with examples
+
+> **NOTE: On Linux and macOS, you need to type: `./MinecraftClient` instead of `MinecraftClient.exe`**
 
 ```bash
 MinecraftClient.exe --help
