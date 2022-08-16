@@ -15,7 +15,9 @@ Install Yarn if you don't have it:
 npm i yarn -g
 ```
 
-Fork and clone the repository
+Fork and clone the repository.
+
+All of the source is in the `source` directory.
 
 Install dependencies:
 
@@ -35,6 +37,12 @@ Build:
 
 ```
 yarn docs:build
+```
+
+Deploy changes:
+
+```
+yarn docs:deploy
 ```
 
 Commit, push and open a pull request.
