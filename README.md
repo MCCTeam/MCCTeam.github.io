@@ -4,12 +4,12 @@ A documentation website for Minecraft Console Client (MCC) written using [Vue Pr
 
 ## How to contribute
 
-Requirements:
+### Requirements:
 
 -   Node JS >= v12
 -   Yarn
 
-Install Yarn if you don't have it:
+### Install Yarn if you don't have it:
 
 ```
 npm i yarn -g
@@ -19,30 +19,34 @@ Fork and clone the repository.
 
 All of the source is in the `source` directory.
 
-Install dependencies:
+### Install dependencies:
 
 ```
 yarn install
 ```
 
-Run developer mode:
+### Run developer mode:
 
 ```
 yarn docs:dev
 ```
 
+_If you have the port `8080` taken, use the `--port <port>` for a custom port._
+
 Change things
 
-Build:
+### Build:
 
 ```
 yarn docs:build
 ```
 
-Deploy changes:
+### Deploy changes:
 
 ```
 yarn docs:deploy
 ```
+
+**⚠️ Do not forget this step, or your changes will not go live!**
 
 Commit, push and open a pull request.
