@@ -144,6 +144,8 @@ Requirements:
 
 > **ℹ️ NOTE: This section is for more advanced users, if you do not know how to install git or docker, you can take a look at other sections for Git, and search on how to install Docker on your system.**
 
+> **⚠️ IMPORTANT: Currently the Docker method of running the MCC is broken due to major changes in the code base, we do not use Mono anymore. We're working on fixing it. For now you could use `screen` method if you want to keep MCC running in the background on your Linux VPS.**
+
 1. Clone the [Git Hub Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
 
 ```bash
