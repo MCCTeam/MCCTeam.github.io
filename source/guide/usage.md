@@ -574,7 +574,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /inventory <player|container|<id>> click <slot id> [left|right|middle]
     ```
 
-    > **ℹ️ NOTE: The default click if a left click**
+    > **ℹ️ NOTE: The default click is left click**
 
     Close an inventory:
 
@@ -588,7 +588,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /inventory <player|id> drop <slot id> <number of items|all>
     ```
 
-    > **ℹ️ NOTE: Do drop all items from a slot, you can use:** `all`
+    > **ℹ️ NOTE: To drop all items from a slot, you can use:** `all`
 
     Give an item to the player inventory from a creative menu when in the creative mode:
 
