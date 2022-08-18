@@ -89,7 +89,7 @@ Requirements:
 
     -   Linux:
 
-        > **ℹ️ NOTE: If you're using Linux I'll assume that you should be able to install git on your own. If you don't know how, search it up for your distribution, it should be easy**
+        > **ℹ️ NOTE: If you're using Linux we will assume that you should be able to install git on your own. If you don't know how, search it up for your distribution, it should be easy. (Debian based distros: `apt install git`, Arch based: `pacman -S git`)**
 
     -   [Install Git on macOS](https://git-scm.com/download/mac)
 
@@ -120,15 +120,20 @@ git clone https://github.com/MCCTeam/Minecraft-Console-Client.git --recursive
         dotnet publish MinecraftClient -f net6.0 -r linux-x64 --no-self-contained -c Release -p:UseAppHost=true -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=None
         ```
 
+        > **ℹ️ NOTE: If you're using Linux that is either ARM, 32-bit, Rhel based, Using Musl, or Tirzen, [find an appropriate RID](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog#linux-rids) for your platform and replace the `'-r linux-64` with an appropriate `-r <your RID>` (Example for arm: `-r linux-arm64`)**
+
     - On macOS:
+
         ```bash
         dotnet publish MinecraftClient -f net6.0 -r osx-x64 --no-self-contained -c Release -p:UseAppHost=true -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=None
         ```
 
+        > **ℹ️ NOTE: If you're not using MAC with Intel, find an appropriate RID for your ARM processor, [find an appropriate RID](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog#macos-rids) and replace the `'-r osx-64` with an appropriate `-r <your RID>` (Example for arm: `-r osx.12-arm64`)**
+
 If the build has succeeded, the compiled binary `MinecraftClient` will be in:
 
--   Linux: `MinecraftClient\bin\Release\net6.0\linux-x64\publish\`
--   macOS: `MinecraftClient\bin\Release\net6.0\osx-x64\publish\`
+-   Linux: `MinecraftClient/bin/Release/net6.0/linux-x64/publish/`
+-   macOS: `MinecraftClient/bin/Release/net6.0/osx-x64/publish/`
 
 ## Using Docker
 
