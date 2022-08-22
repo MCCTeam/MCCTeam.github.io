@@ -187,7 +187,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     Change your selected slot in the hotbar.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this to work.**
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this to work.**
 
 -   **Usage:**
 
@@ -219,7 +219,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     Drop all items of a specific type from your inventory.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this to work.**
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this to work.**
 
 -   **Usage:**
 
@@ -241,7 +241,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     Attack an entity, use an entity or get a list of entities around you.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) and [entityhandling](configuration.md#entityhandling) enabled in order for this to work.**
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) and [entityhandling](configuration.md#entityhandling) enabled in order for this to work.**
 
 -   **Usage:**
 
@@ -438,7 +438,9 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     Use item in the hand.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this to work.**
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this to work.**
+
+    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10` and in `1.19`. We're working on bringing it to `1.19` as soon as possible.**
 
 -   **Usage:**
 
@@ -452,7 +454,9 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     Place a block from a hand on a specific coordinate.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) and [terrainandmovements](configuration.md#terrainandmovements) enabled in order for this to work.**
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) and [Terrain and Movements](configuration.md#terrainandmovements) enabled in order for this to work.**
+
+    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10` and in `1.19`. We're working on bringing it to `1.19` as soon as possible.**
 
 -   **Usage:**
 
@@ -489,6 +493,10 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 -   **Description:**
 
     Used for moving when terrain and movements feature is enabled.
+
+    > **ℹ️ NOTE: You need to have [Terrain and Movements](configuration.md#terrainandmovements) enabled in order for this to work.**
+
+    > **⚠️ WARNING: The [Terrain and Movements](configuration.md#terrainandmovements) is currently not supported in `1.4.6 - 1.10` and in `1.19`. We're working on bringing it to `1.19` as soon as possible.**
 
 -   **Usage:**
 
@@ -542,7 +550,11 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
 -   **Description:**
 
-    Used for inventory manipulation when the [inventoryhandling](configuration.md#inventoryhandling) is enabled.
+    Used for inventory manipulation.
+
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this to work.**
+
+    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10` and in `1.19`. We're working on bringing it to `1.19` as soon as possible.**
 
     MCC defines inventories as containers internally, so player's inventory, chests, droppers, dispensers, hoppers, chest minecarts, barrels, furnaces, etc... are all considered a container, and each one of them has it's ID, the words container and inventory can be used interchangeably.
 

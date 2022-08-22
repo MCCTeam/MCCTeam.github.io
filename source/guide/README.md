@@ -6,6 +6,7 @@
 -   [Why Minecraft Console Client?](#why-minecraft-console-client)
 -   [Getting Help](#getting-help)
 -   [Submitting a bug report or an idea/feature-request](#bugs-ideas-feature-requests)
+-   [Notes on some features](#notes-on-some-features)
 
 ## About
 
@@ -38,6 +39,9 @@ It was originally made by [ORelio](https://github.com/ORelio) in 2012 on the [Mi
 -   [Replay Mod](chat-bots.md#replay-mod)
 -   [API for creating Bots in C#](creating-bots.md#creating-chat-bots)
 -   [Docker Support](installation.md#using-docker)
+-   [Inventory Handling](usage.md#inventory)
+-   [Terrain Traversing](usage.md#move)
+-   Entity Handling
 
 _NOTE: Some of mentioned features are disabled by default and you will have to turn them on in the configuration file and some may require additional configuration on your part for your specific usage._
 
@@ -94,3 +98,19 @@ If you're reporting a bug, pleace be descriptive as much as possible, try to exp
 
 -   **Please use the search option here or in the `Issues` section and read the documentation so we avoid duplicate questions/ideas/reports. Thank you!**
 -   **Please be kind, patient and respect others. Thank you!**
+
+## Notes on some features
+
+### Inventory, Terrain and Entity Handling
+
+These features do not work bellow Minecraft version `1.10`, and might not always be implemented in the latest version of the game, since they're often subjected to major changes by Mojang.
+
+If there was a major game update, and the MCC hasn't been updated to support these features, if you're a programmer, feel free to contribute to the project.
+
+### Docker
+
+Currently in the main branch of the MCC, Docker does not work due to a bug with the [ConsoleInteractive](https://github.com/breadbyte/ConsoleInteractive/tree/8a3b9bcd03d73aa1d218e8cffb19248f3a487dd4) library on which the MCC relies on and the update to .NET 6 build process.
+
+This is being worked on in [#2112 - Fixed the Docker image](https://github.com/MCCTeam/Minecraft-Console-Client/pull/2112), so if you want to run docker, you can copy the contents of `Dockerfile` and `start-lates.sh` to your local copies of those files and test it out.
+
+> **ℹ️ NOTE: For some people it is working fine, for some it is not, we need people to test it out. Feel free to try it out**
