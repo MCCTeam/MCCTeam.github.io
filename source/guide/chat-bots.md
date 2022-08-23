@@ -162,7 +162,9 @@
 
     -   **Description:**
 
-        This settings specifies a path to the file with list of keywords that if found in kick messages will trigger Auto Relog chat bot. Each word is written on a new line.
+        This settings specifies a path to the file with list of keywords that if found in kick messages will trigger Auto Relog chat bot. 
+        
+        Each word is written on a new line.
 
         > **ℹ️ NOTE: This file is not create by default, you need to create it yourself.**
 

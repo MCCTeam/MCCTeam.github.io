@@ -16,6 +16,8 @@ If you're not the kind of person that likes textual tutorials, our community has
 
 In order to run **Minecraft Console Client** you need the [.NET Framework 6.0 or new-er](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
 
+> **⚠️ IMPORTANT: If you already have .NET, but an older version than `6.0`, please update to `6.0` since MCC might not work as expected or at all.**
+
 #### How to install .NET on your platform
 
 -   [Install .NET on Windows](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
