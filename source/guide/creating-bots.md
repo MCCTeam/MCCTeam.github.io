@@ -8,7 +8,7 @@
 
 ## Notes
 
-> **ℹ️ NOTE: For now this page will contain only the bare basic info until it is properly done.**
+> **ℹ️ NOTE: For now this page contains only the bare basics of the Chat Bot API, enough of details to teach you how to make basic Chat Bots. For more details you need to take a look at the [ChatBot.cs](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Scripting/ChatBot.cs) and [Examples](#examples). This page will be improved in the future.**
 
 **Minecraft Console Client** has a rich C# API which allows you to create Chat Bots (effectively plugins) which can help you create complex automations which normal scripts may not be able to do.
 
@@ -21,7 +21,7 @@ If you're not familiar with the C# programming language, we suggest taking a loo
 
 Crash courses:
 
--   [C# Crash Course by Teddy Smit](https://www.youtube.com/watch?v=67oWw9TanOk&list=PL82C6-O4XrHfoN_Y4MwGvJz5BntiL0z0D)
+-   [C# Crash Course playlist by Teddy Smit](https://www.youtube.com/watch?v=67oWw9TanOk&list=PL82C6-O4XrHfoN_Y4MwGvJz5BntiL0z0D)
 
 More in-depth:
 

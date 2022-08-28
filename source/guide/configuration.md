@@ -109,6 +109,11 @@ Other-Setting=Some Value
 
     This setting is where you define which language you want to use.
 
+    When connecting to 1.6+ servers, you will need a translation file to display properly some chat messages.
+    These files describe how some messages should be printed depending on your preferred language.
+
+    The client will automatically load en_GB.lang from your Minecraft folder if Minecraft is installed on your computer, or download it from Mojang's servers. You may choose another language in the configuration file.
+
 -   **Default:** `en_GB`
 
 -   **Example:**
@@ -620,6 +625,20 @@ Connect to a server via a proxy instead of connecting directly.
 The MCC does it best to detect chat messages, but some server have unusual chat formats.
 
 When this happens, you'll need to configure the chat format yourself using settings from this section.
+
+The MCC uses Regular Expressions (Regex) to detect the chat formatting, in case that you're not familiar with Regex you can use the following resources to learn it and test it out:
+
+-   Crash courses:
+    -   [Regex video tutorial by Web Dev Simplified](https://www.youtube.com/watch?v=rhzKDrUiJVk)
+    -   [Regex on paper by Crack Concepts](https://www.youtube.com/watch?v=9RksQ5YT7FM)
+-   In-depth tutorials:
+
+    -   [Quite a long and detailed tutorial by Svetlin Nakov](https://www.youtube.com/watch?v=DS9IO0W7-0Q)
+    -   [Microsoft Documentation on Regex](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference)
+
+-   Testing Regex expressions online:
+    -   [https://regex101.com/](https://regex101.com/)
+    -   [https://regexr.com/](https://regexr.com/)
 
 ### `builtins`
 

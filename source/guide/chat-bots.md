@@ -17,6 +17,7 @@
 -   [Auto Relog](#auto-relog)
 -   [Chat Log](#chat-log)
 -   [Script Scheduler](#script-scheduler)
+-   [Hangman](#hangman)
 -   [Remote Control](#remote-control)
 -   [Auto Respond](#auto-respond)
 -   [Auto Attack](#auto-attack)
@@ -162,8 +163,8 @@
 
     -   **Description:**
 
-        This settings specifies a path to the file with list of keywords that if found in kick messages will trigger Auto Relog chat bot. 
-        
+        This settings specifies a path to the file with list of keywords that if found in kick messages will trigger Auto Relog chat bot.
+
         Each word is written on a new line.
 
         > **ℹ️ NOTE: This file is not create by default, you need to create it yourself.**
@@ -319,6 +320,64 @@
         > **ℹ️ NOTE: This file is not created by default, we recommend making a clone of the [`sample-tasks.ini`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/sample-tasks.ini) and changing it according to your needs.**
 
     -   **Default:** `tasks.ini`
+
+## Hangman
+
+-   **Description:**
+
+    Hangman game is one of the first bots ever written for MCC, to demonstrate ChatBot capabilities.
+
+    Create a file with words to guess (examples: [`words-en.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-en.txt), [`words-fr.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-fr.txt)) and set it in config inside the `[Hangman]` section.
+
+    Also set `enabled` to `true`, then, add your username in the `botowners` INI setting, and finally, connect to the server and use `/tell <bot username> start` to start the game.
+
+    > **ℹ️ NOTE: If the bot does not respond to bot owners, see the [Detecting chat messages](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/config#detecting-chat-messages) section.**
+
+-   **Settings:**
+
+    **Section:** **`Hangman`**
+
+    #### `enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Hangman Chat Bot is enabled.
+
+        Available values: `true` and `false`.
+
+    -   **Default:** `false`
+
+    #### `english`
+
+    -   **Description:**
+
+        This setting specifies if the Hangman Chat Bot should use English.
+
+        Available values: `true` and `false`.
+
+    -   **Default:** `true`
+
+    #### `wordsfile`
+
+    -   **Description:**
+
+        This setting specifies the path to the file which Hangman will use for the list of words, each word is added on a separate line.
+
+        > **ℹ️ NOTE: This settings file is for English and is not created by the default**
+
+    -   **Default:** `hangman-en.txt`
+    -   **Example**: [`words-en.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-en.txt)
+
+    #### `fichiermots`
+
+    -   **Description:**
+
+        This setting is same as the above but for French.
+
+        > **ℹ️ NOTE: This settings file is for French and is not created by the default**
+
+    -   **Default:** `hangman-fr.txt`
+    -   **Example**: [`words-fr.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-fr.txt)
 
 ## Remote Control
 
