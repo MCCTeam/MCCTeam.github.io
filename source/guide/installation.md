@@ -14,13 +14,13 @@ If you're not the kind of person that likes textual tutorials, our community has
 
 ## Download a compiled binary
 
-In order to run **Minecraft Console Client** you need the [.NET Framework 6.0 or new-er](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
+In order to run **Minecraft Console Client** you need [.NET 6.0 or new-er](https://dotnet.microsoft.com/en-us/download)
 
 > **⚠️ IMPORTANT: If you already have .NET, but an older version than `6.0`, please update to `6.0` since MCC might not work as expected or at all.**
 
 #### How to install .NET on your platform
 
--   [Install .NET on Windows](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
+-   [Install .NET on Windows](https://docs.microsoft.com/en-us/dotnet/core/install/windows)
 -   [Install .NET on Linux](https://docs.microsoft.com/en-us/dotnet/core/install/linux)
 -   [Install .NET on macOS](https://docs.microsoft.com/en-us/dotnet/core/install/macos)
 
