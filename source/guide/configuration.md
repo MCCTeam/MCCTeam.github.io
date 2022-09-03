@@ -196,7 +196,7 @@ Other-Setting=Some Value
     mcversion=1.18.2
     ```
 
-    > **ℹ️ NOTE: MCC supports only 1.8 - 1.19**
+    > **ℹ️ NOTE: MCC supports only 1.4.6 - 1.19**
 
 ### `mcforge`
 
@@ -279,6 +279,8 @@ Other-Setting=Some Value
 
     ![ASCII Art here](http://i.pics.rs/33yn9.png "ASCII Art here")
 
+    > **⚠️ WARNING: This feature is currently broken with ASCII layout, you should disable ASCII in order to see a normal list. We're working on fixing it.**
+
 -   **Default:** `true`
 
 ### `terrainandmovements`
@@ -287,7 +289,7 @@ Other-Setting=Some Value
 
     This setting is where you can set if you want to enable terrain movement, so you can use command like `/move` and some bots.
 
-    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.10` and in `1.19`. We're working on bringing it to `1.19` as soon as possible.**
+    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.10`.**
 
 -   **Default:** `false`
 
@@ -297,7 +299,7 @@ Other-Setting=Some Value
 
     This setting is where you can set if you want to enable inventory handling using the `/inventory` command.
 
-    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.10` and in `1.19`. We're working on bringing it to `1.19` as soon as possible.**
+    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.10`.**
 
 -   **Default:** `false`
 
@@ -307,7 +309,7 @@ Other-Setting=Some Value
 
     This setting is where you can set if you want to enable interactions with entities such as players, mobs, minecarts, etc..
 
-    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.10` and in `1.19`. We're working on bringing it to `1.19` as soon as possible.**
+    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.10`.**
 
 -   **Default:** `false`
 
