@@ -4,6 +4,7 @@
 -   [Download a compiled binary](#download-a-compiled-binary)
 -   [Building from the source code](#building-from-the-source-code)
 -   [Run using Docker](#using-docker)
+-   [Run on Android](#running-on-android)
 
 ## YouTube Tutorials
 
@@ -207,3 +208,208 @@ As above, you can stop and remove the container using
 ```bash
 docker-compose down
 ```
+
+## Running on Android
+
+It is possible to run the Minecraft Console Client on Android through Termux and Ubuntu 22.04 in it, however it requires a manual setup with a lot of commands, be careful no to skip any steps. Note that this might take anywhere from 10 to 20 minutes or more to do depending on your technical knowledge level, Internet speed and CPU speed.
+
+> **ℹ️ NOTE: This section is going to get a bit technical, I'll try my best to make everything as simple as possible. If you are having trouble following along or if you encounter any issues, feel free to open up a discussion on our Github repository page.**
+
+> **ℹ️ NOTE: You're required to have some bare basic knowledge of Linux, if you do not know anything about it, watch [this video](https://youtu.be/cBokz0LTizk) to get familiar with basic commands.**
+
+### Installation
+
+#### F-Droid and Termux
+
+In order to install Termux, you need to have F-Droid installed, it's a free, libre and open-source alternative to Google Play Store, the reason we're installing Termux from F-Droid is that the Play Store version is outdated and not supported anymore.
+
+> **⚠️ IMPORTANT: The Play Store version of Termux is outdated and not supported, do not use it, use the F-Droid one.**
+
+Go to [F-Droid website](https://f-droid.org/), click on `Download F-Droid` button, save the APK file and run it.
+You also can watch a [Youtube tutorial for Installation](https://www.youtube.com/watch?v=_0fhLF8a1nU)
+
+> **ℹ️ NOTE: If your file manager does not let you run APK files, install and use `File Manager +` and give it a permission to install 3rd party applications when asked.**
+
+Once you've installed F-Droid, open it, search for `Termux` and install it (just the app with name `Termux`, you do not need other Termux apps).
+
+**⚠️ VERY IMPORTANT ⚠️: Once you have installed Termux, open it, bring down the Android menu for notifications, on Termux notification, drag down until you see the following options: `Exit | Acquire wakelock`, press on the `Acquire wakelock` and allow Termux to have a battery optimization exclusion permission when asked. If you do not do this, your performance will be poorer and the Termux might get killed by Android while running in the background!**
+
+#### Installing Ubuntu 22.04
+
+At this stage, you have 2 options:
+
+1. Following this textual tutorial
+2. Watching a [Youtube tutorial for installing Ubuntu](https://www.youtube.com/watch?v=5yit2t7smpM)
+
+> **ℹ️ NOTE: If you decide to watch the Youtube tutorial, watch only up to `1:58`, the steps after are not needed and might just confuse you.**
+
+In order to install Ubuntu 22.04 in Termux you require `wget` and `proot`, we're going to install them in the next step.
+
+Once you have Termux installed open it up and run the following command one after other (in order):
+
+1. `pkg update`
+2. `pkg upgrade`
+3. `pkg install proot wget`
+
+> **ℹ️ NOTE: If you're asked to press Y/N during the update/upgrade command process, just enter Y and press Enter**
+
+Then you need to download an installation script using the following command:
+
+```bash
+wget https://raw.githubusercontent.com/MFDGaming/ubuntu-in-termux/master/ubuntu.sh
+```
+
+Once the script has downloaded, run it with:
+
+```bash
+bash ubuntu.sh
+```
+
+Then you will be asked a question, enter `Y` and press `Enter`.
+Once the installation is complete, you can start Ubuntu with:
+
+```bash
+./startubunut.sh
+```
+
+> **ℹ️ NOTE: Now every time you open Termux after it has been closed, in order to access Ubuntu you have to use this command**
+
+#### Installing .NET
+
+Since there are issues installing .NET 6.0 via the APT package manager at the time of writing, we will have to install it manually.
+
+First we need to update the APT package manager repositories and install dependencies.
+
+To update the APT repositories, run `apt update -y && apt upgrade -y`. (_If you're asked to confirm anything, type Y and press enter_).
+
+After you did it, we need to install dependencies for .NET, with the following command:
+
+```bash
+apt install wget nano unzip libc6 libgcc1 libgssapi-krb5-2 libstdc++6 zlib1g libicu70 libssl3 -y
+```
+
+After you have installed dependencies, it's time to install .NET, you either can follow this tutorial or the [Microsoft one](https://docs.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#manual-install).
+
+Navigate to your root home directory with the following command:
+
+```bash
+cd ~
+```
+
+First you need to download .NET 6.0, you can do it with the following command:
+
+```bash
+wget https://download.visualstudio.microsoft.com/download/pr/901f7928-5479-4d32-a9e5-ba66162ca0e4/d00b935ec4dc79a27f5bde00712ed3d7/dotnet-sdk-6.0.400-linux-arm64.tar.gz
+```
+
+> **ℹ️ NOTE: This tutorial assumes that you have 64 bit version of ARM processor, if you happen to have a 32-bit version replace the link in the command above with [this one](https://download.visualstudio.microsoft.com/download/pr/cf567026-a29a-41aa-bc3a-e4e1ad0df480/0925d411e8e09e31ba7a39a3eb0e29af/aspnetcore-runtime-6.0.8-linux-arm.tar.gz)**.
+
+> **ℹ️ NOTE: This tutorial assumes that you're following along and using Ubuntu 22.04, if you're using a different distro, like Alpine, go to [here](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) and copy an appropriate link for your distro.**
+
+Once the file has been downloaded, you need to run the following commands in order:
+
+1. `DOTNET_FILE=dotnet-sdk-6.0.400-linux-arm64.tar.gz`
+
+    **⚠️ IMPORTANT: If you're using a different download link, update the file name in this command to match your version.**
+
+2. `export DOTNET_ROOT=/root/.dotnet`
+
+    **⚠️ IMPORTANT: Here we're installing .NET in `/root`, if you're installing it somewhere else, make sure to set your own path!**
+
+3. `mkdir -p "$DOTNET_ROOT" && tar zxf "$DOTNET_FILE" -C "$DOTNET_ROOT"`
+4. `export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools`
+
+Now we need to tell our shell to know where the `dotnet` command is, for future sessions, since the commands above just tell this current session where the `dotnet` is located.
+
+> **⚠️ IMPORTANT: You will need a basic knowledge of Nano text editor, if you do not know how to use it, watch this [Youtube video tutorial](https://www.youtube.com/watch?v=DLeATFgGM-A)**
+
+To enable this, we need to edit our `/root/.bashrc` file with the following command:
+
+```bash
+nano /root/.bashrc
+```
+
+Scroll down to the bottom of the file using `Page Down` (`PGDN`) button, make a new line and paste the following text:
+
+```bash
+export DOTNET_ROOT=/root/.dotnet/
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+```
+
+**⚠️ IMPORTANT: Here we're installing .NET in `/root`, if you're installing it somewhere else, make sure to set your own path!**
+
+Save the file usign the following combination of keys: `CTRL + X`, type `Y` and press Enter.
+
+Veryfy that .NET was installed correctly by running:
+
+```bash
+dotnet
+```
+
+You should get a help page:
+
+```bash
+root@localhost:~# dotnet
+
+Usage: dotnet [options]
+Usage: dotnet [path-to-application]
+
+Options:
+  -h|--help         Display help.
+  --info            Display .NET information.
+  --list-sdks       Display the installed SDKs.
+  --list-runtimes   Display the installed runtimes.
+
+path-to-application:
+  The path to an application .dll file to execute.
+```
+
+#### Installing MCC
+
+Finally, we can install MCC.
+
+**⚠️ IMPORTANT: If you have a 32 ARM processor, you need to build the MCC yourself, take a look at the [Buidling From Source](#building-from-the-source-code) section. Also make sure to be using the appropriate `-r` parameter value for your architecture.**
+
+Let's make a folder where the MCC will be stored with the following command:
+
+```bash
+mkdir MinecraftConsoleClient
+```
+
+Then enter it the newly created folder:
+
+```bash
+cd MinecraftConsoleClient
+```
+
+Download the MCC with the following command:
+
+```bash
+wget https://github.com/MCCTeam/Minecraft-Console-Client/releases/latest/download/MinecraftClient-linux-arm64.zip
+```
+
+Unzip it with the following command:
+
+```bash
+unzip MinecraftClient-linux-arm64.zip
+```
+
+You can remove the zip archive now, we do not need it anymore, with:
+
+```bash
+rm MinecraftClient-linux-arm64.zip
+```
+
+And finally run it with:
+
+```
+./MinecraftClient
+```
+
+#### After installation
+
+When you run Termux next time, you need to start Ubuntu with: `./startubuntu.sh`
+
+Then you can start the MCC again with `./MinecraftClient`.
+
+To edit the configuration/settings, you need a text editor, we recommend Nano, as it's very simple to use, if you have followed the installation steps above, you should be familiar with it, if not, check out [this tutorial](https://www.youtube.com/watch?v=DLeATFgGM-A).
