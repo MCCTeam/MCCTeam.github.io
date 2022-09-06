@@ -215,7 +215,9 @@ It is possible to run the Minecraft Console Client on Android through Termux and
 
 > **ℹ️ NOTE: This section is going to get a bit technical, I'll try my best to make everything as simple as possible. If you are having trouble following along or if you encounter any issues, feel free to open up a discussion on our Github repository page.**
 
-> **ℹ️ NOTE: You're required to have some bare basic knowledge of Linux, if you do not know anything about it, watch [this video](https://youtu.be/cBokz0LTizk) to get familiar with basic commands.**
+> **ℹ️ NOTE: You're required to have some bare basic knowledge of Linux, if you do not know anything about it, watch [this video](https://www.youtube.com/watch?v=SkB-eRCzWIU) to get familiar with basic commands.**
+
+> **ℹ️ NOTE: Here we're installing everything on the root account for simplicity sake, if you want to make a user account, make sure you update the command which reference the `/root` directory with your home directory.**
 
 ### Installation
 
@@ -280,7 +282,11 @@ Since there are issues installing .NET 6.0 via the APT package manager at the ti
 
 First we need to update the APT package manager repositories and install dependencies.
 
-To update the APT repositories, run `apt update -y && apt upgrade -y`. (_If you're asked to confirm anything, type Y and press enter_).
+To update the APT repositories, run the following command:
+
+```bash
+apt update -y && apt upgrade -y
+```
 
 After you did it, we need to install dependencies for .NET, with the following command:
 
@@ -290,10 +296,10 @@ apt install wget nano unzip libc6 libgcc1 libgssapi-krb5-2 libstdc++6 zlib1g lib
 
 After you have installed dependencies, it's time to install .NET, you either can follow this tutorial or the [Microsoft one](https://docs.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#manual-install).
 
-Navigate to your root home directory with the following command:
+Navigate to your `/root` home directory with the following command:
 
 ```bash
-cd ~
+cd /root
 ```
 
 First you need to download .NET 6.0, you can do it with the following command:
@@ -410,6 +416,18 @@ And finally run it with:
 
 When you run Termux next time, you need to start Ubuntu with: `./startubuntu.sh`
 
-Then you can start the MCC again with `./MinecraftClient`.
+Then you can start the MCC again with `./MinecraftClient`
+
+To stop MCC from running you can press `CTRL + C`
 
 To edit the configuration/settings, you need a text editor, we recommend Nano, as it's very simple to use, if you have followed the installation steps above, you should be familiar with it, if not, check out [this tutorial](https://www.youtube.com/watch?v=DLeATFgGM-A).
+
+For downloading files, you can use the `wget` file we have installed, simply run:
+`wget your_link_here` (you have examples above, and a video tutorial down bellow).
+
+Also, here are some linux tutorials for people who are new to it:
+
+-   [Linux Terminal Introduction by ExplainingComputers](https://www.youtube.com/watch?v=SkB-eRCzWIU)
+-   [Linux Crash Course - nano (command-line text editor) by Learn Linux TV](https://www.youtube.com/watch?v=DLeATFgGM-A)
+-   [Linux Crash Course - The wget Command by Learn Linux TV](https://www.youtube.com/watch?v=F80Z5qd2b_4)
+-   [Linux Basics: How to Untar and Unzip Files (tar, gzip) by webpwnized](https://www.youtube.com/watch?v=1DF0dTscHHs)
