@@ -209,7 +209,7 @@ As above, you can stop and remove the container using
 docker-compose down
 ```
 
-## Running on Android
+## Run on Android
 
 It is possible to run the Minecraft Console Client on Android through Termux and Ubuntu 22.04 in it, however it requires a manual setup with a lot of commands, be careful no to skip any steps. Note that this might take anywhere from 10 to 20 minutes or more to do depending on your technical knowledge level, Internet speed and CPU speed.
 
@@ -221,20 +221,15 @@ It is possible to run the Minecraft Console Client on Android through Termux and
 
 ### Installation
 
-#### F-Droid and Termux
+#### Termux
 
-In order to install Termux, you need to have F-Droid installed, it's a free, libre and open-source alternative to Google Play Store, the reason we're installing Termux from F-Droid is that the Play Store version is outdated and not supported anymore.
+> **⚠️ IMPORTANT: The Play Store version of Termux is outdated and not supported, do not use it, use the the [Github one](https://github.com/termux/termux-app/releases/latest/).**
 
-> **⚠️ IMPORTANT: The Play Store version of Termux is outdated and not supported, do not use it, use the F-Droid one.**
-
-Go to [F-Droid website](https://f-droid.org/), click on `Download F-Droid` button, save the APK file and run it.
-You also can watch a [Youtube tutorial for Installation](https://www.youtube.com/watch?v=_0fhLF8a1nU)
+Go to [the Termux Github latest release](https://github.com/termux/termux-app/releases/latest/), download the `debug_universal.apk`, unzip it and run it.
 
 > **ℹ️ NOTE: If your file manager does not let you run APK files, install and use `File Manager +` and give it a permission to install 3rd party applications when asked.**
 
-Once you've installed F-Droid, open it, search for `Termux` and install it (just the app with name `Termux`, you do not need other Termux apps).
-
-**⚠️ VERY IMPORTANT ⚠️: Once you have installed Termux, open it, bring down the Android menu for notifications, on Termux notification, drag down until you see the following options: `Exit | Acquire wakelock`, press on the `Acquire wakelock` and allow Termux to have a battery optimization exclusion permission when asked. If you do not do this, your performance will be poorer and the Termux might get killed by Android while running in the background!**
+> **⚠️ VERY IMPORTANT ⚠️: Once you have installed Termux, open it, bring down the Android menu for notifications, on Termux notification, drag down until you see the following options: `Exit | Acquire wakelock`, press on the `Acquire wakelock` and allow Termux to have a battery optimization exclusion permission when asked. If you do not do this, your performance will be poorer and the Termux might get killed by Android while running in the background!**
 
 #### Installing Ubuntu 22.04
 
@@ -271,7 +266,7 @@ Then you will be asked a question, enter `Y` and press `Enter`.
 Once the installation is complete, you can start Ubuntu with:
 
 ```bash
-./startubunut.sh
+./startubuntu.sh
 ```
 
 > **ℹ️ NOTE: Now every time you open Termux after it has been closed, in order to access Ubuntu you have to use this command**
