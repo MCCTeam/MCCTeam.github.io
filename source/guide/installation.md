@@ -4,7 +4,7 @@
 -   [Download a compiled binary](#download-a-compiled-binary)
 -   [Building from the source code](#building-from-the-source-code)
 -   [Run using Docker](#using-docker)
--   [Run on Android](#running-on-android)
+-   [Run on Android](#run-on-android)
 
 ## YouTube Tutorials
 
