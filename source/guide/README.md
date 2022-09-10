@@ -126,8 +126,7 @@ Many features would not have been possible without the help of our talented comm
 
 **Maintainers**
 
-ORelio
-ReinforceZwei
+ORelio, ReinforceZwei, milutinke, BruceChenQAQ, bradbyte
 
 **Ideas**
 
