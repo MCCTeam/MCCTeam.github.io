@@ -299,7 +299,7 @@ Other-Setting=Some Value
 
     This setting is where you can set if you want to enable inventory handling using the `/inventory` command.
 
-    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.10`.**
+    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.14`.**
 
 -   **Default:** `false`
 

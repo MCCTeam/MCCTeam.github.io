@@ -147,7 +147,7 @@ Ryan6578, Solethia, TNT-UP, TorchRJ, TRTrident, WeedIsGood, xp9kus, Yoann166 and
 Allyoutoo, Aragas, Bancey, bearbear12345, corbanmailloux, Daenges, dbear20, dogwatch,
 initsuj, JamieSinn, justcool393, lokulin, maxpowa, medxo, milutinke, Pokechu22,
 ReinforceZwei, repository, TheMeq, TheSnoozer, vkorn, v1RuX, yunusemregul, ZizzyDizzyMC,
-BruceChan, bradbyte
+BruceChenQAQ, bradbyte
 _... And all the [GitHub contributors](https://github.com/MCCTeam/Minecraft-Console-Client/graphs/contributors)!_
 
 **Libraries:**
