@@ -147,7 +147,7 @@ Requirements:
 
 > **ℹ️ NOTE: This section is for more advanced users, if you do not know how to install git or docker, you can take a look at other sections for Git, and search on how to install Docker on your system.**
 
-> **⚠️ IMPORTANT: Docker currently does not work, more info [here](README.md#notes-on-some-features)**
+> **⚠️ WARNING: Pay attention at warnings, Docker currenly works, but you must start the containers in the interactive mode or MCC will crash, we're working on solving this.**
 
 1. Clone the [Git Hub Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
 
@@ -164,12 +164,15 @@ docker build -t minecraft-console-client:latest .
 
 **Start the container using Docker:**
 
+> **⚠️ VERY IMPORTANT ⚠️: There is a bug with the ConsoleInteractive which causes a crash when a container is started in a headless mode, so you need to use the interactive mode. Do not restart containers in a classic way, stop then and start them with interactive mode (this command), after that simply detach with `CTRL + P` and then `CTRL + Q`.**
+
 ```bash
 # You could also ignore the -v parameter if you dont want to mount the volume that is up to you. If you don't it's harder to edit the .ini file if thats something you want to do
 docker run -it -v <PATH_ON_YOUR_MACHINE_TO_MOUNT>:/opt/data minecraft-console-client:latest
 ```
 
-Now you could login and the Client is running. To detach from the Client but still keep it running in the Background press: `CTRL + P`, `CTRL + Q`.
+Now you could login and the Client is running. 
+To detach from the Client but still keep it running in the Background press: `CTRL + P` and then after `CTRL + Q`.
 To reattach use the `docker attach` command.
 
 **Start the container using docker-compose:**

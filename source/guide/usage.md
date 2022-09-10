@@ -16,6 +16,8 @@ Using the command line parameters:
 
 Simply run `MinecraftClient.exe`
 
+> **ℹ️ NOTE: On Windows it's best using [Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/install) for the best experience and looks. Some features like emojis in the [`/chunk`](#chunk) command do not work in CMD or Powershell 5**
+
 ## Linux, macOS
 
 To run the client you need to type the following command in your terminal emulator:
@@ -88,7 +90,7 @@ MinecraftClient.exe --help
 
 ### Quick usage of MCC with examples
 
-> **NOTE: On Linux and macOS, you need to type: `./MinecraftClient` instead of `MinecraftClient.exe`**
+> **ℹ️ NOTE: On Linux and macOS, you need to type: `./MinecraftClient` instead of `MinecraftClient.exe`**
 
 ```bash
 MinecraftClient.exe --help
@@ -194,6 +196,26 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     ```
     /changeslot <1-9>
     ```
+
+### `chunk`
+
+-   **Description:**
+
+    Displays the chunk loading status in a nice way.
+
+    > **⚠️ WARNING: To use this feature you need to enable the [Terrain and Movements](configuration.md#terrainandmovements)**
+
+    > **ℹ️ NOTE: You need a terminal with emoji support, like Powershell 7, Windows Terminal or Alacritty, if you do not want emoji support and want to use cmd or powershell 5, disable emojis with: [`enableemoji`](configuration.md#enableemoji)**
+
+-   **Usage:**
+
+    ```
+    /chunk status [chunkX chunkZ|locationX locationY locationZ]
+    ```
+
+    How it looks:
+
+    ![Chunk status](http://i.pics.rs/DDB9W.png)
 
 ### `dig`
 
@@ -408,7 +430,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     (Set a `%variable%` to a number from -7 to 9)
 
-### `Sneak`
+### `sneak`
 
 -   **Description:**
 
@@ -436,11 +458,11 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
 -   **Description:**
 
-    Use item in the hand.
+    Use item in the hand, this can be used to do a right click on items which open menus on servers.
 
     > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this to work.**
 
-    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10` and in `1.19`. We're working on bringing it to `1.19` as soon as possible.**
+    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10`**
 
 -   **Usage:**
 
@@ -452,11 +474,13 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
 -   **Description:**
 
-    Place a block from a hand on a specific coordinate.
+    Place a block from a hand on a specific coordinate or open an inventory: - chest/trap chest - furnace - brewing stand - dispenser/dropper - hopper - shulker - loom
 
     > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) and [Terrain and Movements](configuration.md#terrainandmovements) enabled in order for this to work.**
 
-    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10` and in `1.19`. We're working on bringing it to `1.19` as soon as possible.**
+    > **ℹ️ NOTE: Not all inventories have a GUI representation in an ASCII art format.**
+
+    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10`.**
 
 -   **Usage:**
 
@@ -496,7 +520,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     > **ℹ️ NOTE: You need to have [Terrain and Movements](configuration.md#terrainandmovements) enabled in order for this to work.**
 
-    > **⚠️ WARNING: The [Terrain and Movements](configuration.md#terrainandmovements) is currently not supported in `1.4.6 - 1.10` and in `1.19`. We're working on bringing it to `1.19` as soon as possible.**
+    > **⚠️ WARNING: The [Terrain and Movements](configuration.md#terrainandmovements) is currently not supported in `1.4.6 - 1.10`.**
 
 -   **Usage:**
 
@@ -554,7 +578,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this to work.**
 
-    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10` and in `1.19`. We're working on bringing it to `1.19` as soon as possible.**
+    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10`.**
 
     MCC defines inventories as containers internally, so player's inventory, chests, droppers, dispensers, hoppers, chest minecarts, barrels, furnaces, etc... are all considered a container, and each one of them has it's ID, the words container and inventory can be used interchangeably.
 
@@ -678,7 +702,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
 -   **Description:**
 
-    Toggle debug messages, useful for chatbot developers
+    Toggle debug messages, useful for chatbot developers.
 
 ### `help`
 

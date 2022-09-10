@@ -428,6 +428,22 @@ Other-Setting=Some Value
 
 -   **Default:** `true`
 
+### `timeout`
+
+-   **Description:**
+
+    This setting allows you to define a custom timeout period in seconds. Use only if you know what you're doing.
+
+-   **Default:** `30`
+
+### `enableemoji`
+
+-   **Description:**
+
+    This setting allows you to disable emojis in the [`chunk`](usage.md#chunk) command.
+
+-   **Default:** `30`
+
 ## Logging Section
 
 ### `debugmessages`
