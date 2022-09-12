@@ -289,7 +289,7 @@ Other-Setting=Some Value
 
     This setting is where you can set if you want to enable terrain movement, so you can use command like `/move` and some bots.
 
-    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.10`.**
+    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.6`.**
 
 -   **Default:** `false`
 
@@ -299,7 +299,7 @@ Other-Setting=Some Value
 
     This setting is where you can set if you want to enable inventory handling using the `/inventory` command.
 
-    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.14`.**
+    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.9`.**
 
 -   **Default:** `false`
 
@@ -309,7 +309,7 @@ Other-Setting=Some Value
 
     This setting is where you can set if you want to enable interactions with entities such as players, mobs, minecarts, etc..
 
-    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.10`.**
+    > **⚠️ WARNING: This feature is currently not supported in `1.4.6 - 1.9`.**
 
 -   **Default:** `false`
 
