@@ -508,6 +508,8 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     Make the bot follow a player.
 
+    > **ℹ️ NOTE: This command is avaliable only with [Follow Player](chat-bots.md#follow-player) Chat Bot enabled.**
+
     > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this to work.** > **ℹ️ NOTE: You need to have [Enity Handling](configuration.md#entityhandling) enabled in order for this to work.**
 
 -   **Usage:**
