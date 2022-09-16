@@ -474,7 +474,15 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
 -   **Description:**
 
-    Place a block from a hand on a specific coordinate or open an inventory: - chest/trap chest - furnace - brewing stand - dispenser/dropper - hopper - shulker - loom
+    Place a block from a hand on a specific coordinate or open an inventory:
+
+    -   chest/trap chest
+    -   furnace
+    -   brewing stand
+    -   dispenser/dropper
+    -   hopper
+    -   shulker
+    -   loom
 
     > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) and [Terrain and Movements](configuration.md#terrainandmovements) enabled in order for this to work.**
 
@@ -584,6 +592,8 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     Inventory has slots and each one of them has an id.
 
+    > **ℹ️ NOTE: This command DOES NOT physically open a container (eg. chest), for that you need to use [`useblock`](#useblock) command first.**
+
     An example of player inventory with annotated IDs in ASCII art and a list of items:
 
     ![Picture Not Loaded!](http://i.pics.rs/33yn9.png "Player Inventory")
@@ -598,16 +608,22 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     > **ℹ️ NOTE: player and container can be simplified with p and c accordingly**
 
+    Actions:
+
+    -   `click`
+    -   `shiftclick`
+    -   `drop`
+
     Show/Preview items in an inventory:
 
     ```
     /inventory <player|id>
     ```
 
-    Click on an item in an inventory:
+    Click/Shift-Click on an item in an inventory:
 
     ```
-    /inventory <player|container|<id>> click <slot id> [left|right|middle]
+    /inventory <player|container|<id>> <click|shiftclick> <slot id> [left|right|middle]
     ```
 
     > **ℹ️ NOTE: The default click is left click**
