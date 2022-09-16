@@ -27,6 +27,7 @@
 -   [Mailer](#mailer)
 -   [Auto Drop](#auto-drop)
 -   [Replay Mod](#replay-mod)
+-   [Follow Player](#follow-player)
 
 ## Alerts
 
@@ -566,7 +567,7 @@
 
     Automatically eat food when your Hunger value is low.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this bot to work.**
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this bot to work**
 
 -   **Settings:**
 
@@ -810,7 +811,7 @@
 
     Automatically drop items you don't need from the inventory.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this bot to work.**
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this bot to work**
 
 -   **Settings:**
 
@@ -895,3 +896,45 @@
         Use `-1` to disable.
 
     -   **Default:** `300`
+
+## Follow player
+
+-   **Description:**
+
+    This bot enables you to make a bot follow a specific player.
+
+    > **ℹ️ NOTE: The bot can be slow at times, you need to walk with a normal speed and to sometimes stop for it to be able to keep up with you, it's similar to making animals follow you when you're holding food in your hand. This is due to a slow pathfinding algorithm, we're working on getting a better one. You can tweak the update limit and find what works best for you. (NOTE: Do not but a very low one, because you might achieve the opposite, this might clog the thread for terain handling) and thus slow the bot even more.**
+
+    > **ℹ️ NOTE: You need to have [terrainandmovements](configuration.md#terrainandmovements) and [entityhandling](configuration.md#entityhandling) enabled in order for this bot to work.**
+
+-   **Settings:**
+
+    **Section:** **`FollowPlayer`**
+
+    #### `enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Follow Player Chat Bot is enabled.
+
+        Available values: `true` and `false`.
+
+    -   **Default:** `false`
+
+    #### `update_limit`
+
+    -   **Description:**
+
+        The rate at which the bot does calculations (10 = 1s).
+
+        You can tweak this if you feel the bot is too slow.
+
+    -   **Default:** `15`
+
+    #### `stop_at_distance`
+
+    -   **Description:**
+
+        Do not follow the player if he is in the range of `X` blocks (prevents the bot from pushing a player in an infinite loop).
+
+    -   **Default:** `3`

@@ -263,7 +263,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     Attack an entity, use an entity or get a list of entities around you.
 
-    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) and [entityhandling](configuration.md#entityhandling) enabled in order for this to work.**
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) and [Entity Handling](configuration.md#entityhandling) enabled in order for this to work.**
 
 -   **Usage:**
 
@@ -500,6 +500,26 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     ```
     /useblock 43 72 7
+    ```
+
+### `follow`
+
+-   **Description:**
+
+    Make the bot follow a player.
+
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this to work.** > **ℹ️ NOTE: You need to have [Enity Handling](configuration.md#entityhandling) enabled in order for this to work.**
+
+-   **Usage:**
+
+    ```
+    /follow <player name|stop>
+    ```
+
+-   **Example:**
+
+    ```
+    /follow milutinke
     ```
 
 ### `wait`
