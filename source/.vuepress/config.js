@@ -5,7 +5,7 @@ const { nprogressPlugin } = require("@vuepress/plugin-nprogress");
 const { searchPlugin } = require("@vuepress/plugin-search");
 
 module.exports = {
-    base: "/docs/",
+    base: "/",
     title: "Minecraft Console Client",
     description: require("../../package"),
     head: [
