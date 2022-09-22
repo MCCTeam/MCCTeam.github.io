@@ -289,6 +289,73 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /entity Zombie attack
     ```
 
+### `execif`
+
+-   **Description:**
+
+    Allows you to execute a command if a specific condition is met.
+
+    The condition is a C# expression and the local variables you set using [`set`](#set), [`setrnd`](#setrnd) or the configuration file can be used.
+    The condition is always returned as a boolean, so only comparison can be done, if needed cast the expression result to bool.
+
+    Also the instance of MCC is available with `MCC.`.
+
+    > **ℹ️ NOTE: All local variables are treated as strings in the app, when comparing their values, you can use `<variable> == "<value>"`, or better use [`.Equals`](https://www.programiz.com/csharp-programming/library/string/equals) method**
+
+-   **Usage:**
+
+    Basic usage: `/execif <condition (C# expression)> ---> <command>`
+
+-   **Examples:**
+
+    Setting a variable and using it:
+
+    ```
+    /set test=Something
+    /execif test == "Something" ---> send Success!
+    ```
+
+    ```
+    /set test2=1
+    /execif test2 == "1" ---> send Success 2!
+    ```
+
+    Basic C# expression:
+
+    ```
+    /execif 1 + 2 + 3 == 6 ---> send Success!
+    ```
+
+    Using MCC class:
+
+    ```
+    /execif MCC.GetHealth() == 20.0 ---> send Success!
+    ```
+
+    Using in combination with [`execmulti`](#execmulti):
+
+    ```
+    /execif 1 == 1 ---> execmulti send 1 -> send 2 -> send 3
+    ```
+
+### `execmulti`
+
+-   **Description:**
+
+    Allows you to execute multiple commands in succession on a single line, useful for debugging or when using [`execif`](#execif)
+
+    Commands are separated by `->`
+
+-   **Usage:**
+
+    Basic usage: `execmulti <command 1> -> <command 2> -> <command 3> -> ...`
+
+-   **Examples:**
+
+    ```
+    /execmulti send 1 -> send 2 -> send 3 -> sneak
+    ```
+
 ### `quit`
 
 -   **Alias:** `exit`
@@ -462,7 +529,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this to work.**
 
-    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10`**
+    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.9`**
 
 -   **Usage:**
 
@@ -488,7 +555,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     > **ℹ️ NOTE: Not all inventories have a GUI representation in an ASCII art format.**
 
-    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10`.**
+    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.9`.**
 
 -   **Usage:**
 
@@ -550,7 +617,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     > **ℹ️ NOTE: You need to have [Terrain and Movements](configuration.md#terrainandmovements) enabled in order for this to work.**
 
-    > **⚠️ WARNING: The [Terrain and Movements](configuration.md#terrainandmovements) is currently not supported in `1.4.6 - 1.10`.**
+    > **⚠️ WARNING: The [Terrain and Movements](configuration.md#terrainandmovements) is currently not supported in `1.4.6 - 1.6`.**
 
 -   **Usage:**
 
@@ -608,7 +675,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this to work.**
 
-    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.10`.**
+    > **⚠️ WARNING: The [Inventory Handling](configuration.md#inventoryhandling) is currently not supported in `1.4.6 - 1.9`.**
 
     MCC defines inventories as containers internally, so player's inventory, chests, droppers, dispensers, hoppers, chest minecarts, barrels, furnaces, etc... are all considered a container, and each one of them has it's ID, the words container and inventory can be used interchangeably.
 

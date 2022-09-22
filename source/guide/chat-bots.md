@@ -462,6 +462,20 @@
 
     -   **Default:** `matches.ini`
 
+    #### `matchcolors`
+
+    -   **Description:**
+
+        This setting specifies if the Auto Respond Chat Bot should keep the color formatting send by the server.
+
+        You can use this when you need to match text by colors.
+
+        List of all color codes: [here](https://minecraft.tools/en/color-code.php)
+
+        > **ℹ️ NOTE: This feature uses the `§` symbol for color matching**
+
+    -   **Default:** `true`
+
 ## Auto Attack
 
 -   **Description:**

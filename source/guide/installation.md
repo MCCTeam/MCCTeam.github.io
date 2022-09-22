@@ -148,7 +148,7 @@ Requirements:
 
 > **ℹ️ NOTE: This section is for more advanced users, if you do not know how to install git or docker, you can take a look at other sections for Git, and search on how to install Docker on your system.**
 
-> **⚠️ WARNING: Pay attention at warnings, Docker currenly works, but you must start the containers in the interactive mode or MCC will crash, we're working on solving this.**
+> **⚠️ WARNING: Pay attention at warnings, Docker currently works, but you must start the containers in the interactive mode or MCC will crash, we're working on solving this.**
 
 1. Clone the [Git Hub Repository](https://github.com/MCCTeam/Minecraft-Console-Client) by typing end executing the following command:
 
@@ -275,7 +275,7 @@ Once the installation is complete, you can start Ubuntu with:
 
 > **ℹ️ NOTE: Now every time you open Termux after it has been closed, in order to access Ubuntu you have to use this command**
 
-#### Installing .NET
+#### Installing .NET on ARM
 
 Since there are issues installing .NET 6.0 via the APT package manager at the time of writing, we will have to install it manually.
 
@@ -315,11 +315,11 @@ Once the file has been downloaded, you need to run the following commands in ord
 
 1. `DOTNET_FILE=dotnet-sdk-6.0.400-linux-arm64.tar.gz`
 
-    **⚠️ IMPORTANT: If you're using a different download link, update the file name in this command to match your version.**
+    > **⚠️ IMPORTANT: If you're using a different download link, update the file name in this command to match your version.**
 
 2. `export DOTNET_ROOT=/root/.dotnet`
 
-    **⚠️ IMPORTANT: Here we're installing .NET in `/root`, if you're installing it somewhere else, make sure to set your own path!**
+    > **⚠️ IMPORTANT: Here we're installing .NET in `/root`, if you're installing it somewhere else, make sure to set your own path!**
 
 3. `mkdir -p "$DOTNET_ROOT" && tar zxf "$DOTNET_FILE" -C "$DOTNET_ROOT"`
 4. `export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools`
@@ -341,7 +341,7 @@ export DOTNET_ROOT=/root/.dotnet/
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 ```
 
-**⚠️ IMPORTANT: Here we're installing .NET in `/root`, if you're installing it somewhere else, make sure to set your own path!**
+> **⚠️ IMPORTANT: Here we're installing .NET in `/root`, if you're installing it somewhere else, make sure to set your own path!**
 
 Save the file usign the following combination of keys: `CTRL + X`, type `Y` and press Enter.
 
@@ -373,7 +373,7 @@ path-to-application:
 
 Finally, we can install MCC.
 
-**⚠️ IMPORTANT: If you have a 32 ARM processor, you need to build the MCC yourself, take a look at the [Buidling From Source](#building-from-the-source-code) section. Also make sure to be using the appropriate `-r` parameter value for your architecture.**
+> **⚠️ IMPORTANT: If you have a 32 ARM processor, you need to build the MCC yourself, take a look at the [Building From Source](#building-from-the-source-code) section. Also make sure to be using the appropriate `-r` parameter value for your architecture.**
 
 Let's make a folder where the MCC will be stored with the following command:
 
@@ -462,7 +462,7 @@ Here is a [Youtube video](https://youtu.be/42fwh_1KP_o) that explains it in more
 
     > **ℹ️ NOTE: Make sure to allow the installation to add it to the context menu**
 
-2. `ssh` and `ssh-keygen` commands (On Windows they're available with Gitbash, on macOs and linux they should be available by default, it not, search on how to install them)
+2. `ssh` and `ssh-keygen` commands (On Windows they're available with Gitbash, on macOs and Linux they should be available by default, it not, search on how to install them)
 
 3. Basic knowledge of Linux shell commands, terminal emulator usage, SSH and Nano editor.
 
@@ -487,7 +487,7 @@ You have 2 options:
 
 #### Buying a VPS
 
-If you do not want to give your info to Amazon or don't have a debit card, you can buy your own vps.
+If you do not want to give your info to Amazon or don't have a debit card, you can buy your own VPS.
 
 **What hardware requirements I need for running the MCC?**
 
@@ -528,6 +528,12 @@ You also may want to search for better deals.
 #### AWS EC2 VPS
 
 > **⚠️ VERY IMPORTANT: This will require you to have a valid debit card that can be used on internet and a mobile phone number, as well as giving that info to Amazon corporation.**
+
+> **⚠️ WARNING: Scammers often get AWS VPS and use it to mass login on to stolen Microsoft accounts, some AWS IP addresses might be blocked by Microsoft because of that, if so, you might need to switch regions or to use a Proxy. To debug if your IP has been banned by Microsoft, use the `ping <ip>` and `traceroute <ip>` commands.**
+
+> **⚠️ WARNING: Related to the warning above, if you have issues logging with Microsoft and you're not banned, you may want to check the Security center on your account and approve the login from the VPS, this can be the case for some users.**
+
+> **ℹ️ NOTE: If you're not banned, sometimes fetching the keys can take some time, try giving it a minute or two, if it still hangs, hit some keys to refresh the screen, or try restarting and running again. If it still happens, use tmux instead of screen.**
 
 Register on AWS and enter all of your billing info and a phone number.
 Once you're done, you can continue to [Setting up the Amazon VPS](#setting-up-an-aws-vps).
@@ -630,7 +636,7 @@ Example with port:
 ssh -p 2233 root@142.26.73.14
 ```
 
-Once you've logged in you should see a linux prompt and a welcome message if there is one set by your provider.
+Once you've logged in you should see a Linux prompt and a welcome message if there is one set by your provider.
 
 ### Creating a new user
 
@@ -803,13 +809,17 @@ ssh -i MCC_Key mcc@3.71.108.69
 
 > **ℹ️ NOTE: If you've changed the `Port`, make sure you add a `-p <your port here>` option after the `-i <key>` option (eg. `ssh -i MCC_Key -p 8973 mcc@3.71.108.69`)!**
 
-If did everything correctly you should see a linux prompt and a welcome message if there is one on your provider.
+If did everything correctly you should see a Linux prompt and a welcome message if there is one on your provider.
 
 You can do `whoami` to see your username.
 
 Now you can install .NET Core 6 and MCC.
 
 ### Installing .NET Core 6
+
+> **ℹ️ NOTE: If your VPS has an ARM CPU, follow [this](#installing-net-on-arm) part of the documentation and then return to section after this one.**
+
+> **⚠️ WARNING: With newer versions of .NET Core 6 on Ubuntu 22.04 you might get the following error: `A fatal error occurred, the folder [/usr/share/dotnet/host/fxr] does not contain any version-numbered child folders`, if you get it, use [this solution](https://github.com/dotnet/sdk/issues/27082#issuecomment-1211143446)**
 
 Log in as the user you've created.
 
@@ -902,6 +912,8 @@ Now you can install the MCC:
 -   [Run using Docker](#using-docker) (Doesn't require the `screen` command)
 
 How to use the `screen` command?
+
+> **⚠️ WARNING: If you have issues with Screen command, like output not being properly formatted or program handing/freezing, try using tmux, click [here](https://www.youtube.com/watch?v=Yl7NFenTgIo) to learn how to use it.**
 
 To start a screen, type:
 

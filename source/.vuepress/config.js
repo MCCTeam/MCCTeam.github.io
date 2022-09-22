@@ -7,7 +7,7 @@ const { searchPlugin } = require("@vuepress/plugin-search");
 module.exports = {
     base: "/",
     title: "Minecraft Console Client",
-    description: require("../../package"),
+    description: 'Documentation website for the Minecraft Console Client (MCC)',
     head: [
         ["meta", { name: "theme-color", content: "#3eaf7c" }],
         ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],

@@ -8,7 +8,7 @@
 -   [Submitting a bug report or an idea/feature-request](#bugs-ideas-feature-requests)
 -   [Important notes on some features](#notes-on-some-features)
 -   [Credits](#credits)
--   [Disclamer](#disclaimer)
+-   [Disclaimer](#disclaimer)
 -   [License](#license)
 
 ## About
@@ -95,7 +95,7 @@ Navigate to the Issues section, search for a bug, idea or a feature using the se
 
 If you haven't found anything similar, go ahead and click on the `New issue` button, then choose what you want to do.
 
-If you're reporting a bug, pleace be descriptive as much as possible, try to explain how to re-create the bug, attack screenshots and logs, make sure that you have [`debugmessages`](configuration.me#debugmessages) set to `true` before sending a bug report or taking a screenshot.
+If you're reporting a bug, please be descriptive as much as possible, try to explain how to re-create the bug, attack screenshots and logs, make sure that you have [`debugmessages`](configuration.me#debugmessages) set to `true` before sending a bug report or taking a screenshot.
 
 ### Before submitting
 
@@ -106,17 +106,15 @@ If you're reporting a bug, pleace be descriptive as much as possible, try to exp
 
 ### Inventory, Terrain and Entity Handling
 
-These features do not work bellow Minecraft version `1.10`, and might not always be implemented in the latest version of the game, since they're often subjected to major changes by Mojang.
+Inventory handling is currently not supported in versions: `1.4.6 - 1.9`
+
+Terrain handling is currently not supported in versions: `1.4.6 - 1.6`
+
+Entity handling is currently not supported in versions: `1.4.6 - 1.9` (but `1.8` and `1.9` are being worked on, almost at the working state, only `EntityMetadata` packet remains to be fixed)
+
+There features might not always be implemented in the latest version of the game, since they're often subjected to major changes by Mojang, and we need some time to figure out what has changed and to implement the required changes.
 
 If there was a major game update, and the MCC hasn't been updated to support these features, if you're a programmer, feel free to contribute to the project.
-
-### Docker
-
-Currently in the main branch of the MCC, Docker does not work due to a bug with the [ConsoleInteractive](https://github.com/breadbyte/ConsoleInteractive/tree/8a3b9bcd03d73aa1d218e8cffb19248f3a487dd4) library on which the MCC relies on and the update to .NET 6 build process.
-
-This is being worked on in [#2112 - Fixed the Docker image](https://github.com/MCCTeam/Minecraft-Console-Client/pull/2112), so if you want to run docker, you can copy the contents of `Dockerfile` and `start-lates.sh` to your local copies of those files and test it out.
-
-> **ℹ️ NOTE: For some people it is working fine, for some it is not, we need people to test it out. Feel free to try it out**
 
 ## Credits
 

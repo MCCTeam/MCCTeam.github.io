@@ -6,7 +6,7 @@ By the default all of the configurations are stored in the configuration file na
 
 ## Notes
 
--   Some settings will be omited from the documentation due to them being not used often, we do not want documentation to be cluttered, we advise you to manually read through the configuration file, where every setting has a description next to it.
+-   Some settings will be omitted from the documentation due to them being not used often, we do not want documentation to be cluttered, we advise you to manually read through the configuration file, where every setting has a description next to it.
 -   Some plugin/bot related settings will be covered in the plugins section, not here
 
 ## Configuration File
@@ -15,7 +15,7 @@ By the default all of the configurations are stored in the configuration file na
 
 The configuration file uses the INI format, all of the options are key-value pairs separated into sections.
 
-Sections are defined in-between the square brackets (Example: `[This is a section]`), each occurance of this marks a beginning of a new section.
+Sections are defined in-between the square brackets (Example: `[This is a section]`), each occurrence of this marks a beginning of a new section.
 
 The settings/options are defined as key-value pairs, where the name of the setting and the value are separated by the equals sign `=` (Example: `some-setting=some value`).
 
@@ -112,7 +112,7 @@ Other-Setting=Some Value
     When connecting to 1.6+ servers, you will need a translation file to display properly some chat messages.
     These files describe how some messages should be printed depending on your preferred language.
 
-    The client will automatically load en_GB.lang from your Minecraft folder if Minecraft is installed on your computer, or download it from Mojang's servers. You may choose another language in the configuration file.
+    The client will automatically load `en_GB.lang` from your Minecraft folder if Minecraft is installed on your computer, or download it from Mojang's servers. You may choose another language in the configuration file.
 
 -   **Default:** `en_GB`
 
