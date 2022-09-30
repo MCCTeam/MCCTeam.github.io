@@ -539,19 +539,21 @@
 
 -   **Description:**
 
-    Automatically catch fish using a fishing rod
+    Automatically catch fish using a fishing rod.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) and [entityhandling](configuration.md#entityhandling) enabled in order for this bot to work.**
+    > **ℹ️ NOTE: You need to have [entityhandling](configuration.md#entityhandling) enabled in order for this bot to work.**
+
+    > **ℹ️ NOTE: To use the automatic rod switching and durability check feature, you need to enable [inventoryhandling](configuration.md#inventoryhandling).**
+
+    > **ℹ️ NOTE: Note: To adjust the position or angle after catching a fish, you need to enable [terrainandmovements](configuration.md#terrainandmovements).**
 
     > **ℹ️ NOTE: A fishing rod with **Mending enchantment** is strongly recommended.**
 
-    **Steps for using this bot:**
-
+    **Steps for using this bot (with the default setting)**
     1. Hold a fishing rod and aim towards the sea before login with MCC
     2. Make sure `AutoFish` is `enabled` in config file
     3. Login with MCC
-    4. Do `/useitem` and you should see "threw a fishing rod"
-    5. To stop fishing, do `/useitem` again
+    4. You will be able to see the log "Fishing will start in 3.0 second(s).".
 
 -   **Settings:**
 
@@ -571,9 +573,145 @@
 
     -   **Description:**
 
-        This setting is not documented in the code, presumably it prevents the bobber from de-spawning.
+        This option may be used in some special cases, so if it has not been modified before, leave the default value.
+
+        Available values: `true` and `false`.
 
     -   **Default:** `false`
+
+    #### `main_hand`
+
+    -   **Description:**
+
+        Whether to use the main hand or off hand to hold the rod.
+
+        Available values:
+        -   `true` (Main Hand)
+        -   `false` (Off Hand)
+
+    -   **Default:** `true`
+
+    #### `auto_start`
+
+    -   **Description:**
+
+        Whether to start fishing automatically after joining the game or switching worlds.
+
+        Available values: `true` and `false`.
+
+    -   **Default:** `true`
+
+    #### `cast_delay`
+
+    -   **Description:**
+
+        Wait how many seconds after successfully catching a fish before recasting the rod.
+
+        Available values: Floating-point number. (second)
+
+    -   **Default:** `0.4`
+
+    #### `fishing_delay`
+
+    -   **Description:**
+
+        Effective only when `auto_start = true`.
+
+        After joining the game or switching worlds, wait how many seconds before starting to fish automatically.
+
+        Available values: Floating-point number. (second)
+
+    -   **Default:** `3.0`
+
+    #### `fishing_timeout`
+
+    -   **Description:**
+
+        How long the fish bite is not detected is considered a timeout. It will re-cast after the timeout.
+
+        Available values: Floating-point number. (second)
+
+    -   **Default:** `300.0`
+
+    #### `durability_limit`
+
+    -   **Description:**
+
+        Will not use rods with less durability than this (full durability is 64).
+
+        Set to zero to disable this feature.
+
+        Available values: An integer number from `0` to `64`.
+
+    -   **Default:** `2`
+
+    #### `auto_rod_switch`
+
+    -   **Description:**
+
+        Switch to a new rod from inventory after the current rod is unavailable.
+
+        Available values: `true` and `false`.
+
+    -   **Default:** `true`
+
+    #### `stationary_threshold`
+
+    -   **Description:**
+
+        For each movement of the fishhook entity (entity movement packet), if the distance on both X and Z axes is below this threshold it will be considered as stationary.
+
+        This is to avoid being detected as a bite during the casting of the hook.
+
+        If set too high, it will cause the rod to be reeled in while casting.
+
+        If set too low, it will result in not detecting a bite.
+
+        Available values: Floating-point number.
+
+    -   **Default:** `0.001`
+
+    #### `hook_threshold`
+
+    -   **Description:**
+
+        For each movement of the fishhook entity (entity movement packet), if it is stationary (check `stationary_threshold`) and its movement on the Y-axis is greater than this threshold, it will be considered to have caught a fish.
+
+        If it is set too high, it will cause normal bites to be ignored.
+
+        If set too low, it can cause small fluctuations in the hook to be recognized as bites.
+
+        Available values: Floating-point number.
+
+    -   **Default:** `0.2`
+
+    #### `log_fishing_bobber`
+
+    -   **Description:**
+
+        When turned on it will be print a log every time a fishhook entity movement packet is received.
+
+        If auto-fishing does not work as expected, turn this option on to adjust `stationary_threshold` and `hook_threshold`, or create an issue and attach these logs.
+
+        Available values: `true` and `false`.
+
+    -   **Default:** `false`
+
+    #### `location`
+
+    -   **Description:**
+
+        Some plugins do not allow the player to fish in one place for a long time. This setting allows the player to change position/angle after each catch.
+
+        Please leave it blank if you do not need it.
+
+        Available values:
+        - Floating-point numbers can be used for both coordinates and angles
+        - Change the angle only (recommended): `yaw_1, pitch_1; yaw_2, pitch_2; ...; yaw_n, pitch_n`
+        - Change position only: `x1, y1, z1; x2, y2, z2; ...; xn, yn, zn`
+        - Change both angle and position: `x1, y1, z1, yaw_1, pitch_1; x2, y2, z2, yaw_2, pitch_2; ... ;xn, yn, zn, yaw_n, pitch_n`
+
+    -   **Default:** ` `
 
 ## Auto Eat
 
