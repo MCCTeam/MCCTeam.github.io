@@ -183,6 +183,69 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /animation <mainhand|offhand>
     ```
 
+### `bed`
+
+-   **Description:**
+
+    Allows you to make the bot sleep easily, all about sleeping in one command.
+
+-   **Usage:**
+
+    Basic usage: `bed leave|sleep <x> <y> <z>|sleep <radius>`
+
+-   **Examples:**
+
+    Leave a bed:
+
+    ```
+    /bed leave
+    ```
+
+    Sleep in a bed on 124 84 76:
+
+    ```
+    /bed sleep 124 84 76
+    ```
+
+    Sleep in a bed using relative coordinates:
+
+    ```
+    /bed sleep ~ ~ ~-2
+    ```
+
+    Automatically find a bed in radius of 50 blocks and sleep in it:
+
+    ```
+    /bed sleep 50
+    ```
+
+### `bots`
+
+-   **Description:**
+
+    Allows you to list and unload a specific bot or all bots.
+    Useful when debugging and developing scripts.
+
+-   **Usage:**
+
+    ```
+    /bots <list|unload <bot name|all>>
+    ```
+
+-   **Examples:**
+
+    Unload a bot called CustomScript
+
+    ```
+    /bots unload CustomScript
+    ```
+
+    Unload all bots
+
+    ```
+    /bots unload all
+    ```
+
 ### `changeslot`
 
 -   **Description:**
@@ -233,6 +296,12 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     ```
     /dig 127 63 12
+    ```
+
+    Using relative coordinates:
+
+    ```
+    /dig ~ ~-1 ~2
     ```
 
 ### `dropitem`
@@ -376,6 +445,20 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     ```
 
     > **ℹ️ NOTE: `[account]` is an account alias defined in accounts file, for more info check out [accountlist](configuration.html#accountlist)**
+
+### `reload`
+
+-   **Description:**
+
+    Reloads settings from MinecraftClient.ini and Chat Bots.
+
+    > **ℹ️ NOTE: Some settings won't be reloaded since they are used before the client initialization. Also, settings provided by the command line paramteres will be overriden. This also does not reload the ReplayBot due to technical limitations.**
+
+-   **Usage:**
+
+    ```
+    /reload
+    ```
 
 ### `connect`
 
@@ -692,7 +775,7 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     Basic usage:
 
     ```
-    /inventory <player|container|<id>> <action> [action parameters]
+    /inventory <player|container|<id>> <action> [action parameters] | /inventory <inventories/i> | /inventory <search/s> <item type> [amount]
     ```
 
     > **ℹ️ NOTE: player and container can be simplified with p and c accordingly**
@@ -743,6 +826,18 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     ```
     /inventory creativedelete <slot id>
+    ```
+
+    Show all available inventories:
+
+    ```
+    /inventory inventories
+    ```
+
+    Search for an item of specified type in available inventories:
+
+    ```
+    /inventory search <item type>
     ```
 
 -   **Examples:**
@@ -801,6 +896,12 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     ```
     /inventory creativedelete 36
+    ```
+
+    Search for 10 Slime Blocks in available inventories:
+
+    ```
+    /inventory s SlimeBlock 10
     ```
 
 ### `debug`

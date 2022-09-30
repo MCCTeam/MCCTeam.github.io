@@ -28,6 +28,7 @@
 -   [Auto Drop](#auto-drop)
 -   [Replay Mod](#replay-mod)
 -   [Follow Player](#follow-player)
+-   [Map](#map)
 
 ## Alerts
 
@@ -47,7 +48,7 @@
 
         This setting specifies if the Alerts Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -85,7 +86,7 @@
 
 -   **Description:**
 
-    Make MCC send a command on a regular basis to avoid automatic AFK disconnection.
+    Send a command and sneak on a regular or random basis or make the bot walk around randomly to avoid automatic AFK disconnection.
 
 -   **Settings:**
 
@@ -97,7 +98,7 @@
 
         This setting specifies if the Anti AFK Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -108,6 +109,10 @@
         Delay in ticks.
         **10 ticks = 1 second**
 
+        If you want a random delay, you can use a range notation: `delay=<min seconds>-<max seconds>`
+
+        Example: `delay=10-100` (_This will use a random delay between 10 and 100 seconds._)
+
     -   **Default:** `600`
 
     #### `command`
@@ -117,6 +122,40 @@
         Command to be sent.
 
     -   **Default:** `/ping`
+
+    #### `use_terrain_handling`
+
+    -   **Description:**
+
+        Should the bot use [Terrain Handling](configuration.md#terrainandmovements) instead of the command method.
+
+        This will enable your bot to randomly move about, thus a better anti afk effect.
+
+        > **ℹ️ NOTE: You need to enable [Terrain Handling](configuration.md#terrainandmovements) in the settings and it's recommended to put the bot into an enclosure not to wander off. (Recommended size 5x5x5)**
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Default:** `false`
+
+    #### `walk_range`
+
+    -   **Description:**
+
+        The range which bot will use to walk around (-X to +X and -Z to +Z, Y is not used).
+
+        The bigger the slower the bot might be at calculating the path, recommended 2-5.
+
+    -   **Default:** `5`
+
+    #### `walk_retries`
+
+    -   **Description:**
+
+        This is the number of times the bot will try to pathfind, if he can't find a valid path for 20 times, he will use the command method.
+
+        > **ℹ️ NOTE: This happens on each trigger of the task, so it does not pernamently switch to alternative method.**
+
+    -   **Default:** `20`
 
 ## Auto Relog
 
@@ -134,7 +173,7 @@
 
         This setting specifies if the Auto Relog Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -196,7 +235,7 @@
 
         This setting specifies if the Chat Log Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -206,7 +245,7 @@
 
         This setting specifies if the Chat Log should prepend timestamps to the logged messages.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `true`
 
@@ -264,7 +303,7 @@
 
         This setting specifies if the Script Scheduler Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -310,6 +349,10 @@
 
             An interval in seconds, you can only have a single interval defined within a single task.
 
+            If you want a random interval, you can use a range notation: `timeInterval=<min seconds>-<max seconds>`
+
+            Example: `timeInterval=10-100` (_This will use a random interval between 10 and 100 seconds._)
+
         -   `action`
 
             Specifies an internal command to be run when the task triggers.
@@ -344,7 +387,7 @@
 
         This setting specifies if the Hangman Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -354,7 +397,7 @@
 
         This setting specifies if the Hangman Chat Bot should use English.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `true`
 
@@ -400,7 +443,7 @@
 
         This setting specifies if the Remote Control Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -410,7 +453,7 @@
 
         This setting specifies if the Remote Control Chat Bot should automatically accept teleport requests.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `true`
 
@@ -420,7 +463,7 @@
 
         This setting specifies if the Remote Control Chat Bot should automatically accept teleport requests from everyone.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -444,7 +487,7 @@
 
         This setting specifies if the Auto Respond Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -494,7 +537,7 @@
 
         This setting specifies if the Auto Attack Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -550,6 +593,7 @@
     > **ℹ️ NOTE: A fishing rod with **Mending enchantment** is strongly recommended.**
 
     **Steps for using this bot (with the default setting)**
+
     1. Hold a fishing rod and aim towards the sea before login with MCC
     2. Make sure `AutoFish` is `enabled` in config file
     3. Login with MCC
@@ -565,7 +609,7 @@
 
         This setting specifies if the Auto Fishing Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -575,7 +619,7 @@
 
         This option may be used in some special cases, so if it has not been modified before, leave the default value.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -586,6 +630,7 @@
         Whether to use the main hand or off hand to hold the rod.
 
         Available values:
+
         -   `true` (Main Hand)
         -   `false` (Off Hand)
 
@@ -597,7 +642,7 @@
 
         Whether to start fishing automatically after joining the game or switching worlds.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `true`
 
@@ -651,7 +696,7 @@
 
         Switch to a new rod from inventory after the current rod is unavailable.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `true`
 
@@ -693,7 +738,7 @@
 
         If auto-fishing does not work as expected, turn this option on to adjust `stationary_threshold` and `hook_threshold`, or create an issue and attach these logs.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -706,10 +751,11 @@
         Please leave it blank if you do not need it.
 
         Available values:
-        - Floating-point numbers can be used for both coordinates and angles
-        - Change the angle only (recommended): `yaw_1, pitch_1; yaw_2, pitch_2; ...; yaw_n, pitch_n`
-        - Change position only: `x1, y1, z1; x2, y2, z2; ...; xn, yn, zn`
-        - Change both angle and position: `x1, y1, z1, yaw_1, pitch_1; x2, y2, z2, yaw_2, pitch_2; ... ;xn, yn, zn, yaw_n, pitch_n`
+
+        -   Floating-point numbers can be used for both coordinates and angles
+        -   Change the angle only (recommended): `yaw_1, pitch_1; yaw_2, pitch_2; ...; yaw_n, pitch_n`
+        -   Change position only: `x1, y1, z1; x2, y2, z2; ...; xn, yn, zn`
+        -   Change both angle and position: `x1, y1, z1, yaw_1, pitch_1; x2, y2, z2, yaw_2, pitch_2; ... ;xn, yn, zn, yaw_n, pitch_n`
 
     -   **Default:** ` `
 
@@ -731,7 +777,7 @@
 
         This setting specifies if the Auto Eat Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -871,7 +917,7 @@
 
         This setting specifies if the Auto Craft Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -943,7 +989,7 @@
 
         This setting specifies if the Mailer Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -975,7 +1021,7 @@
 
         This setting specifies if the Auto Drop Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -1035,7 +1081,7 @@
 
         This setting specifies if the Replay Mod Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -1069,7 +1115,7 @@
 
         This setting specifies if the Follow Player Chat Bot is enabled.
 
-        Available values: `true` and `false`.
+    -   **Available values:** `true` and `false`.
 
     -   **Default:** `false`
 
@@ -1090,3 +1136,93 @@
         Do not follow the player if he is in the range of `X` blocks (prevents the bot from pushing a player in an infinite loop).
 
     -   **Default:** `3`
+
+## Map
+
+-   **Description:**
+
+    This Chat Bot allows you to render items maps into `.jpg` images.
+
+    This is useful for solving captchas on servers which require it, or saving the map art into an image.
+
+    The maps are **rendered** into `Rendered_Maps` folder.
+
+-   **Commands:**
+
+    When enabled will add the `/maps` command.
+
+    **Usage**:
+
+    ```
+    /maps <list/render <id>> | maps <l/r <id>>
+    ```
+
+-   **Settings:**
+
+    **Section:** **`Map`**
+
+    #### `enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Map Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Default:** `false`
+
+    #### `resize_map`
+
+    -   **Description:**
+
+        This setting specifies if the Map Chat Bot should resize the image.
+
+        The default map size is `128x128`.
+
+        > **ℹ️ NOTE: The bigger the size, the less is the quality.**
+
+        > **ℹ️ NOTE: For upscaling your maps you could use (getting a bit better quality): https://deepai.org/machine-learning-model/torch-srgan**
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Default:** `false`
+
+    #### `resize_to`
+
+    -   **Description:**
+
+        Which size the map should be resized to if `resize_map` is `true`.
+
+    -   **Default:** `256`
+
+    #### `auto_render_on_update`
+
+    -   **Description:**
+
+        This setting specifies if the Map Chat Bot should automatically render maps as they're received from the servers.
+
+        > **⚠️WARNING: On some versions older than 1.17 this could cause some performance issue on older hardware if there a lot of maps being rendered, since map updates are sent multiple times a second. Be careful.**
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Default:** `false`
+
+    #### `delete_rendered_on_unload`
+
+    -   **Description:**
+
+        This setting specifies if the Map Chat Bot should automatically delete rendered maps when un-loaded or reloaded.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Default:** `true`
+
+    #### `notify_on_first_update`
+
+    -   **Description:**
+
+        This setting specifies if the Map Chat Bot should notify you when it got a map from the server for the first time.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Default:** `false`

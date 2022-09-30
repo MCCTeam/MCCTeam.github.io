@@ -513,7 +513,7 @@ Some of the reliable and cheap hosting providers (sorted for price/performance):
 
     **Minimum price**: `4.51 EUR / month`
 
--   [Digital Oceal](https://www.digitalocean.com/pricing/droplets)
+-   [Digital Ocean](https://www.digitalocean.com/pricing/droplets)
 
     **Minimum price**: `4 EUR / month`
 
