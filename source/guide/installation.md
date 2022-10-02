@@ -36,16 +36,10 @@ You can download a compiled binary file of the latest build from our Releases se
 
 Requirements:
 
--   [Git](https://www.git-scm.com/) _(Optional: Install only if you want to clone the repository with Git)_
+-   [Git](https://www.git-scm.com/)
 -   [.NET 6.0 or new-er](https://dotnet.microsoft.com/en-us/download) or [Visual Studio](https://visualstudio.microsoft.com/) configured for C# app development
 
-#### Downloading the source code as a ZIP
-
-Simply download the [source code zip archive](https://github.com/MCCTeam/Minecraft-Console-Client/archive/master.zip) and extract it wherever you like.
-
 #### Cloning using Git
-
-If you do not want to download the ZIP archive.
 
 Install [Git](https://www.git-scm.com/)
 
@@ -89,7 +83,7 @@ If the build has succeeded, the compiled binary `MinecraftClient.exe` will be in
 
 Requirements:
 
--   Git _(Optional: Install only if you want to clone the repository with Git)_
+-   Git
 
     -   Linux:
 
@@ -101,10 +95,6 @@ Requirements:
 
     -   [Install .NET on Linux](https://docs.microsoft.com/en-us/dotnet/core/install/linux)
     -   [Install .NET on macOS](https://docs.microsoft.com/en-us/dotnet/core/install/macos)
-
-#### Downloading the source code as a ZIP
-
-Simply download the [source code zip archive](https://github.com/MCCTeam/Minecraft-Console-Client/archive/master.zip) and extract it wherever you like.
 
 #### Cloning using Git
 
