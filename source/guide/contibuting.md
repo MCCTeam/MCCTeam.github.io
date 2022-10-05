@@ -6,8 +6,9 @@ For now you can use our article from the [Git Hub repository Wiki](https://githu
 
 ## Translations
 
-MCC now has translations in the following languages (Alphabetical order) :
+MCC now supports the following languages (Alphabetical order) :
   * `de.ini` : Deutsch - German
+  * **`en.ini` : English - English**
   * `fr.ini` : Français (France) - 	French
   * `ru.ini` : Русский (Russkiy) - Russian
   * `vi.ini` : Tiếng Việt (Việt Nam) - Vietnamese
