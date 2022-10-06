@@ -9,7 +9,7 @@ For now you can use our article from the [Git Hub repository Wiki](https://githu
 MCC now supports the following languages (Alphabetical order) :
   * `de.ini` : Deutsch - German
   * **`en.ini` : English - English**
-  * `fr.ini` : Français (France) - 	French
+  * `fr.ini` : Français (France) - French
   * `ru.ini` : Русский (Russkiy) - Russian
   * `vi.ini` : Tiếng Việt (Việt Nam) - Vietnamese
   * `zh-Hans.ini` : 简体中文（中国大陆） - Chinese Simplified (China; Mandarin)
@@ -59,6 +59,16 @@ MCC now supports the following languages (Alphabetical order) :
 2. Compare `en.ini` and `xx.ini` and update outdated or non-existent entries in `xx.ini`.
 
 3. Once you finished the translation work, submit a pull request or send us the file through an [Issue](https://github.com/MCCTeam/Minecraft-Console-Client/issues) in case you are not familiar with Git.
+
+### Translate README.md
+
+1. Get the English version of the README.md from [here](https://raw.githubusercontent.com/MCCTeam/Minecraft-Console-Client/master/README.md).
+
+2. See `Add new translation -> 1.` for the target language code. Assume it is `xx`.
+
+3. Complete the translation according to the English README.md and name the translated version as `README-xx.md`.
+
+4. In the English README, above the "About" section, add the name of the language and a hyperlink to `README-xx.md`.
 
 ## Contributors
 
