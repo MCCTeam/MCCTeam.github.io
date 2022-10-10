@@ -8,6 +8,8 @@
 
 **Minecraft Console Client** has a number of default built in Chat Bots (Scripts/Plugins) which allow for various types of automation.
 
+> **⚠️ IMPORTANT WARNING: Recently we have changed the configuration format from INI to TOML, this part of the documentation has not been updated, for the time being please refer to the `MinecraftClient.ini` for setting names, the descriptions and options should be up to date in most cases, but not guaranteed.**
+
 > **ℹ️ NOTE: Settings refer to settings in the [configuration file](configuration.md)**
 
 ## List of built-in Chat Bots
