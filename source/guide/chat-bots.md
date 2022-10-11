@@ -8,7 +8,7 @@
 
 **Minecraft Console Client** has a number of default built in Chat Bots (Scripts/Plugins) which allow for various types of automation.
 
-> **⚠️ IMPORTANT WARNING: Recently we have changed the configuration format from INI to TOML, this part of the documentation has not been updated, for the time being please refer to the `MinecraftClient.ini` for setting names, the descriptions and options should be up to date in most cases, but not guaranteed.**
+> **⚠️ IMPORTANT WARNING: Recently we have changed the configuration format from INI to TOML, this part of the documentation has only been partially updated, it's work in progress, for the time being please refer to the `MinecraftClient.ini` for setting names, the descriptions and options should be up to date in most cases, but not guaranteed.**
 
 > **ℹ️ NOTE: Settings refer to settings in the [configuration file](configuration.md)**
 
@@ -16,13 +16,14 @@
 
 -   [Alerts](#alerts)
 -   [Anti AFK](#anti-afk)
+-   [Auto Attack](#auto-attack)
+-   [Auto Dig](#auto-dig)
 -   [Auto Relog](#auto-relog)
 -   [Chat Log](#chat-log)
 -   [Script Scheduler](#script-scheduler)
 -   [Hangman](#hangman)
 -   [Remote Control](#remote-control)
 -   [Auto Respond](#auto-respond)
--   [Auto Attack](#auto-attack)
 -   [Auto Fishing](#auto-fishing)
 -   [Auto Eat](#auto-eat)
 -   [Auto Craft](#auto-craft)
@@ -42,9 +43,9 @@
 
 -   **Settings:**
 
-    **Section:** **`Alerts`**
+    **Section:** **`ChatBot.Alerts`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -52,29 +53,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `alertsfile`
-
-    -   **Description:**
-
-        This setting specifies the path to the file which contains a list of strings/words that you want to be alerted on. Each word is written in a new line.
-
-        > **ℹ️ NOTE: This file is not create by default, you need to create it yourself.**
-
-    -   **Default:** `alerts.txt`
-
-    #### `excludesfile`
-
-    -   **Description:**
-
-        This setting specifies the path to the file which contains a list of strings/words that you **do not want to be alerted with**. Each word is written in a new line.
-
-        > **ℹ️ NOTE: This file is not create by default, you need to create it yourself.**
-
-    -   **Default:** `alerts-exclude.txt`
-
-    #### `beeponalert`
+    #### `Beep_Enabled`
 
     -   **Description:**
 
@@ -82,7 +65,95 @@
 
         > **ℹ️ NOTE: This might not work depending on your system or a console (terminal emulator).**
 
+    -   **Type:** `boolean`
+
     -   **Default:** `true`
+
+    #### `Trigger_By_Words`
+
+    -   **Description:**
+
+        Triggers an alert after receiving a specified keyword.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Trigger_By_Rain`
+
+    -   **Description:**
+
+        Trigger alerts when it rains and when it stops.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Trigger_By_Thunderstorm`
+
+    -   **Description:**
+
+        Triggers alerts at the beginning and end of thunderstorms.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Log_To_File`
+
+    -   **Description:**
+
+        Should the Alerts Chat Bot log alerts into a file.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Log_File`
+
+    -   **Description:**
+
+        A path to the file where alerts will be logged if `Log_To_File` is set to `true`.
+
+    -   **Type:** `string`
+
+    -   **Default:** `"alerts-log.txt"`
+
+    #### `Matches`
+
+    -   **Description:**
+
+        List of words/strings to alert you on.
+
+    -   **Type:** `array of strings`
+
+    -   **Example**:
+
+        ```toml
+        Matches = [ "Yourname", " whispers ", "-> me", "admin", ".com", ]
+        ```
+
+    #### `Excludes`
+
+    -   **Description:**
+
+        List of words/strings to NOT alert you on.
+
+    -   **Type:** `array of strings`
+
+    -   **Example**:
+
+        ```toml
+        Excludes = [ "myserver.com", "Yourname>:", "Player Yourname", "Yourname joined", "Yourname left", "[Lockette] (Admin)", " Yourname:", "Yourname is", ]
+        ```
 
 ## Anti AFK
 
@@ -92,9 +163,9 @@
 
 -   **Settings:**
 
-    **Section:** **`AntiAFK`**
+    **Section:** **`ChatBot.AntiAFK`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -102,30 +173,46 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `delay`
+    #### `Delay`
 
     -   **Description:**
 
-        Delay in ticks.
-        **10 ticks = 1 second**
+        The time interval for execution in seconds.
 
-        If you want a random delay, you can use a range notation: `delay=<min seconds>-<max seconds>`
+        If the `min` and `max` are the same, the time interval will be consistent.
+        However if they are not the same, the plugin will choose a random number between `min` and `max`, this is useful if you want to have a random interval to trick anti afk plugins.
 
-        Example: `delay=10-100` (_This will use a random delay between 10 and 100 seconds._)
+    -   **Format:** `{ min = <seconds>, max = <seconds> }`
 
-    -   **Default:** `600`
+    -   **Type:** `inline table with min and max fields which have type of double`
 
-    #### `command`
+    -   **Default:** `{ min = 60.0, max = 60.0 }`
+
+    #### `Command`
 
     -   **Description:**
 
         Command to be sent.
 
+    -   **Type:** `string`
+
     -   **Default:** `/ping`
 
-    #### `use_terrain_handling`
+    #### `Use_Sneak`
+
+    -   **Description:**
+
+        Sometimes you can trick plugins with sneaking or command might not be enough, enable it if you need it.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Use_Terrain_Handling`
 
     -   **Description:**
 
@@ -137,9 +224,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `walk_range`
+    #### `Walk_Range`
 
     -   **Description:**
 
@@ -149,15 +238,325 @@
 
     -   **Default:** `5`
 
-    #### `walk_retries`
+    #### `Walk_Retries`
 
     -   **Description:**
 
         This is the number of times the bot will try to pathfind, if he can't find a valid path for 20 times, he will use the command method.
 
-        > **ℹ️ NOTE: This happens on each trigger of the task, so it does not pernamently switch to alternative method.**
+        > **ℹ️ NOTE: This happens on each trigger of the task, so it does not permanently switch to alternative method.**
 
     -   **Default:** `20`
+
+## Auto Attack
+
+-   **Description:**
+
+    Automatically attacks mobs around you, you can configure it to attack both hostile and passive mobs and only certain mobs or all mobs.
+
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) and [entityhandling](configuration.md#entityhandling) enabled in order for this bot to work.**
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.AutoAttack`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Auto Attack Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Mode`
+
+    -   **Description:**
+
+        Available values:
+
+        -   `single`
+
+            Target one mob per attack.
+
+        -   `multi`
+
+            Target all mobs in range per attack.
+
+    -   **Type:** `string`
+
+    -   **Default:** `single`
+
+    #### `Priority`
+
+    -   **Description:**
+
+        Available values:
+
+        -   `health` (prioritize targeting mobs with lower health)
+        -   `distance` (prioritize targeting mobs closer to you)
+
+    -   **Type:** `string`
+
+    -   **Default:** `distance`
+
+    #### `Cooldown_Time`
+
+    -   **Description:**
+
+        How long to wait between each attack in seconds.
+
+        To enable it, set `Custom` (boolean) to `true` and change `value` (double) to your preferred value (eg. `1.5`).
+
+        By the default, this is disabled and the MCC calculates it based on the server TPS.
+
+    -   **Format:** `Cooldown_Time = { Custom = <is enabled (true|false)>, value = <seconds (double)> }`
+
+    -   **Type:** `inline table`
+
+    -   **Example:** `Cooldown_Time = { Custom = true, value = 1.5 }`
+
+    -   **Default:** `{ Custom = false, value = 1.0 }`
+
+    #### `Interaction`
+
+    -   **Description:**
+
+        Available values:
+
+        -   `Attack`
+
+            Just attack a mob. (Default)
+
+        -   `Interact`
+
+            Just interact with a mob.
+
+        -   `InteractAt`
+
+            Interact with and attack a mob.
+
+    -   **Type:** `string`
+
+    -   **Default:** `Attack`
+
+    #### `Attack_Hostile`
+
+    -   **Description:**
+
+        This setting specifies if the Auto Attack Chat Bot should attack hostile mobs.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `true`
+
+    #### `Attack_Passive`
+
+    -   **Description:**
+
+        This setting specifies if the Auto Attack Chat Bot should attack passive mobs.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `List_Mode`
+
+    -   **Description:**
+
+        This setting specifies which mode of the list should Auto Attack Chat Bot use for `Entites_List` setting.
+
+    -   **Available values:** `whitelist` (only attack specified mobs) and `blacklist` (do not attack specified mobs).
+
+    -   **Type:** `string`
+
+    -   **Default:** `whitelist`
+
+    #### `Entites_List`
+
+    -   **Description:**
+
+        A list of mobs which are either whitelisted or blacklisted, the mode is set in `List_Mode` setting.
+
+        You can find the full list of mobs [here](https://bit.ly/3Rg68lp).
+
+    -   **Format:** `["<entity type>", "<entity type>", ...]`
+
+    -   **Type:** `array of strings`
+
+    -   **Example:** `[ "Spider", "Skeleton", "Pig", ]`
+
+    -   **Default:** `[ "Zombie", "Cow", ]`
+
+## Auto Dig
+
+-   **Description:**
+
+    Automatically digs block on specified locations.
+
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) and [terrainandmovements](configuration.md#terrainandmovements) enabled in order for this bot to work.**
+
+    > **ℹ️ NOTE: Since MCC does not yet support accurate calculation of the collision volume of blocks, all blocks are considered as complete cubes when obtaining the position of the lookahead.**
+
+-   **Commands:**
+
+    -   `/digbot start` - Starts the digging
+
+    -   `/digbot stop` - Stops the digging
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.AutoDig`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Auto Dig Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Mode`
+
+    -   **Description:**
+
+        This setting specifies in which mode the Auto Dig Chat Bot will operate.
+
+    -   **Available values:**
+
+    -   `lookat`
+
+        Digs the block that the bot is looking at.
+
+    -   `fixedpos`
+
+        Digs the block in a fixed location/position/coordinate.
+
+    -   `both`
+
+        Does both options from above at the same time.
+
+    -   **Type:** `string`
+
+    -   **Default:** `lookat`
+
+    #### `Locations`
+
+    -   **Description:**
+
+        This setting specifies an array/list of locations which the bot will dig out.
+
+    -   **Type/Format:**
+
+        The type of this setting is an array of inline table which has the following sub-options/settings:
+
+        -   `x` - X coordinate, the type is `double` (eg. `123.45`)
+
+        -   `y` - Y coordinate, the type is `double` (eg. `64.0`)
+
+        -   `z` - Z coordinate, the type is `double` (eg. `234.5`)
+
+    -   **Full example:**
+
+        ```toml
+        Locations = [
+           { x = 123.5, y = 64.0, z = 234.5 },
+           { x = 124.5, y = 63.0, z = 235.5 },
+        ]
+        ```
+
+    #### `Location_Order`
+
+    -   **Description:**
+
+        This setting specifies in which order the Auto Dig Chat Bot will dig blocks.
+
+    -   **Available values:**
+
+        -   `distance`
+
+            Digs the block closest to the bot.
+
+        -   `index`
+
+            Digs blocks in the list order.
+
+    -   **Type:** `string`
+
+    -   **Default:** `distance`
+
+    #### `Auto_Start_Delay`
+
+    -   **Description:**
+
+        How many seconds to wait after entering the game to start digging automatically.
+
+        Set to `-1` to disable the automatic start.
+
+    -   **Type:** `float`
+
+    -   **Default:** `3.0`
+
+    #### `Dig_Timeout`
+
+    -   **Description:**
+
+        How many seconds to wait if there are no blocks before stop trying to find and mine blocks.
+
+    -   **Type:** `float`
+
+    -   **Default:** `60.0`
+
+    #### `Log_Block_Dig`
+
+    -   **Description:**
+
+        This setting specifies whether to output logs in to the console when digging blocks.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `true`
+
+    #### `List_Type`
+
+    -   **Description:**
+
+        This setting specifies the mode at which the `Blocks` setting is operating.
+
+    -   **Available values:** `whitelist` (only dig specified blocks) and `blacklist` (do not dig specified blocks).
+
+    -   **Type:** `string`
+
+    -   **Default:** `whitelist`
+
+    #### `Blocks`
+
+    -   **Description:**
+
+        This setting specifies the list of blocks which either should not should not be dug out.
+
+        **The list of block types can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Mapping/Material.cs).**
+
+    -   **Format:** `[ "<block type>", "<block type>", ...]`
+
+    -   **Type:** `array of strings`
+
+    -   **Example:** `Blocks = [ "DiamondOre", "RedstoneOre", "EmeraldOre", "RedstoneBlock" ]`
+
+    -   **Default:** `[ "Cobblestone", "Stone", ]`
 
 ## Auto Relog
 
@@ -167,9 +566,9 @@
 
 -   **Settings:**
 
-    **Section:** **`AutoRelog`**
+    **Section:** **`ChatBot.AutoRelog`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -177,19 +576,28 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `delay`
+    #### `Delay`
 
     -   **Description:**
 
-        Delay in seconds.
+        The delay time before joining the server.
 
-        > **ℹ️ NOTE: You can use `X-Y` for a random number of seconds between `X` and `Y`, eg. `10-60` will be a random number between 10 and 60.**
+        If the `min` and `max` are the same, the time will be consistent, however, if you want a random time, you can set `min` and `max` to different values to get a random time.
+        The time format is in seconds, and the type is double. (eg. `37.0`)
 
-    -   **Default:** `10`
+    -   **Format:** `{ min = <seconds (double)>, max = <seconds (double)> }`
 
-    #### `retries`
+    -   **Type:** `inline table`
+
+    -   **Example:** `{ min = 8.0, max = 60.0 }`
+
+    -   **Default:** `{ min = 3.0, max = 3.0 }`
+
+    #### `Retries`
 
     -   **Description:**
 
@@ -199,27 +607,29 @@
 
         > **ℹ️ NOTE: This might get you banned by the server owners.**
 
-    -   **Default:** `/-1`
+    -   **Default:** `-1`
 
-    #### `kickmessagesfile`
-
-    -   **Description:**
-
-        This settings specifies a path to the file with list of keywords that if found in kick messages will trigger Auto Relog chat bot.
-
-        Each word is written on a new line.
-
-        > **ℹ️ NOTE: This file is not create by default, you need to create it yourself.**
-
-    -   **Default:** `kickmessages.txt`
-
-    #### `ignorekickmessage`
+    #### `Ignore_Kick_Message`
 
     -   **Description:**
 
-        This settings specifies if the `kickmessagesfile` setting will be ignored, if set to `true` it will auto relog regardless of the kick messages.
+        This settings specifies if the `Kick_Messages` setting will be ignored, if set to `true` it will auto relog regardless of the kick messages.
 
-    -   **Default:** `true`
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Kick_Messages`
+
+    -   **Description:**
+
+        A list of words which should trigger the Auto Reconnect Chat Bot.
+
+    -   **Format:** `[ "<keyword>", "<keyword>", ... ]`
+
+    -   **Type:** `array of strings`
+
+    -   **Default:** `[ "Connection has been lost", "Server is restarting", "Server is full", "Too Many people", ]`
 
 ## Chat Log
 
@@ -229,9 +639,9 @@
 
 -   **Settings:**
 
-    **Section:** **`ChatLog`**
+    **Section:** **`ChatBot.ChatLog`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -241,7 +651,7 @@
 
     -   **Default:** `false`
 
-    #### `timestamps`
+    #### `Add_DateTime`
 
     -   **Description:**
 
@@ -251,7 +661,15 @@
 
     -   **Default:** `true`
 
-    #### `filter`
+    #### `Log_File`
+
+    -   **Description:**
+
+        This setting specifies the name of the Chat Log file that will be created.
+
+    -   **Default:** `chatlog-%username%-%serverip%.txt`
+
+    #### `Filter`
 
     -   **Description:**
 
@@ -281,92 +699,6 @@
 
     -   **Default:** `messages`
 
-    #### `logfile`
-
-    -   **Description:**
-
-        This setting specifies the name of the Chat Log file that will be created.
-
-    -   **Default:** `chatlog-%username%-%serverip%.txt`
-
-## Script Scheduler
-
--   **Description:**
-
-    Schedule commands and scripts to launch on various events such as server join, date/time or time interval.
-
--   **Settings:**
-
-    **Section:** **`ScriptScheduler`**
-
-    #### `enabled`
-
-    -   **Description:**
-
-        This setting specifies if the Script Scheduler Chat Bot is enabled.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Default:** `false`
-
-    #### `tasksfile`
-
-    -   **Description:**
-
-        This setting specifies the path to the file which will hold defined tasks.
-
-        The file uses the `INI` format, you can read on the format [here](configuration.md#format) if you're not familiar with it.
-
-        Each task is defined as a section: `[Task]` and can have the following settings:
-
-        -   `triggerOnFirstLogin`
-
-            Will trigger the task when you login the first time.
-
-            Available values: `true` and `false`
-
-        -   `triggerOnLogin`
-
-            Will trigger the task each time you login.
-
-            Available values: `true` and `false`
-
-        -   `triggerOnTime`
-
-            This will enable the task to trigger at exact time you have specified with `timeValue`, you can have multiple times defined within a single task.
-
-            Available values: `true` and `false`
-
-        -   `timeValue`
-
-            The time in format `hour:minute` (eg. `6:14`) which will trigged the task when it's that time if `triggerOnTime` is set to `true` (you can have multiple times defined within a single task).
-
-        -   `triggerOnInterval`
-
-            This will enable the task to trigger at certain interval which you've defined in `timeInterval`.
-
-            Available values: `true` and `false`
-
-        -   `timeInterval`
-
-            An interval in seconds, you can only have a single interval defined within a single task.
-
-            If you want a random interval, you can use a range notation: `timeInterval=<min seconds>-<max seconds>`
-
-            Example: `timeInterval=10-100` (_This will use a random interval between 10 and 100 seconds._)
-
-        -   `action`
-
-            Specifies an internal command to be run when the task triggers.
-
-            **Example**: `script my-script.txt`
-
-        **Check out the examples with detailed explanations in [sample-tasks.ini](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/sample-tasks.ini)**
-
-        > **ℹ️ NOTE: This file is not created by default, we recommend making a clone of the [`sample-tasks.ini`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/sample-tasks.ini) and changing it according to your needs.**
-
-    -   **Default:** `tasks.ini`
-
 ## Hangman
 
 -   **Description:**
@@ -381,9 +713,9 @@
 
 -   **Settings:**
 
-    **Section:** **`Hangman`**
+    **Section:** **`ChatBot.HangmanGame`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -393,7 +725,7 @@
 
     -   **Default:** `false`
 
-    #### `english`
+    #### `English`
 
     -   **Description:**
 
@@ -403,7 +735,7 @@
 
     -   **Default:** `true`
 
-    #### `wordsfile`
+    #### `FileWords_EN`
 
     -   **Description:**
 
@@ -414,7 +746,7 @@
     -   **Default:** `hangman-en.txt`
     -   **Example**: [`words-en.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-en.txt)
 
-    #### `fichiermots`
+    #### `FileWords_FR`
 
     -   **Description:**
 
@@ -437,9 +769,9 @@
 
 -   **Settings:**
 
-    **Section:** **`RemoteControl`**
+    **Section:** **`ChatBot.RemoteControl`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -447,9 +779,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `autotpaccept`
+    #### `AutoTpaccept`
 
     -   **Description:**
 
@@ -457,15 +791,19 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `true`
 
-    #### `tpaccepteveryone`
+    #### `AutoTpaccept_Everyone`
 
     -   **Description:**
 
         This setting specifies if the Remote Control Chat Bot should automatically accept teleport requests from everyone.
 
     -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
 
     -   **Default:** `false`
 
@@ -481,9 +819,9 @@
 
 -   **Settings:**
 
-    **Section:** **`AutoRespond`**
+    **Section:** **`ChatBot.AutoRespond`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -491,9 +829,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `matchesfile`
+    #### `Matches_File`
 
     -   **Description:**
 
@@ -505,9 +845,11 @@
 
         > **ℹ️ NOTE: This file is not created by default, we recommend making a clone of the [`sample-matches.ini`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/sample-matches.ini) and changing it according to your needs.**
 
+    -   **Type:** `string`
+
     -   **Default:** `matches.ini`
 
-    #### `matchcolors`
+    #### `Match_Colors`
 
     -   **Description:**
 
@@ -519,66 +861,9 @@
 
         > **ℹ️ NOTE: This feature uses the `§` symbol for color matching**
 
+    -   **Type:** `boolean`
+
     -   **Default:** `true`
-
-## Auto Attack
-
--   **Description:**
-
-    Automatically attacks hostile mobs around you.
-
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) and [entityhandling](configuration.md#entityhandling) enabled in order for this bot to work.**
-
--   **Settings:**
-
-    **Section:** **`AutoAttack`**
-
-    #### `enabled`
-
-    -   **Description:**
-
-        This setting specifies if the Auto Attack Chat Bot is enabled.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Default:** `false`
-
-    #### `mode`
-
-    -   **Description:**
-
-        Available values:
-
-        -   `single`
-
-            Target one mob per attack.
-
-        -   `multi`
-
-            Target all mobs in range per attack.
-
-    -   **Default:** `single`
-
-    #### `priority`
-
-    -   **Description:**
-
-        Available values:
-
-        -   `health` (prioritize targeting mobs with lower health)
-        -   `distance` (prioritize targeting mobs closer to you)
-
-    -   **Default:** `distance`
-
-    #### `cooldownseconds`
-
-    -   **Description:**
-
-        How long to wait between each attack in seconds.
-
-        Use `auto` to let MCC calculate it based on the server TPS.
-
-    -   **Default:** `auto`
 
 ## Auto Fishing
 
@@ -603,9 +888,9 @@
 
 -   **Settings:**
 
-    **Section:** **`AutoFishing`**
+    **Section:** **`ChatBot.AutoFishing`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -613,9 +898,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `antidespawn`
+    #### `Antidespawn`
 
     -   **Description:**
 
@@ -623,22 +910,26 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `main_hand`
+    #### `Mainhand`
 
     -   **Description:**
 
         Whether to use the main hand or off hand to hold the rod.
 
-        Available values:
+    -   **Available values:**
 
         -   `true` (Main Hand)
         -   `false` (Off Hand)
 
+    -   **Type:** `boolean`
+
     -   **Default:** `true`
 
-    #### `auto_start`
+    #### `Auto_Start`
 
     -   **Description:**
 
@@ -646,19 +937,21 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `true`
 
-    #### `cast_delay`
+    #### `Cast_Delay`
 
     -   **Description:**
 
         Wait how many seconds after successfully catching a fish before recasting the rod.
 
-        Available values: Floating-point number. (second)
+    -   **Type:** `float`
 
     -   **Default:** `0.4`
 
-    #### `fishing_delay`
+    #### `Fishing_Delay`
 
     -   **Description:**
 
@@ -666,21 +959,21 @@
 
         After joining the game or switching worlds, wait how many seconds before starting to fish automatically.
 
-        Available values: Floating-point number. (second)
+    -   **Type:** `float`
 
     -   **Default:** `3.0`
 
-    #### `fishing_timeout`
+    #### `Fishing_Timeout`
 
     -   **Description:**
 
         How long the fish bite is not detected is considered a timeout. It will re-cast after the timeout.
 
-        Available values: Floating-point number. (second)
+    -   **Type:** `float`
 
     -   **Default:** `300.0`
 
-    #### `durability_limit`
+    #### `Durability_Limit`
 
     -   **Description:**
 
@@ -688,11 +981,11 @@
 
         Set to zero to disable this feature.
 
-        Available values: An integer number from `0` to `64`.
+        **Type/Available values:** An integer number from `0` to `64`.
 
     -   **Default:** `2`
 
-    #### `auto_rod_switch`
+    #### `Auto_Rod_Switch`
 
     -   **Description:**
 
@@ -700,9 +993,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `true`
 
-    #### `stationary_threshold`
+    #### `Stationary_Threshold`
 
     -   **Description:**
 
@@ -710,15 +1005,15 @@
 
         This is to avoid being detected as a bite during the casting of the hook.
 
-        If set too high, it will cause the rod to be reeled in while casting.
+        **If set too high, it will cause the rod to be reeled in while casting.**
 
-        If set too low, it will result in not detecting a bite.
+        **If set too low, it will result in not detecting a bite.**
 
-        Available values: Floating-point number.
+    -   **Type:** `float`
 
     -   **Default:** `0.001`
 
-    #### `hook_threshold`
+    #### `Hook_Threshold`
 
     -   **Description:**
 
@@ -728,11 +1023,11 @@
 
         If set too low, it can cause small fluctuations in the hook to be recognized as bites.
 
-        Available values: Floating-point number.
+    -   **Type:** `float`
 
     -   **Default:** `0.2`
 
-    #### `log_fishing_bobber`
+    #### `Log_Fish_Bobber`
 
     -   **Description:**
 
@@ -742,24 +1037,76 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `location`
+    #### `Enable_Move`
 
     -   **Description:**
 
         Some plugins do not allow the player to fish in one place for a long time. This setting allows the player to change position/angle after each catch.
 
-        Please leave it blank if you do not need it.
+        Each position is added as a new `[[ChatBot.AutoFishing.Movements]]` subsection, more on that bellow.
 
-        Available values:
+    -   **Available values:** `true` and `false`.
 
-        -   Floating-point numbers can be used for both coordinates and angles
-        -   Change the angle only (recommended): `yaw_1, pitch_1; yaw_2, pitch_2; ...; yaw_n, pitch_n`
-        -   Change position only: `x1, y1, z1; x2, y2, z2; ...; xn, yn, zn`
-        -   Change both angle and position: `x1, y1, z1, yaw_1, pitch_1; x2, y2, z2, yaw_2, pitch_2; ... ;xn, yn, zn, yaw_n, pitch_n`
+    -   **Type:** `boolean`
 
-    -   **Default:** ` `
+    -   **Default:** `false`
+
+    ### Adding a position/movement
+
+    Each position/movement is added as a new `[[ChatBot.AutoFishing.Movements]]` subsection of `[ChatBot.AutoFishing]`.
+
+    > **ℹ️ NOTE: It is recommended that you align subsections to the right by one tab or 4 spaces for better readability.**
+
+    **Avaliable settings/options:**
+
+    -   `XYZ`
+
+        This setting specifies at location the bot should move to.
+
+        The type of this setting is `inline table`, that has the following sub-settings/options:
+
+        -   `x` - X coordinate, the type is `double` (eg. `123.0`)
+
+        -   `y` - Y coordinate, the type is `double` (eg. `64.0`)
+
+        -   `z` - Z coordinate, the type is `double` (eg. `-654.0`)
+
+        **Example**:
+
+        ```toml
+        XYZ = { x = 123.0, y = 64.0, z = -654.0 }
+        ```
+
+    -   `facing`
+
+        This setting specifies at which angle the bot will look at when he arrives to this position/location.
+
+        The type of this setting is `inline table`, that has the following sub-settings/options:
+
+        -   `yaw` - The type is `double` (eg. `12.34`)
+
+        -   `pitch` - The type is `double` (eg. `-23.45`)
+
+        **Example**:
+
+        ```toml
+        facing = { yaw = 12.34, pitch = -23.45 }
+        ```
+
+    #### Full example
+
+    ```toml
+    [[ChatBot.AutoFishing.Movements]]
+    facing = { yaw = 12.34, pitch = -23.45 }
+
+    [[ChatBot.AutoFishing.Movements]]
+    XYZ = { x = 123.45, y = 64.0, z = -654.32 }
+    facing = { yaw = -25.14, pitch = 36.25 }
+    ```
 
 ## Auto Eat
 
@@ -771,9 +1118,9 @@
 
 -   **Settings:**
 
-    **Section:** **`AutoEat`**
+    **Section:** **`ChatBot.AutoEat`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -781,13 +1128,17 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `threshold`
+    #### `Threshold`
 
     -   **Description:**
 
         Threshold bellow which the bot will auto eat.
+
+    -   **Type:** `boolean`
 
     -   **Default:** `6`
 
@@ -799,19 +1150,7 @@
 
     > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for basic crafting in the inventory to work, in addition if you want to use a crafting table, you need to enable [terrainandmovements](configuration.md#terrainandmovements) in order for bot to be able to reach the crafting table.**
 
-    The bot will automatically generate a default configuration file on first launch, when `enabled` is set to `true` in the `AutoCraft` section in config.
-
-    Useful commands description:
-
-    -   `/autocraft reload`
-
-        Reload the configuration file from the disk.
-        You can load your edited `AutoCraft` config without restarting the client.
-
-    -   `/autocraft resetcfg`
-
-        Reset your `AutoCraft` config back to default.
-        Use with care!
+-   **Commands:**
 
     -   `/autocraft list`
 
@@ -829,38 +1168,100 @@
 
         In-game help command.
 
-    **How to define a recipe?**
+-   **Settings:**
 
-    You need to define a new `Recipe` section in the configuration file that the setting `configfile` points to.
+    **Section:** **`ChatBot.AutoCraft`**
 
-    The section needs to contain the following settings:
+    #### `Enabled`
 
-    -   `name`
+    -   **Description:**
 
-        The name of your recipe.
+        This setting specifies if the Auto Craft Chat Bot is enabled.
 
-    -   `type`
+    -   **Available values:** `true` and `false`.
 
-        Can be `player` or `table`
+    -   **Type:** `boolean`
 
-        > **ℹ️ NOTE: If you're using `table` you need to set the `tablelocation` setting in the `AutoCraft` section to the coordinates of the crafting table (separated by a comma `,`, example: `147,64,-132`).**
+    -   **Default:** `false`
 
-    -   `result`
+    #### `CraftingTable`
 
-        This is the type of resulting item
+    -   **Description:**
 
-    -   `slot<index>=<material type>`
+        This setting specifies the location of the crafting table.
 
-        Now you need to add from `1` to `9` settings depending on the size of the recipe to define the position of each crafting material.
+    -   **Type/Format:**
 
-        `<index>` should be substituted with the number of the inventory slot and `<material type>` should be substituted with the type of the crafting material.
+        This setting is an of an `inline table` type that has the following sub-options/settings;
+
+        -   `x` - X coordinate, the type is `double` (eg. `123.0`)
+
+        -   `y` - Y coordinate, the type is `double` (eg. `64.0`)
+
+        -   `z` - Z coordinate, the type is `double` (eg. `456.0`)
+
+    -   **Example:**
+
+        ```toml
+        CraftingTable = { X = 123.0, Y = 65.0, Z = 456.0 }
+        ```
+
+    #### `OnFailure`
+
+    -   **Description:**
+
+        This setting specifies what the Auto Craft Chat Bot should do on failure.
+
+        Failure can happen when there are no materials available or when a crafting table can't be reached.
+
+    -   **Available values:** `abort` and `wait`.
+
+    -   **Type:** `string`
+
+    -   **Default:** `abort`
+
+    ### Defining a recipe
+
+    The recipes are defines as a separate new sub-section `[[ChatBot.AutoCraft.Recipes]]` of the `[ChatBot.AutoCraft]` section.
+
+    The `[[ChatBot.AutoCraft.Recipes]]` section needs to contain the following settings:
+
+    -   `Name`
+
+        The name of your recipe, can be whatever you like.
+
+        **Type**: `string`
+
+    -   `Type`
+
+        **Avaliable values:** `player` and `table`
+
+        > **ℹ️ NOTE: If you're using `table` you need to set the `CraftingTable` setting.**
+
+    -   `Result`
+
+        This is the type of resulting item.
+
+        **Type:** `string`
+
+        **Example:** `"StoneBricks"`
+
+    -   `Slots`
+
+        This setting is an array/list of material names (strings) that go into an each slot (max 9 elements).
+        Empty slots should be marked with `"Null"`
+
+        **Type:** `array of strings`
+
+        **Format:**
+
+        ```toml
+        Slots = [ "<material/item type>", "<material/item type>", ... ]
+        ```
+
+        > **ℹ️ NOTE: If you have a case where you have to leave some fields empty, use `"Null"` to mark them as empty. Example for stone bricks: `Slots = [ "Stone", "Stone", "Null", "Stone", "Stone", "Null", "Null", "Null", "Null", ]`**
 
         > **ℹ️ NOTE: All item types can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs).**
-
-        **Examples:**
-
-        -   `slot5=OakPlanks`
-        -   `slot9=Diamond`
 
         **Slots are indexed as following:**
 
@@ -886,56 +1287,25 @@
         ╚═══╩═══╩═══╝
         ```
 
-        **Full Example:**
+    **Full Examples:**
 
-        ```ini
-        [AutoCraft]
-        tablelocation=128,69,-105
-        onfailure=abort
+    ```toml
+    # Stone Bricks using the player inventory
+    [[ChatBot.AutoCraft.Recipes]]
+    Name = "Recipe-Name-1"
+    Type = "player"
+    Result = "StoneBricks"
+    Slots = [ "Stone", "Stone", "Stone", "Stone", ]
 
-        [Recipe]
-        name=fence-gate
-        type=table
-        result=OakFenceGate
-        slot4=Stick
-        slot5=OakPlanks
-        slot6=Stick
-        slot7=Stick
-        slot8=OakPlanks
-        slot9=Stick
-        ```
+    # Stone Bricks using a crafting table
+    [[ChatBot.AutoCraft.Recipes]]
+    Name = "Recipe-Name-2"
+    Type = "table"
+    Result = "StoneBricks"
+    Slots = [ "Stone", "Stone", "Null", "Stone", "Stone", "Null", "Null", "Null", "Null", ]
+    ```
 
-    After you finished writing your config, you can use `/autocraft start <recipe name>` to start crafting.
-
-    Make sure to provide materials for your bot by placing them in inventory first.
-
--   **Settings:**
-
-    **Section:** **`AutoCraft`**
-
-    #### `enabled`
-
-    -   **Description:**
-
-        This setting specifies if the Auto Craft Chat Bot is enabled.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Default:** `false`
-
-    #### `configfile`
-
-    -   **Description:**
-
-        This setting specifies the path to the configuration file for the bot in which you need to define recipes for crafting.
-
-        > **ℹ️ NOTE: The configuration file will automatically create with default values once you load the bot for the first time.**
-
-        > **The default configuration file contains detailed explanation and example recipes.**
-
-        > **ℹ️ NOTE: All item types can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs).**
-
-    -   **Default:** `autocraft\config.ini`
+    > **ℹ️ NOTE: Make sure to provide materials for your bot by placing them in inventory first.**
 
 ## Mailer
 
@@ -983,9 +1353,9 @@
 
 *   **Settings:**
 
-    **Section:** **`Mailer`**
+    **Section:** **`ChatBot.Mailer`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -993,9 +1363,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `database`
+    #### `DatabaseFile`
 
     -   **Description:**
 
@@ -1004,6 +1376,59 @@
         This file will be auto created by the Mailer Chat Bot.
 
     -   **Default:** `MailerDatabase.ini`
+
+    #### `IgnoreListFile`
+
+    -   **Description:**
+
+        This setting specifies the path to the file where the Mailer Chat Bot will load people who are to be ignored by the Chat Bot.
+        If you want to prevent someone from using this chat bot, add him in this file by writing his nickname on a new line.
+
+        This file will be auto created by the Mailer Chat Bot.
+
+    -   **Default:** `MailerDatabase.ini`
+
+    #### `PublicInteractions`
+
+    -   **Description:**
+
+        This setting specifies if the Mailer Chat Bot should be interacted with in the public chat (in addition to private messages).
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `MaxMailsPerPlayer`
+
+    -   **Description:**
+
+        This setting specifies how many mails the Mailer Chat Bot should store per player at maximum.
+
+    -   **Type:** `integer`
+
+    -   **Default:** `10`
+
+    #### `MaxDatabaseSize`
+
+    -   **Description:**
+
+        This setting specifies the maximum database file size of Mailer Chat Bot in Kilobytes.
+
+    -   **Type:** `integer`
+
+    -   **Default:** `10000` (10 MB)
+
+    #### `MailRetentionDays`
+
+    -   **Description:**
+
+        This setting specifies how long should the Mailer Chat Bot save/store messages for (in days).
+
+    -   **Type:** `integer`
+
+    -   **Default:** `30`
 
 ## Auto Drop
 
@@ -1015,9 +1440,9 @@
 
 -   **Settings:**
 
-    **Section:** **`AutoDrop`**
+    **Section:** **`ChatBot.AutoDrop`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -1025,9 +1450,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `mode`
+    #### `Mode`
 
     -   **Description:**
 
@@ -1037,37 +1464,45 @@
 
         -   `include`
 
-            This mode will drop any items specified in the list in the `items` setting.
+            This mode will drop any items specified in the list in the `Items` setting.
 
         -   `exclude`
 
-            This mode will drop any other items than specified in the list in the `items` setting.
+            This mode will drop any other items than specified in the list in the `Items` setting.
 
             So it would keep the items specified in the list.
 
         -   `everything`
 
-            Drop any item regardless of the items listed in the `items` setting.
+            Drop any item regardless of the items listed in the `Items` setting.
+
+    -   **Type:** `string`
 
     -   **Default:** `include`
 
-    #### `items`
+    #### `Items`
 
     -   **Description:**
 
-        This setting is where you can specify a comma `,` separated list of items which you want to drop, or keep.
+        This setting is where you can specify the list of items which you want to drop, or keep.
 
         > **ℹ️ NOTE: All item types can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs).**
 
-        Example: `diamond,stone,dirt`
+    -   **Format:** `[ "<item type>", "<item type>", ...]`
 
-    -   **Default:** ` ` (Empty)
+    -   **Type:** `array of strings`
 
-## Replay Mod
+    -   **Example:** `[ "Totem", "GlassBottle", ]`
+
+    -   **Default:** `[ "Cobblestone", "Dirt", ]`
+
+## Replay Capture
 
 -   **Description:**
 
     Enable recording of the game (`/replay start`) and replay it later using the Replay Mod (https://www.replaymod.com/).
+
+    > **⚠️ IMPORTANT: This bot does not work for 1.19, we need maintainers for it.**
 
     > **ℹ️ NOTE: Please note that due to technical limitations, the client player (you) will not be shown in the replay file**
 
@@ -1075,9 +1510,9 @@
 
 -   **Settings:**
 
-    **Section:** **`ReplayMod`**
+    **Section:** **`ChatBot.ReplayCapture`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -1085,15 +1520,19 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `backupinterval`
+    #### `Backup_Interval`
 
     -   **Description:**
 
         This setting specifies the time interval in seconds when the replay file should be auto-saved.
 
         Use `-1` to disable.
+
+    -   **Type:** `integer`
 
     -   **Default:** `300`
 
@@ -1103,15 +1542,15 @@
 
     This bot enables you to make a bot follow a specific player.
 
-    > **ℹ️ NOTE: The bot can be slow at times, you need to walk with a normal speed and to sometimes stop for it to be able to keep up with you, it's similar to making animals follow you when you're holding food in your hand. This is due to a slow pathfinding algorithm, we're working on getting a better one. You can tweak the update limit and find what works best for you. (NOTE: Do not but a very low one, because you might achieve the opposite, this might clog the thread for terain handling) and thus slow the bot even more.**
+    > **ℹ️ NOTE: The bot can be slow at times, you need to walk with a normal speed and to sometimes stop for it to be able to keep up with you, it's similar to making animals follow you when you're holding food in your hand. This is due to a slow pathfinding algorithm, we're working on getting a better one. You can tweak the update limit and find what works best for you. (NOTE: Do not but a very low one, because you might achieve the opposite, this might clog the thread for terrain handling) and thus slow the bot even more.**
 
     > **ℹ️ NOTE: You need to have [terrainandmovements](configuration.md#terrainandmovements) and [entityhandling](configuration.md#entityhandling) enabled in order for this bot to work.**
 
 -   **Settings:**
 
-    **Section:** **`FollowPlayer`**
+    **Section:** **`ChatBot.FollowPlayer`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -1119,9 +1558,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `update_limit`
+    #### `Update_Limit`
 
     -   **Description:**
 
@@ -1129,13 +1570,17 @@
 
         You can tweak this if you feel the bot is too slow.
 
+    -   **Type:** `integer`
+
     -   **Default:** `15`
 
-    #### `stop_at_distance`
+    #### `Stop_At_Distance`
 
     -   **Description:**
 
         Do not follow the player if he is in the range of `X` blocks (prevents the bot from pushing a player in an infinite loop).
+
+    -   **Type:** `integer`
 
     -   **Default:** `3`
 
@@ -1149,6 +1594,8 @@
 
     The maps are **rendered** into `Rendered_Maps` folder.
 
+    > **⚠️WARNING: This bot has only been tested on Windows 10, it may not work on Linux or Mac OS due to .NET BitMap API. We're looking forward to swap the underlaying Bitmap API dependency with a library.**
+
 -   **Commands:**
 
     When enabled will add the `/maps` command.
@@ -1161,9 +1608,9 @@
 
 -   **Settings:**
 
-    **Section:** **`Map`**
+    **Section:** **`ChatBot.Map`**
 
-    #### `enabled`
+    #### `Enabled`
 
     -   **Description:**
 
@@ -1171,9 +1618,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `resize_map`
+    #### `Should_Resize`
 
     -   **Description:**
 
@@ -1187,17 +1636,21 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `resize_to`
+    #### `Resize_To`
 
     -   **Description:**
 
-        Which size the map should be resized to if `resize_map` is `true`.
+        Which size the map should be resized to if `Should_Resize` is `true`.
+
+    -   **Type:** `integer`
 
     -   **Default:** `256`
 
-    #### `auto_render_on_update`
+    #### `Auto_Render_On_Update`
 
     -   **Description:**
 
@@ -1207,9 +1660,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
 
-    #### `delete_rendered_on_unload`
+    #### `Delete_All_On_Unload`
 
     -   **Description:**
 
@@ -1217,9 +1672,11 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `true`
 
-    #### `notify_on_first_update`
+    #### `Notify_On_First_Update`
 
     -   **Description:**
 
@@ -1227,4 +1684,121 @@
 
     -   **Available values:** `true` and `false`.
 
+    -   **Type:** `boolean`
+
     -   **Default:** `false`
+
+## Script Scheduler
+
+-   **Description:**
+
+    Schedule commands and scripts to launch on various events such as server join, date/time or time interval.
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.ScriptScheduler`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Script Scheduler Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    ### Defining a task
+
+    -   **Description:**
+
+        Each task is defined as a new subsection `[[ChatBot.ScriptScheduler.TaskList]]` of the section: `[ChatBot.ScriptScheduler]`.
+
+        **Subsection format:**
+
+        ```toml
+        [[ChatBot.ScriptScheduler.TaskList]]
+        <setting> = <value>
+        <setting> = <value>
+        ```
+
+        > **ℹ️ NOTE: It is recommended that you align subsections to the right by one tab or 4 spaces for better readability.**
+
+        **Avaliable settings/options:**
+
+        -   `Trigger_On_First_Login`
+
+            Will trigger the task when you login the first time.
+
+            **Available values**: `true` and `false`
+
+            **Type**: `boolean`
+
+        -   `Trigger_On_Login`
+
+            Will trigger the task each time you login.
+
+            **Available values**: `true` and `false`
+
+            **Type**: `boolean`
+
+        -   `Trigger_On_Times`
+
+            This will enable the task to trigger at exact time(s) you want.
+
+            The type of this setting is `inline table`, that has the following sub-settings/options:
+
+            -   `Enable` - Enables/Disables the setting (Boolean, so either `true` or `false`)
+
+            -   `Times` - An array/list of times on which the task should run/trigger (each element is of the [Local Time](https://toml.io/en/v1.0.0#local-time) type, eg. `14:00:00`, so: `hours:minutes:seconds`)
+
+            **Example**:
+
+            ```toml
+            Trigger_On_Times = { Enable = true, Times = [ 14:00:00, 22:35:8] }
+            ```
+
+        -   `Trigger_On_Interval`
+
+            This will enable the task to trigger at certain interval which you've defined.
+
+            The type of this setting is `inline table`, that has the following sub-settings/options:
+
+            -   `Enable` - Enables/Disables the setting (Boolean, so either `true` or `false`)
+
+            -   `MinTime` - Time in seconds (the type is `double`, eg. `3.14`)
+
+            -   `MaxTime` - Time in seconds (the type is `double`, eg. `3.14`)
+
+            **If `MinTime` and `MaxTime` are the same, the interval will be consistent, however if they are not, the ChatBot will generate a random interval in between those two numbers provided, each time the task is run.**
+
+            **Example**:
+
+            ```toml
+            Trigger_On_Interval = { Enable = true, MinTime = 30.0, MaxTime = 160.0 }
+            ```
+
+    ### Full example
+
+    ```toml
+    [ChatBot.ScriptScheduler]
+    Enabled = true
+
+        [[ChatBot.ScriptScheduler.TaskList]]
+        Task_Name = "Task Name 1"
+        Trigger_On_First_Login = false
+        Trigger_On_Login = false
+        Trigger_On_Times = { Enable = true, Times = [ 14:00:00, ] }
+        Trigger_On_Interval = { Enable = true, MinTime = 3.6, MaxTime = 4.8 }
+        Action = "send /hello"
+
+        [[ChatBot.ScriptScheduler.TaskList]]
+        Task_Name = "Task Name 2"
+        Trigger_On_First_Login = false
+        Trigger_On_Login = true
+        Trigger_On_Times = { Enable = false, Times = [ ] }
+        Trigger_On_Interval = { Enable = false, MinTime = 1.0, MaxTime = 10.0 }
+        Action = "send /login pass"
+    ```
