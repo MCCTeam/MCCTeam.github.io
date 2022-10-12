@@ -12,7 +12,8 @@ MCC now supports the following languages (Alphabetical order) :
   * `fr.ini` : Français (France) - French
   * `ru.ini` : Русский (Russkiy) - Russian
   * `vi.ini` : Tiếng Việt (Việt Nam) - Vietnamese
-  * `zh-Hans.ini` : 简体中文（中国大陆） - Chinese Simplified (China; Mandarin)
+  * `zh-Hans.ini` : 简体中文 - Chinese Simplified
+  * `zh-Hant.ini` : 繁體中文 - Chinese Traditional
 
 ### Add new translation
 
@@ -38,7 +39,7 @@ MCC now supports the following languages (Alphabetical order) :
         * Translation `zh-Hans.ini` applies to `zh_cn`.
 
 4. Add the new translation to the code. (Optional)
-    * If you are not familiar with programming, you can skip this step and just write the above information in your PR or issue.
+    * **If you are not familiar with programming, you can skip this step and just write the above information in your PR or issue.**
     * Add the newly created translation file `xx.ini` to the project `/Resources/lang/xx.ini`.
     * Open `/DefaultConfigResource.resx`.
     * Click `Add Resources`.

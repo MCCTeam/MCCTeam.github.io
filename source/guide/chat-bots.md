@@ -17,21 +17,22 @@
 -   [Alerts](#alerts)
 -   [Anti AFK](#anti-afk)
 -   [Auto Attack](#auto-attack)
--   [Auto Dig](#auto-dig)
--   [Auto Relog](#auto-relog)
--   [Chat Log](#chat-log)
--   [Script Scheduler](#script-scheduler)
--   [Hangman](#hangman)
--   [Remote Control](#remote-control)
--   [Auto Respond](#auto-respond)
--   [Auto Fishing](#auto-fishing)
--   [Auto Eat](#auto-eat)
 -   [Auto Craft](#auto-craft)
--   [Mailer](#mailer)
+-   [Auto Dig](#auto-dig)
 -   [Auto Drop](#auto-drop)
--   [Replay Mod](#replay-mod)
+-   [Auto Eat](#auto-eat)
+-   [Auto Fishing](#auto-fishing)
+-   [Auto Relog](#auto-relog)
+-   [Auto Respond](#auto-respond)
+-   [Chat Log](#chat-log)
 -   [Follow Player](#follow-player)
+-   [Hangman](#hangman)
+-   [Mailer](#mailer)
 -   [Map](#map)
+-   [PlayerList Logger](#playerlist-logger)
+-   [Remote Control](#remote-control)
+-   [Replay Mod](#replay-mod)
+-   [Script Scheduler](#script-scheduler)
 
 ## Alerts
 
@@ -395,6 +396,171 @@
 
     -   **Default:** `[ "Zombie", "Cow", ]`
 
+## Auto Craft
+
+-   **Description:**
+
+    Automatically craft items in your inventory or in a crafting table.
+
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for basic crafting in the inventory to work, in addition if you want to use a crafting table, you need to enable [terrainandmovements](configuration.md#terrainandmovements) in order for bot to be able to reach the crafting table.**
+
+-   **Commands:**
+
+    -   `/autocraft list`
+
+        List all loaded recipes.
+
+    -   `/autocraft start <name>`
+
+        Start the crafting process with the given recipe name you had defined.
+
+    -   `/autocraft stop`
+
+        Stop the crafting process.
+
+    -   `/autocraft help`
+
+        In-game help command.
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.AutoCraft`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Auto Craft Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `CraftingTable`
+
+    -   **Description:**
+
+        This setting specifies the location of the crafting table.
+
+    -   **Type/Format:**
+
+        This setting is an of an `inline table` type that has the following sub-options/settings;
+
+        -   `x` - X coordinate, the type is `double` (eg. `123.0`)
+
+        -   `y` - Y coordinate, the type is `double` (eg. `64.0`)
+
+        -   `z` - Z coordinate, the type is `double` (eg. `456.0`)
+
+    -   **Example:**
+
+        ```toml
+        CraftingTable = { X = 123.0, Y = 65.0, Z = 456.0 }
+        ```
+
+    #### `OnFailure`
+
+    -   **Description:**
+
+        This setting specifies what the Auto Craft Chat Bot should do on failure.
+
+        Failure can happen when there are no materials available or when a crafting table can't be reached.
+
+    -   **Available values:** `abort` and `wait`.
+
+    -   **Type:** `string`
+
+    -   **Default:** `abort`
+
+    ### Defining a recipe
+
+    The recipes are defines as a separate new sub-section `[[ChatBot.AutoCraft.Recipes]]` of the `[ChatBot.AutoCraft]` section.
+
+    The `[[ChatBot.AutoCraft.Recipes]]` section needs to contain the following settings:
+
+    -   `Name`
+
+        The name of your recipe, can be whatever you like.
+
+        **Type**: `string`
+
+    -   `Type`
+
+        **Avaliable values:** `player` and `table`
+
+        > **ℹ️ NOTE: If you're using `table` you need to set the `CraftingTable` setting.**
+
+    -   `Result`
+
+        This is the type of resulting item.
+
+        **Type:** `string`
+
+        **Example:** `"StoneBricks"`
+
+    -   `Slots`
+
+        This setting is an array/list of material names (strings) that go into an each slot (max 9 elements).
+        Empty slots should be marked with `"Null"`
+
+        **Type:** `array of strings`
+
+        **Format:**
+
+        ```toml
+        Slots = [ "<material/item type>", "<material/item type>", ... ]
+        ```
+
+        > **ℹ️ NOTE: If you have a case where you have to leave some fields empty, use `"Null"` to mark them as empty. Example for stone bricks: `Slots = [ "Stone", "Stone", "Null", "Stone", "Stone", "Null", "Null", "Null", "Null", ]`**
+
+        > **ℹ️ NOTE: All item types can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs).**
+
+        **Slots are indexed as following:**
+
+        **`2x2` (Player)**
+
+        ```cs
+        ╔═══╦═══╗
+        ║ 1 ║ 2 ║
+        ╠═══╬═══╣
+        ║ 3 ║ 4 ║
+        ╚═══╩═══╝
+        ```
+
+        **`3x3` (Crafting Table)**
+
+        ```cs
+        ╔═══╦═══╦═══╗
+        ║ 1 ║ 2 ║ 3 ║
+        ╠═══╬═══╬═══╣
+        ║ 4 ║ 5 ║ 6 ║
+        ╠═══╬═══╬═══╣
+        ║ 7 ║ 8 ║ 9 ║
+        ╚═══╩═══╩═══╝
+        ```
+
+    **Full Examples:**
+
+    ```toml
+    # Stone Bricks using the player inventory
+    [[ChatBot.AutoCraft.Recipes]]
+    Name = "Recipe-Name-1"
+    Type = "player"
+    Result = "StoneBricks"
+    Slots = [ "Stone", "Stone", "Stone", "Stone", ]
+
+    # Stone Bricks using a crafting table
+    [[ChatBot.AutoCraft.Recipes]]
+    Name = "Recipe-Name-2"
+    Type = "table"
+    Result = "StoneBricks"
+    Slots = [ "Stone", "Stone", "Null", "Stone", "Stone", "Null", "Null", "Null", "Null", ]
+    ```
+
+    > **ℹ️ NOTE: Make sure to provide materials for your bot by placing them in inventory first.**
+
 ## Auto Dig
 
 -   **Description:**
@@ -445,7 +611,7 @@
 
     -   `both`
 
-        Does both options from above at the same time.
+        Dig only when the block you are looking at is in the "Locations" list.
 
     -   **Type:** `string`
 
@@ -512,7 +678,7 @@
 
     -   **Description:**
 
-        How many seconds to wait if there are no blocks before stop trying to find and mine blocks.
+        If mining a block takes longer than this value, a new attempt will be made to find a block to mine.
 
     -   **Type:** `float`
 
@@ -558,21 +724,23 @@
 
     -   **Default:** `[ "Cobblestone", "Stone", ]`
 
-## Auto Relog
+## Auto Drop
 
 -   **Description:**
 
-    Make MCC automatically relog when disconnected by the server, for example because the server is restating.
+    Automatically drop items you don't need from the inventory.
+
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this bot to work**
 
 -   **Settings:**
 
-    **Section:** **`ChatBot.AutoRelog`**
+    **Section:** **`ChatBot.AutoDrop`**
 
     #### `Enabled`
 
     -   **Description:**
 
-        This setting specifies if the Auto Relog Chat Bot is enabled.
+        This setting specifies if the Auto Drop Chat Bot is enabled.
 
     -   **Available values:** `true` and `false`.
 
@@ -580,290 +748,81 @@
 
     -   **Default:** `false`
 
-    #### `Delay`
+    #### `Mode`
 
     -   **Description:**
 
-        The delay time before joining the server.
-
-        If the `min` and `max` are the same, the time will be consistent, however, if you want a random time, you can set `min` and `max` to different values to get a random time.
-        The time format is in seconds, and the type is double. (eg. `37.0`)
-
-    -   **Format:** `{ min = <seconds (double)>, max = <seconds (double)> }`
-
-    -   **Type:** `inline table`
-
-    -   **Example:** `{ min = 8.0, max = 60.0 }`
-
-    -   **Default:** `{ min = 3.0, max = 3.0 }`
-
-    #### `Retries`
-
-    -   **Description:**
-
-        Number of retries.
-
-        Use `-1` for infinite retries.
-
-        > **ℹ️ NOTE: This might get you banned by the server owners.**
-
-    -   **Default:** `-1`
-
-    #### `Ignore_Kick_Message`
-
-    -   **Description:**
-
-        This settings specifies if the `Kick_Messages` setting will be ignored, if set to `true` it will auto relog regardless of the kick messages.
-
-    -   **Type:** `boolean`
-
-    -   **Default:** `false`
-
-    #### `Kick_Messages`
-
-    -   **Description:**
-
-        A list of words which should trigger the Auto Reconnect Chat Bot.
-
-    -   **Format:** `[ "<keyword>", "<keyword>", ... ]`
-
-    -   **Type:** `array of strings`
-
-    -   **Default:** `[ "Connection has been lost", "Server is restarting", "Server is full", "Too Many people", ]`
-
-## Chat Log
-
--   **Description:**
-
-    Make MCC log chat messages into a file.
-
--   **Settings:**
-
-    **Section:** **`ChatBot.ChatLog`**
-
-    #### `Enabled`
-
-    -   **Description:**
-
-        This setting specifies if the Chat Log Chat Bot is enabled.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Default:** `false`
-
-    #### `Add_DateTime`
-
-    -   **Description:**
-
-        This setting specifies if the Chat Log should prepend timestamps to the logged messages.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Default:** `true`
-
-    #### `Log_File`
-
-    -   **Description:**
-
-        This setting specifies the name of the Chat Log file that will be created.
-
-    -   **Default:** `chatlog-%username%-%serverip%.txt`
-
-    #### `Filter`
-
-    -   **Description:**
-
-        Type of messages to be logged into the file.
+        This setting specifies the mode of the auto dropping.
 
         Available values:
 
-        -   `all`
+        -   `include`
 
-            All text from the console
+            This mode will drop any items specified in the list in the `Items` setting.
 
-        -   `messages`
+        -   `exclude`
 
-            All messages, including system, plugin channel, player and server.
+            This mode will drop any other items than specified in the list in the `Items` setting.
 
-        -   `chat`
+            So it would keep the items specified in the list.
 
-            Only chat messages.
+        -   `everything`
 
-        -   `private`
-
-            Only private messages.
-
-        -   `internal`
-
-            Only internal messages and commands.
-
-    -   **Default:** `messages`
-
-## Hangman
-
--   **Description:**
-
-    Hangman game is one of the first bots ever written for MCC, to demonstrate ChatBot capabilities.
-
-    Create a file with words to guess (examples: [`words-en.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-en.txt), [`words-fr.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-fr.txt)) and set it in config inside the `[Hangman]` section.
-
-    Also set `enabled` to `true`, then, add your username in the `botowners` INI setting, and finally, connect to the server and use `/tell <bot username> start` to start the game.
-
-    > **ℹ️ NOTE: If the bot does not respond to bot owners, see the [Detecting chat messages](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/config#detecting-chat-messages) section.**
-
--   **Settings:**
-
-    **Section:** **`ChatBot.HangmanGame`**
-
-    #### `Enabled`
-
-    -   **Description:**
-
-        This setting specifies if the Hangman Chat Bot is enabled.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Default:** `false`
-
-    #### `English`
-
-    -   **Description:**
-
-        This setting specifies if the Hangman Chat Bot should use English.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Default:** `true`
-
-    #### `FileWords_EN`
-
-    -   **Description:**
-
-        This setting specifies the path to the file which Hangman will use for the list of words, each word is added on a separate line.
-
-        > **ℹ️ NOTE: This settings file is for English and is not created by the default**
-
-    -   **Default:** `hangman-en.txt`
-    -   **Example**: [`words-en.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-en.txt)
-
-    #### `FileWords_FR`
-
-    -   **Description:**
-
-        This setting is same as the above but for French.
-
-        > **ℹ️ NOTE: This settings file is for French and is not created by the default**
-
-    -   **Default:** `hangman-fr.txt`
-    -   **Example**: [`words-fr.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-fr.txt)
-
-## Remote Control
-
--   **Description:**
-
-    Send MCC console commands to your bot through server PMs (`/tell`).
-
-    You need to have [ChatFormat](configuration.md#chat-format) working correctly and add yourself in [botowners](configuration.md#botowners) to use the bot.
-
-    > **⚠️WARNING: Server admins can spoof PMs (`/tellraw`, `/nick`) so enable `RemoteControl` only if you trust server admins.**
-
--   **Settings:**
-
-    **Section:** **`ChatBot.RemoteControl`**
-
-    #### `Enabled`
-
-    -   **Description:**
-
-        This setting specifies if the Remote Control Chat Bot is enabled.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Type:** `boolean`
-
-    -   **Default:** `false`
-
-    #### `AutoTpaccept`
-
-    -   **Description:**
-
-        This setting specifies if the Remote Control Chat Bot should automatically accept teleport requests.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Type:** `boolean`
-
-    -   **Default:** `true`
-
-    #### `AutoTpaccept_Everyone`
-
-    -   **Description:**
-
-        This setting specifies if the Remote Control Chat Bot should automatically accept teleport requests from everyone.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Type:** `boolean`
-
-    -   **Default:** `false`
-
-## Auto Respond
-
--   **Description:**
-
-    Run commands or send messages automatically when a specified pattern is detected in the chat.
-
-    > **⚠️ WARNING: Server admins can spoof PMs (`/tellraw`, `/nick`) so enable `AutoRespond` only if you trust server admins.**
-
-    > **⚠️ WARNING: This bot may get spammy depending on your rules, although the global [messagecooldown](configuration.md#messagecooldown) setting can help you avoiding accidental spam.**
-
--   **Settings:**
-
-    **Section:** **`ChatBot.AutoRespond`**
-
-    #### `Enabled`
-
-    -   **Description:**
-
-        This setting specifies if the Auto Respond Chat Bot is enabled.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Type:** `boolean`
-
-    -   **Default:** `false`
-
-    #### `Matches_File`
-
-    -   **Description:**
-
-        This setting specifies the path to the file which contains the list of rules for detecting of keywords and responding on them.
-
-        To find out how to configure the rules, take a look at the [`sample-matches.ini`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/sample-matches.ini) which has very detailed examples and a lot of comments.
-
-        _PS: In the future we will document the rules here with examples too._
-
-        > **ℹ️ NOTE: This file is not created by default, we recommend making a clone of the [`sample-matches.ini`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/sample-matches.ini) and changing it according to your needs.**
+            Drop any item regardless of the items listed in the `Items` setting.
 
     -   **Type:** `string`
 
-    -   **Default:** `matches.ini`
+    -   **Default:** `include`
 
-    #### `Match_Colors`
+    #### `Items`
 
     -   **Description:**
 
-        This setting specifies if the Auto Respond Chat Bot should keep the color formatting send by the server.
+        This setting is where you can specify the list of items which you want to drop, or keep.
 
-        You can use this when you need to match text by colors.
+        > **ℹ️ NOTE: All item types can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs).**
 
-        List of all color codes: [here](https://minecraft.tools/en/color-code.php)
+    -   **Format:** `[ "<item type>", "<item type>", ...]`
 
-        > **ℹ️ NOTE: This feature uses the `§` symbol for color matching**
+    -   **Type:** `array of strings`
+
+    -   **Example:** `[ "Totem", "GlassBottle", ]`
+
+    -   **Default:** `[ "Cobblestone", "Dirt", ]`
+
+## Auto Eat
+
+-   **Description:**
+
+    Automatically eat food when your Hunger value is low.
+
+    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this bot to work**
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.AutoEat`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Auto Eat Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
 
     -   **Type:** `boolean`
 
-    -   **Default:** `true`
+    -   **Default:** `false`
+
+    #### `Threshold`
+
+    -   **Description:**
+
+        Threshold bellow which the bot will auto eat.
+
+    -   **Type:** `integer`
+
+    -   **Default:** `6`
 
 ## Auto Fishing
 
@@ -1059,8 +1018,6 @@
 
     Each position/movement is added as a new `[[ChatBot.AutoFishing.Movements]]` subsection of `[ChatBot.AutoFishing]`.
 
-    > **ℹ️ NOTE: It is recommended that you align subsections to the right by one tab or 4 spaces for better readability.**
-
     **Avaliable settings/options:**
 
     -   `XYZ`
@@ -1108,23 +1065,21 @@
     facing = { yaw = -25.14, pitch = 36.25 }
     ```
 
-## Auto Eat
+## Auto Relog
 
 -   **Description:**
 
-    Automatically eat food when your Hunger value is low.
-
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this bot to work**
+    Make MCC automatically relog when disconnected by the server, for example because the server is restating.
 
 -   **Settings:**
 
-    **Section:** **`ChatBot.AutoEat`**
+    **Section:** **`ChatBot.AutoRelog`**
 
     #### `Enabled`
 
     -   **Description:**
 
-        This setting specifies if the Auto Eat Chat Bot is enabled.
+        This setting specifies if the Auto Relog Chat Bot is enabled.
 
     -   **Available values:** `true` and `false`.
 
@@ -1132,51 +1087,76 @@
 
     -   **Default:** `false`
 
-    #### `Threshold`
+    #### `Delay`
 
     -   **Description:**
 
-        Threshold bellow which the bot will auto eat.
+        The delay time before joining the server.
+
+        If the `min` and `max` are the same, the time will be consistent, however, if you want a random time, you can set `min` and `max` to different values to get a random time.
+        The time format is in seconds, and the type is double. (eg. `37.0`)
+
+    -   **Format:** `{ min = <seconds (double)>, max = <seconds (double)> }`
+
+    -   **Type:** `inline table`
+
+    -   **Example:** `{ min = 8.0, max = 60.0 }`
+
+    -   **Default:** `{ min = 3.0, max = 3.0 }`
+
+    #### `Retries`
+
+    -   **Description:**
+
+        Number of retries.
+
+        Use `-1` for infinite retries.
+
+        > **ℹ️ NOTE: This might get you banned by the server owners.**
+
+    -   **Default:** `-1`
+
+    #### `Ignore_Kick_Message`
+
+    -   **Description:**
+
+        This settings specifies if the `Kick_Messages` setting will be ignored, if set to `true` it will auto relog regardless of the kick messages.
 
     -   **Type:** `boolean`
 
-    -   **Default:** `6`
+    -   **Default:** `false`
 
-## Auto Craft
+    #### `Kick_Messages`
+
+    -   **Description:**
+
+        A list of words which should trigger the Auto Reconnect Chat Bot.
+
+    -   **Format:** `[ "<keyword>", "<keyword>", ... ]`
+
+    -   **Type:** `array of strings`
+
+    -   **Default:** `[ "Connection has been lost", "Server is restarting", "Server is full", "Too Many people", ]`
+
+## Auto Respond
 
 -   **Description:**
 
-    Automatically craft items in your inventory or in a crafting table.
+    Run commands or send messages automatically when a specified pattern is detected in the chat.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for basic crafting in the inventory to work, in addition if you want to use a crafting table, you need to enable [terrainandmovements](configuration.md#terrainandmovements) in order for bot to be able to reach the crafting table.**
+    > **⚠️ WARNING: Server admins can spoof PMs (`/tellraw`, `/nick`) so enable `AutoRespond` only if you trust server admins.**
 
--   **Commands:**
-
-    -   `/autocraft list`
-
-        List all loaded recipes.
-
-    -   `/autocraft start <name>`
-
-        Start the crafting process with the given recipe name you had defined.
-
-    -   `/autocraft stop`
-
-        Stop the crafting process.
-
-    -   `/autocraft help`
-
-        In-game help command.
+    > **⚠️ WARNING: This bot may get spammy depending on your rules, although the global [messagecooldown](configuration.md#messagecooldown) setting can help you avoiding accidental spam.**
 
 -   **Settings:**
 
-    **Section:** **`ChatBot.AutoCraft`**
+    **Section:** **`ChatBot.AutoRespond`**
 
     #### `Enabled`
 
     -   **Description:**
 
-        This setting specifies if the Auto Craft Chat Bot is enabled.
+        This setting specifies if the Auto Respond Chat Bot is enabled.
 
     -   **Available values:** `true` and `false`.
 
@@ -1184,128 +1164,211 @@
 
     -   **Default:** `false`
 
-    #### `CraftingTable`
+    #### `Matches_File`
 
     -   **Description:**
 
-        This setting specifies the location of the crafting table.
+        This setting specifies the path to the file which contains the list of rules for detecting of keywords and responding on them.
 
-    -   **Type/Format:**
+        To find out how to configure the rules, take a look at the [`sample-matches.ini`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/sample-matches.ini) which has very detailed examples and a lot of comments.
 
-        This setting is an of an `inline table` type that has the following sub-options/settings;
+        _PS: In the future we will document the rules here with examples too._
 
-        -   `x` - X coordinate, the type is `double` (eg. `123.0`)
-
-        -   `y` - Y coordinate, the type is `double` (eg. `64.0`)
-
-        -   `z` - Z coordinate, the type is `double` (eg. `456.0`)
-
-    -   **Example:**
-
-        ```toml
-        CraftingTable = { X = 123.0, Y = 65.0, Z = 456.0 }
-        ```
-
-    #### `OnFailure`
-
-    -   **Description:**
-
-        This setting specifies what the Auto Craft Chat Bot should do on failure.
-
-        Failure can happen when there are no materials available or when a crafting table can't be reached.
-
-    -   **Available values:** `abort` and `wait`.
+        > **ℹ️ NOTE: This file is not created by default, we recommend making a clone of the [`sample-matches.ini`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/sample-matches.ini) and changing it according to your needs.**
 
     -   **Type:** `string`
 
-    -   **Default:** `abort`
+    -   **Default:** `matches.ini`
 
-    ### Defining a recipe
+    #### `Match_Colors`
 
-    The recipes are defines as a separate new sub-section `[[ChatBot.AutoCraft.Recipes]]` of the `[ChatBot.AutoCraft]` section.
+    -   **Description:**
 
-    The `[[ChatBot.AutoCraft.Recipes]]` section needs to contain the following settings:
+        This setting specifies if the Auto Respond Chat Bot should keep the color formatting send by the server.
 
-    -   `Name`
+        You can use this when you need to match text by colors.
 
-        The name of your recipe, can be whatever you like.
+        List of all color codes: [here](https://minecraft.tools/en/color-code.php)
 
-        **Type**: `string`
+        > **ℹ️ NOTE: This feature uses the `§` symbol for color matching**
 
-    -   `Type`
+    -   **Type:** `boolean`
 
-        **Avaliable values:** `player` and `table`
+    -   **Default:** `true`
 
-        > **ℹ️ NOTE: If you're using `table` you need to set the `CraftingTable` setting.**
+## Chat Log
 
-    -   `Result`
+-   **Description:**
 
-        This is the type of resulting item.
+    Make MCC log chat messages into a file.
 
-        **Type:** `string`
+-   **Settings:**
 
-        **Example:** `"StoneBricks"`
+    **Section:** **`ChatBot.ChatLog`**
 
-    -   `Slots`
+    #### `Enabled`
 
-        This setting is an array/list of material names (strings) that go into an each slot (max 9 elements).
-        Empty slots should be marked with `"Null"`
+    -   **Description:**
 
-        **Type:** `array of strings`
+        This setting specifies if the Chat Log Chat Bot is enabled.
 
-        **Format:**
+    -   **Available values:** `true` and `false`.
 
-        ```toml
-        Slots = [ "<material/item type>", "<material/item type>", ... ]
-        ```
+    -   **Default:** `false`
 
-        > **ℹ️ NOTE: If you have a case where you have to leave some fields empty, use `"Null"` to mark them as empty. Example for stone bricks: `Slots = [ "Stone", "Stone", "Null", "Stone", "Stone", "Null", "Null", "Null", "Null", ]`**
+    #### `Add_DateTime`
 
-        > **ℹ️ NOTE: All item types can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs).**
+    -   **Description:**
 
-        **Slots are indexed as following:**
+        This setting specifies if the Chat Log should prepend timestamps to the logged messages.
 
-        **`2x2` (Player)**
+    -   **Available values:** `true` and `false`.
 
-        ```cs
-        ╔═══╦═══╗
-        ║ 1 ║ 2 ║
-        ╠═══╬═══╣
-        ║ 3 ║ 4 ║
-        ╚═══╩═══╝
-        ```
+    -   **Default:** `true`
 
-        **`3x3` (Crafting Table)**
+    #### `Log_File`
 
-        ```cs
-        ╔═══╦═══╦═══╗
-        ║ 1 ║ 2 ║ 3 ║
-        ╠═══╬═══╬═══╣
-        ║ 4 ║ 5 ║ 6 ║
-        ╠═══╬═══╬═══╣
-        ║ 7 ║ 8 ║ 9 ║
-        ╚═══╩═══╩═══╝
-        ```
+    -   **Description:**
 
-    **Full Examples:**
+        This setting specifies the name of the Chat Log file that will be created.
 
-    ```toml
-    # Stone Bricks using the player inventory
-    [[ChatBot.AutoCraft.Recipes]]
-    Name = "Recipe-Name-1"
-    Type = "player"
-    Result = "StoneBricks"
-    Slots = [ "Stone", "Stone", "Stone", "Stone", ]
+    -   **Default:** `chatlog-%username%-%serverip%.txt`
 
-    # Stone Bricks using a crafting table
-    [[ChatBot.AutoCraft.Recipes]]
-    Name = "Recipe-Name-2"
-    Type = "table"
-    Result = "StoneBricks"
-    Slots = [ "Stone", "Stone", "Null", "Stone", "Stone", "Null", "Null", "Null", "Null", ]
-    ```
+    #### `Filter`
 
-    > **ℹ️ NOTE: Make sure to provide materials for your bot by placing them in inventory first.**
+    -   **Description:**
+
+        Type of messages to be logged into the file.
+
+        Available values:
+
+        -   `all`
+
+            All text from the console
+
+        -   `messages`
+
+            All messages, including system, plugin channel, player and server.
+
+        -   `chat`
+
+            Only chat messages.
+
+        -   `private`
+
+            Only private messages.
+
+        -   `internal`
+
+            Only internal messages and commands.
+
+    -   **Default:** `messages`
+
+## Follow player
+
+-   **Description:**
+
+    This bot enables you to make a bot follow a specific player.
+
+    > **ℹ️ NOTE: The bot can be slow at times, you need to walk with a normal speed and to sometimes stop for it to be able to keep up with you, it's similar to making animals follow you when you're holding food in your hand. This is due to a slow pathfinding algorithm, we're working on getting a better one. You can tweak the update limit and find what works best for you. (NOTE: Do not but a very low one, because you might achieve the opposite, this might clog the thread for terrain handling) and thus slow the bot even more.**
+
+    > **ℹ️ NOTE: You need to have [terrainandmovements](configuration.md#terrainandmovements) and [entityhandling](configuration.md#entityhandling) enabled in order for this bot to work.**
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.FollowPlayer`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Follow Player Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Update_Limit`
+
+    -   **Description:**
+
+        The rate at which the bot does calculations (second).
+
+        You can tweak this if you feel the bot is too slow.
+
+    -   **Type:** `float`
+
+    -   **Default:** `1.5`
+
+    #### `Stop_At_Distance`
+
+    -   **Description:**
+
+        Do not follow the player if he is in the range of `X` blocks (prevents the bot from pushing a player in an infinite loop).
+
+    -   **Type:** `float`
+
+    -   **Default:** `3.0`
+
+## Hangman
+
+-   **Description:**
+
+    Hangman game is one of the first bots ever written for MCC, to demonstrate ChatBot capabilities.
+
+    Create a file with words to guess (examples: [`words-en.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-en.txt), [`words-fr.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-fr.txt)) and set it in config inside the `[Hangman]` section.
+
+    Also set `enabled` to `true`, then, add your username in the `botowners` INI setting, and finally, connect to the server and use `/tell <bot username> start` to start the game.
+
+    > **ℹ️ NOTE: If the bot does not respond to bot owners, see the [Detecting chat messages](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/config#detecting-chat-messages) section.**
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.HangmanGame`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Hangman Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Default:** `false`
+
+    #### `English`
+
+    -   **Description:**
+
+        This setting specifies if the Hangman Chat Bot should use English.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Default:** `true`
+
+    #### `FileWords_EN`
+
+    -   **Description:**
+
+        This setting specifies the path to the file which Hangman will use for the list of words, each word is added on a separate line.
+
+        > **ℹ️ NOTE: This settings file is for English and is not created by the default**
+
+    -   **Default:** `hangman-en.txt`
+    -   **Example**: [`words-en.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-en.txt)
+
+    #### `FileWords_FR`
+
+    -   **Description:**
+
+        This setting is same as the above but for French.
+
+        > **ℹ️ NOTE: This settings file is for French and is not created by the default**
+
+    -   **Default:** `hangman-fr.txt`
+    -   **Example**: [`words-fr.txt`](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/config/hangman-fr.txt)
 
 ## Mailer
 
@@ -1386,7 +1449,7 @@
 
         This file will be auto created by the Mailer Chat Bot.
 
-    -   **Default:** `MailerDatabase.ini`
+    -   **Default:** `MailerIgnoreList.ini`
 
     #### `PublicInteractions`
 
@@ -1429,160 +1492,6 @@
     -   **Type:** `integer`
 
     -   **Default:** `30`
-
-## Auto Drop
-
--   **Description:**
-
-    Automatically drop items you don't need from the inventory.
-
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this bot to work**
-
--   **Settings:**
-
-    **Section:** **`ChatBot.AutoDrop`**
-
-    #### `Enabled`
-
-    -   **Description:**
-
-        This setting specifies if the Auto Drop Chat Bot is enabled.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Type:** `boolean`
-
-    -   **Default:** `false`
-
-    #### `Mode`
-
-    -   **Description:**
-
-        This setting specifies the mode of the auto dropping.
-
-        Available values:
-
-        -   `include`
-
-            This mode will drop any items specified in the list in the `Items` setting.
-
-        -   `exclude`
-
-            This mode will drop any other items than specified in the list in the `Items` setting.
-
-            So it would keep the items specified in the list.
-
-        -   `everything`
-
-            Drop any item regardless of the items listed in the `Items` setting.
-
-    -   **Type:** `string`
-
-    -   **Default:** `include`
-
-    #### `Items`
-
-    -   **Description:**
-
-        This setting is where you can specify the list of items which you want to drop, or keep.
-
-        > **ℹ️ NOTE: All item types can be found [here](https://github.com/MCCTeam/Minecraft-Console-Client/blob/master/MinecraftClient/Inventory/ItemType.cs).**
-
-    -   **Format:** `[ "<item type>", "<item type>", ...]`
-
-    -   **Type:** `array of strings`
-
-    -   **Example:** `[ "Totem", "GlassBottle", ]`
-
-    -   **Default:** `[ "Cobblestone", "Dirt", ]`
-
-## Replay Capture
-
--   **Description:**
-
-    Enable recording of the game (`/replay start`) and replay it later using the Replay Mod (https://www.replaymod.com/).
-
-    > **⚠️ IMPORTANT: This bot does not work for 1.19, we need maintainers for it.**
-
-    > **ℹ️ NOTE: Please note that due to technical limitations, the client player (you) will not be shown in the replay file**
-
-    > **⚠️ WARNING: You SHOULD use `/replay stop` or exit the program gracefully with `/quit` OR THE REPLAY FILE MAY GET CORRUPT!**
-
--   **Settings:**
-
-    **Section:** **`ChatBot.ReplayCapture`**
-
-    #### `Enabled`
-
-    -   **Description:**
-
-        This setting specifies if the Replay Mod Chat Bot is enabled.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Type:** `boolean`
-
-    -   **Default:** `false`
-
-    #### `Backup_Interval`
-
-    -   **Description:**
-
-        This setting specifies the time interval in seconds when the replay file should be auto-saved.
-
-        Use `-1` to disable.
-
-    -   **Type:** `integer`
-
-    -   **Default:** `300`
-
-## Follow player
-
--   **Description:**
-
-    This bot enables you to make a bot follow a specific player.
-
-    > **ℹ️ NOTE: The bot can be slow at times, you need to walk with a normal speed and to sometimes stop for it to be able to keep up with you, it's similar to making animals follow you when you're holding food in your hand. This is due to a slow pathfinding algorithm, we're working on getting a better one. You can tweak the update limit and find what works best for you. (NOTE: Do not but a very low one, because you might achieve the opposite, this might clog the thread for terrain handling) and thus slow the bot even more.**
-
-    > **ℹ️ NOTE: You need to have [terrainandmovements](configuration.md#terrainandmovements) and [entityhandling](configuration.md#entityhandling) enabled in order for this bot to work.**
-
--   **Settings:**
-
-    **Section:** **`ChatBot.FollowPlayer`**
-
-    #### `Enabled`
-
-    -   **Description:**
-
-        This setting specifies if the Follow Player Chat Bot is enabled.
-
-    -   **Available values:** `true` and `false`.
-
-    -   **Type:** `boolean`
-
-    -   **Default:** `false`
-
-    #### `Update_Limit`
-
-    -   **Description:**
-
-        The rate at which the bot does calculations (10 = 1s).
-
-        You can tweak this if you feel the bot is too slow.
-
-    -   **Type:** `integer`
-
-    -   **Default:** `15`
-
-    #### `Stop_At_Distance`
-
-    -   **Description:**
-
-        Do not follow the player if he is in the range of `X` blocks (prevents the bot from pushing a player in an infinite loop).
-
-    -   **Type:** `integer`
-
-    -   **Default:** `3`
 
 ## Map
 
@@ -1687,6 +1596,133 @@
     -   **Type:** `boolean`
 
     -   **Default:** `false`
+
+## PlayerList Logger
+-   **Description:**
+
+    Log the list of players periodically into a textual file.
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.PlayerListLogger`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the PlayerList Logger Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Default:** `false`
+
+    #### `File`
+
+    -   **Description:**
+
+        This setting specifies the name of the player list Log file that will be created.
+
+    -   **Default:** `playerlog.txt`
+
+    #### `Delay`
+
+    -   **Description:**
+
+        Save the list of players every how many seconds.
+
+    -   **Type:** `float`
+
+    -   **Default:** `60.0`
+
+## Remote Control
+
+-   **Description:**
+
+    Send MCC console commands to your bot through server PMs (`/tell`).
+
+    You need to have [ChatFormat](configuration.md#chat-format) working correctly and add yourself in [botowners](configuration.md#botowners) to use the bot.
+
+    > **⚠️WARNING: Server admins can spoof PMs (`/tellraw`, `/nick`) so enable `RemoteControl` only if you trust server admins.**
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.RemoteControl`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Remote Control Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `AutoTpaccept`
+
+    -   **Description:**
+
+        This setting specifies if the Remote Control Chat Bot should automatically accept teleport requests.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `true`
+
+    #### `AutoTpaccept_Everyone`
+
+    -   **Description:**
+
+        This setting specifies if the Remote Control Chat Bot should automatically accept teleport requests from everyone.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+## Replay Capture
+
+-   **Description:**
+
+    Enable recording of the game (`/replay start`) and replay it later using the Replay Mod (https://www.replaymod.com/).
+
+    > **⚠️ IMPORTANT: This bot does not work for 1.19, we need maintainers for it.**
+
+    > **ℹ️ NOTE: Please note that due to technical limitations, the client player (you) will not be shown in the replay file**
+
+    > **⚠️ WARNING: You SHOULD use `/replay stop` or exit the program gracefully with `/quit` OR THE REPLAY FILE MAY GET CORRUPT!**
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.ReplayCapture`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Replay Mod Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Backup_Interval`
+
+    -   **Description:**
+
+        This setting specifies the time interval in seconds when the replay file should be auto-saved.
+
+        Use `-1` to disable.
+
+    -   **Type:** `float`
+
+    -   **Default:** `300.0`
 
 ## Script Scheduler
 

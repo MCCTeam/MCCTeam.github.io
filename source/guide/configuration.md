@@ -72,6 +72,8 @@ Coordinate = { x = 145, y = 64, y = 2045 }
 
     This is the setting where you provide the address of the game server, "Host" can be filled in with domain name or IP address. (The "Port" field can be deleted, it will be resolved automatically)
 
+    Host can also fill in the nickname of the server in the "Server List" below.
+
 -   **Format:** `Server = { Host = "<ip>", Port = <port> }`
 
 -   **Type:** `inline table`
@@ -80,6 +82,14 @@ Coordinate = { x = 145, y = 64, y = 2045 }
 
     ```
     Server = { Host = "mysupercoolserver.com" }
+    ```
+
+    ```
+    Server = { Host = "192.168.1.27", Port = 12345 }
+    ```
+
+    ```
+    Server = { Host = "ServerAlias1" }
     ```
 
 #### `AccountType`
@@ -262,17 +272,11 @@ Coordinate = { x = 145, y = 64, y = 2045 }
 -   **Description:**
 
     This setting is where you can change how MCC identifies itself to the server.
-    It can be whatever you like, example: `vanilla`, `mcc`, `super-bot`.
+    It can be whatever you like, example: `vanilla`, `mcc`, `empty`.
 
 -   **Type:** `string`
 
 -   **Default:** `mcc`
-
--   **Example:**
-
-    ```
-    BrandInfo = "my-super-duper-bot"
-    ```
 
     > **ℹ️ NOTE: For playing on Hypixel you need to use `vanilla`**
 
@@ -418,7 +422,7 @@ Coordinate = { x = 145, y = 64, y = 2045 }
 
 -   **Description:**
 
-    Use `false`, `fast` (5s timeout), or `true`.
+    Use `no`, `fast` (5s timeout), or `yes`.
     Required for joining some servers.
 
 -   **Type:** `string`
@@ -487,7 +491,7 @@ Coordinate = { x = 145, y = 64, y = 2045 }
 
 -   **Type:** `boolean`
 
--   **Default:** `true`
+-   **Default:** `false`
 
 #### `MoveHeadWhileWalking`
 
@@ -771,13 +775,13 @@ Coordinate = { x = 145, y = 64, y = 2045 }
 
 -   **Description:**
 
-    Can be `blacklist` or `whitelist`
+    Can be `disable`, `blacklist` or `whitelist`
 
-    `blacklist` hides the messages, while the `whitelist` shows the messages that match the Regex expression that you've defined.
+    "disable" will disable the filter, `blacklist` hides the messages, while the `whitelist` shows the messages that match the Regex expression that you've defined.
 
 -   **Type:** `string`
 
--   **Default:** `blacklist`
+-   **Default:** `disable`
 
 #### `LogToFile`
 
@@ -917,7 +921,7 @@ Coordinate = { x = 145, y = 64, y = 2045 }
 
     Only needed for password protected proxies.
 
--   **Default:** ``
+-   **Default:** ` `
 
 #### `Password`
 
@@ -927,7 +931,7 @@ Coordinate = { x = 145, y = 64, y = 2045 }
 
     Only needed for password protected proxies.
 
--   **Default:** ``
+-   **Default:** ` `
 
 ## MCSettings section
 
