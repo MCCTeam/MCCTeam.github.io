@@ -219,6 +219,24 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
     /bed sleep 50
     ```
 
+### `blockinfo`
+
+-   **Description:**
+
+    Reports the block type at the given position.
+
+    If you use the `-s` option it will report the types of blocks around the targeted blokcs.
+
+    > **ℹ️ NOTE: You need to have [Terrain And Movements](configuration.md#terrainandmovements) enabled in order for this to work.**
+
+-   **Usage:**
+
+    Basic usage:
+
+    ```
+    /blockinfo <x> <y> <z> [-s]
+    ```
+
 ### `bots`
 
 -   **Description:**
@@ -324,6 +342,26 @@ In scripts and remote control, no slash is needed to perform the command, eg. `q
 
     ```
     /dropitem diamond
+    ```
+
+### `enchant`
+
+-   **Description:**
+
+    Allows you to enchant items in an enchanting table.
+
+    You need to first open an enchanting table and then place and item that you want to enchant and lapis in the enchanting table, and then you can execute the command.
+
+    To open an enchanting table you can use the [`useblock`](#useblock) command.
+
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this to work.**
+
+-   **Usage:**
+
+    Basic usage:
+
+    ```
+    /enchant <top|middle|bottom>
     ```
 
 ### `entity`

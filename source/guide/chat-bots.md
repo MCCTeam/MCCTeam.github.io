@@ -8,7 +8,7 @@
 
 **Minecraft Console Client** has a number of default built in Chat Bots (Scripts/Plugins) which allow for various types of automation.
 
-> **⚠️ IMPORTANT WARNING: Recently we have changed the configuration format from INI to TOML, this part of the documentation has only been partially updated, it's work in progress, for the time being please refer to the `MinecraftClient.ini` for setting names, the descriptions and options should be up to date in most cases, but not guaranteed.**
+> **⚠️ IMPORTANT: This page might not always be up to date, refer to the TOML configuration file in additon to this page.**
 
 > **ℹ️ NOTE: Settings refer to settings in the [configuration file](configuration.md)**
 
@@ -25,6 +25,7 @@
 -   [Auto Relog](#auto-relog)
 -   [Auto Respond](#auto-respond)
 -   [Chat Log](#chat-log)
+-   [Farmer](#farmer)
 -   [Follow Player](#follow-player)
 -   [Hangman](#hangman)
 -   [Mailer](#mailer)
@@ -255,7 +256,7 @@
 
     Automatically attacks mobs around you, you can configure it to attack both hostile and passive mobs and only certain mobs or all mobs.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) and [entityhandling](configuration.md#entityhandling) enabled in order for this bot to work.**
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) and [Entity Handling](configuration.md#entityhandling) enabled in order for this bot to work.**
 
 -   **Settings:**
 
@@ -402,7 +403,7 @@
 
     Automatically craft items in your inventory or in a crafting table.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for basic crafting in the inventory to work, in addition if you want to use a crafting table, you need to enable [terrainandmovements](configuration.md#terrainandmovements) in order for bot to be able to reach the crafting table.**
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for basic crafting in the inventory to work, in addition if you want to use a crafting table, you need to enable [Terrain And Movements](configuration.md#terrainandmovements) in order for bot to be able to reach the crafting table.**
 
 -   **Commands:**
 
@@ -567,7 +568,7 @@
 
     Automatically digs block on specified locations.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) and [terrainandmovements](configuration.md#terrainandmovements) enabled in order for this bot to work.**
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) and [Terrain And Movements](configuration.md#terrainandmovements) enabled in order for this bot to work.**
 
     > **ℹ️ NOTE: Since MCC does not yet support accurate calculation of the collision volume of blocks, all blocks are considered as complete cubes when obtaining the position of the lookahead.**
 
@@ -730,7 +731,7 @@
 
     Automatically drop items you don't need from the inventory.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this bot to work**
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this bot to work**
 
 -   **Settings:**
 
@@ -796,7 +797,7 @@
 
     Automatically eat food when your Hunger value is low.
 
-    > **ℹ️ NOTE: You need to have [inventoryhandling](configuration.md#inventoryhandling) enabled in order for this bot to work**
+    > **ℹ️ NOTE: You need to have [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this bot to work**
 
 -   **Settings:**
 
@@ -830,11 +831,11 @@
 
     Automatically catch fish using a fishing rod.
 
-    > **ℹ️ NOTE: You need to have [entityhandling](configuration.md#entityhandling) enabled in order for this bot to work.**
+    > **ℹ️ NOTE: You need to have [Entity Handling](configuration.md#entityhandling) enabled in order for this bot to work.**
 
-    > **ℹ️ NOTE: To use the automatic rod switching and durability check feature, you need to enable [inventoryhandling](configuration.md#inventoryhandling).**
+    > **ℹ️ NOTE: To use the automatic rod switching and durability check feature, you need to enable [Inventory Handling](configuration.md#inventoryhandling).**
 
-    > **ℹ️ NOTE: Note: To adjust the position or angle after catching a fish, you need to enable [terrainandmovements](configuration.md#terrainandmovements).**
+    > **ℹ️ NOTE: Note: To adjust the position or angle after catching a fish, you need to enable [Terrain And Movements](configuration.md#terrainandmovements).**
 
     > **ℹ️ NOTE: A fishing rod with **Mending enchantment** is strongly recommended.**
 
@@ -1264,6 +1265,71 @@
 
     -   **Default:** `messages`
 
+## Farmer
+
+-   **Description:**
+
+    This bot can farm crops for you.
+    When you start it it will plant, break and bonemeal crops in order.
+
+    Supported crops:
+
+    -   Beetroot
+    -   Carrot
+    -   Melon
+    -   Netherwart
+    -   Pumpkin
+    -   Potato
+    -   Wheat
+
+    > **ℹ️ NOTE: You need to have [Terrain And Movements](configuration.md#terrainandmovements) and [Inventory Handling](configuration.md#inventoryhandling) enabled in order for this bot to work.**
+
+    > **⚠️ IMPORTANT ⚠️: This a newly added bot, it is not perfect and was only tested in 1.19.2, there are some minor issues with it and you should treat it as an experimental bot.**
+
+    **Current list of issues:**
+
+    -   Sometimes the bot will not bonemeal carrots/potatoes or melon/pumpkin stems (you will see it in a pattern of crops that have not been bonemealed)
+    -   Sometimes the bot can jump on to the crops and break the farmland when comming form a different height, it's advised to keep the farming area flat and fenced off so the items to not fly out of the farming area
+    -   If you have a farming platform that is 1 block thick and has air bellow, make it a few blocks thich because the bot can fall through sometimes whem logging in and standing on farmland
+    -   Sometimes the bot can be kicked for "invalid movement" packets when farming netherwart on soul sand, we haven't been abel to figure why this happens in some parts of the world, while on thers it's completely fine, it's advised to keep the farming area small and flat.
+
+    _We're working on solving these issues._
+
+    **What the bot does not do as of the time of writing, but are planned features:**
+
+    -   Does not collect items which fly off to the side, (it's advised to fence off the farming area with 2 high wall)
+    -   Does not put items to the chest once the inventory is full
+    -   Does not warn you when the inventory is full
+    -   Does not refill inventory with seeds or bonemeal from chests by it self.
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.Farmer`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Farmer Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Delay_Between_Tasks`
+
+    -   **Description:**
+
+        This setting specifies the delay in seconds between each task performed by the bot.
+
+    -   **Type:** `integer`
+
+    -   **Default:** `1`
+
+    -   **Minimum:** `1`
+
 ## Follow player
 
 -   **Description:**
@@ -1272,7 +1338,7 @@
 
     > **ℹ️ NOTE: The bot can be slow at times, you need to walk with a normal speed and to sometimes stop for it to be able to keep up with you, it's similar to making animals follow you when you're holding food in your hand. This is due to a slow pathfinding algorithm, we're working on getting a better one. You can tweak the update limit and find what works best for you. (NOTE: Do not but a very low one, because you might achieve the opposite, this might clog the thread for terrain handling) and thus slow the bot even more.**
 
-    > **ℹ️ NOTE: You need to have [terrainandmovements](configuration.md#terrainandmovements) and [entityhandling](configuration.md#entityhandling) enabled in order for this bot to work.**
+    > **ℹ️ NOTE: You need to have [Terrain And Movements](configuration.md#terrainandmovements) and [Entity Handling](configuration.md#entityhandling) enabled in order for this bot to work.**
 
 -   **Settings:**
 
@@ -1598,6 +1664,7 @@
     -   **Default:** `false`
 
 ## PlayerList Logger
+
 -   **Description:**
 
     Log the list of players periodically into a textual file.
