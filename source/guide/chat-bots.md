@@ -1302,6 +1302,41 @@
     -   Does not warn you when the inventory is full
     -   Does not refill inventory with seeds or bonemeal from chests by it self.
 
+    > **ℹ️ NOTE: The default radius of scanning is `30` blocks, we suggest that you do not use radius too big because it might slow down the bot. The bigger the radius, the slower the scanning and processing is.**
+
+-   **Commands:**
+
+    When enabled will add the `/farmer` command.
+
+    **Usage**:
+
+    ```
+    /farmer <start <crop type> [radius:<radius = 30>] [unsafe:<true/false>] [teleport:<true/false>] [debug:<true/false>]|stop>
+    ```
+
+    _Options makred with `[` and `]` are optional and in case of this command can have whatever order you prefer after the `<crop type>` field_
+    _Options that have `=` means that the value after the `=` is a default value, in case of this command the default radius is 30 blocks._
+
+    **Examples:**
+
+    Farming `wheat` in a radius of `40` blocks.
+
+    ```
+    /farmer start wheat radius:40
+    ```
+
+    Farming `melon` with debug output and direct teleporting:
+
+    ```
+    /farmer start melon debug:true teleport:true
+    ```
+
+    Stopping the bot:
+
+    ```
+    /farmer stop
+    ```
+
 -   **Settings:**
 
     **Section:** **`ChatBot.Farmer`**
