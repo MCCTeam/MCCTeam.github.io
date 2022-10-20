@@ -21,12 +21,13 @@ If you're not familiar with the C# programming language, we suggest taking a loo
 
 Crash courses:
 
--   [C# Crash Course playlist by Teddy Smit](https://www.youtube.com/watch?v=67oWw9TanOk&list=PL82C6-O4XrHfoN_Y4MwGvJz5BntiL0z0D)
+-   [C# Fundamentals for Absolute Beginners by Bob Tabor (**Recommended**)](https://learn.microsoft.com/en-us/shows/csharp-fundamentals-for-absolute-beginners/)
+-   [Learn C# Youtube Playlist by Microsoft](https://www.youtube.com/playlist?list=PLdo4fOcmZ0oVxKLQCHpiUWun7vlJJvUiN)
 
 More in-depth:
 
--   [Learn C# Youtube Playlist by Microsoft](https://www.youtube.com/playlist?list=PLdo4fOcmZ0oVxKLQCHpiUWun7vlJJvUiN)
 -   [Getting started with C# (An index of tutorials and the documentation) by Microsoft](https://docs.microsoft.com/en-us/dotnet/csharp/)
+-   [C# Course playlist by Teddy Smit (_Recommended if you already know some programming_)](https://www.youtube.com/watch?v=67oWw9TanOk&list=PL82C6-O4XrHfoN_Y4MwGvJz5BntiL0z0D)
 
 ## Quick Introduction
 
