@@ -1752,13 +1752,11 @@
 
 -   **Description:**
 
-    This Chat Bot allows you to render items maps into `.jpg` images.
+    This Chat Bot allows you to render items maps in the console, to `.bmp` images and to relay them to Discord using the [Discord Bridge](#discord-bridge) Chat Bot.
 
     This is useful for solving captchas on servers which require it, or saving the map art into an image.
 
-    The maps are **rendered** into `Rendered_Maps` folder.
-
-    > **⚠️WARNING: This bot has only been tested on Windows 10, it may not work on Linux or Mac OS due to .NET BitMap API. We're looking forward to swap the underlaying Bitmap API dependency with a library.**
+    The maps are **rendered** into `Rendered_Maps` folder which will be auto created in the same folder where the client executable is located.
 
 -   **Commands:**
 
@@ -1786,33 +1784,33 @@
 
     -   **Default:** `false`
 
-    #### `Should_Resize`
+    #### `Render_In_Console`
 
     -   **Description:**
 
-        This setting specifies if the Map Chat Bot should resize the image.
+        This setting specifies if the Map Chat Bot should render the map in the console.
 
-        The default map size is `128x128`.
+        It is recommended to use something like Power Shell for the best map quality (at least for Windows users).
 
-        > **ℹ️ NOTE: The bigger the size, the less is the quality.**
+    -   **Available values:** `true` and `false`.
 
-        > **ℹ️ NOTE: For upscaling your maps you could use (getting a bit better quality): https://deepai.org/machine-learning-model/torch-srgan**
+    -   **Type:** `boolean`
+
+    -   **Default:** `true`
+
+    #### `Save_To_File`
+
+    -   **Description:**
+
+        This setting specifies if the Map Chat Bot should render the map and save it into a file (`.bmp` format)
+
+        > **⚠️ IMPORTANT: If you want the Discord relay feature, you must enable this setting!**
 
     -   **Available values:** `true` and `false`.
 
     -   **Type:** `boolean`
 
     -   **Default:** `false`
-
-    #### `Resize_To`
-
-    -   **Description:**
-
-        Which size the map should be resized to if `Should_Resize` is `true`.
-
-    -   **Type:** `integer`
-
-    -   **Default:** `256`
 
     #### `Auto_Render_On_Update`
 
@@ -1847,6 +1845,54 @@
         This setting specifies if the Map Chat Bot should notify you when it got a map from the server for the first time.
 
     -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Rasize_Rendered_Image`
+
+    -   **Description:**
+
+        This setting specifies if the Map Chat Bot should resize the rendered image (the one that is saved to a file).
+
+        This is useful if you're relying map images to Discord via the [Discord Bridge](#discord-bridge) Chat Bot.
+
+        The default map size is `128x128`.
+
+        > **ℹ️ NOTE: The bigger the size, the less is the quality.**
+
+        > **ℹ️ NOTE: For upscaling your maps you could use (getting a bit better quality): https://deepai.org/machine-learning-model/torch-srgan**
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Resize_To`
+
+    -   **Description:**
+
+        Which size the map should be resized to if `Rasize_Rendered_Image` is `true`.
+
+        > **ℹ️ NOTE: Might be a bit slow on less powerful systems when rendering a lot of maps. Lower down the resolution if you have any performance issues. If your system is not that powerful and can't handle it, use external tools for upscaling and resizing.**
+
+    -   **Type:** `integer`
+
+    -   **Default:** `512`
+
+    #### `Send_Rendered_To_Discord`
+
+    -   **Description:**
+
+        Send a rendered map (saved to a file) to a Discord channel via the [Discord Bridge](#discord-bridge) Chat Bot.
+
+        > **⚠️ IMPORTANT: The [Discord Bridge](#discord-bridge) Chat Bot must be enabled and configured!**
+
+        > **⚠️ IMPORTANT: You need to enable `Save_To_File` in order for this to work.**
+
+        > **ℹ️ NOTE: Sometimes when the client connects, the [Discord Bridge](#discord-bridge) will be loaded a tiny bit after. Rendered map images are queued up and sent in order as soon as the [Discord Bridge](#discord-bridge) is ready and connected.**
 
     -   **Type:** `boolean`
 
