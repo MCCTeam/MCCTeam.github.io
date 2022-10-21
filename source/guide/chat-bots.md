@@ -25,6 +25,7 @@
 -   [Auto Relog](#auto-relog)
 -   [Auto Respond](#auto-respond)
 -   [Chat Log](#chat-log)
+-   [Discord Bridge](#discord-bridge)
 -   [Farmer](#farmer)
 -   [Follow Player](#follow-player)
 -   [Hangman](#hangman)
@@ -489,7 +490,7 @@
 
     -   `Type`
 
-        **Avaliable values:** `player` and `table`
+        **Available values:** `player` and `table`
 
         > **ℹ️ NOTE: If you're using `table` you need to set the `CraftingTable` setting.**
 
@@ -1019,7 +1020,7 @@
 
     Each position/movement is added as a new `[[ChatBot.AutoFishing.Movements]]` subsection of `[ChatBot.AutoFishing]`.
 
-    **Avaliable settings/options:**
+    **Available settings/options:**
 
     -   `XYZ`
 
@@ -1265,6 +1266,158 @@
 
     -   **Default:** `messages`
 
+## Discord Bridge
+
+-   **Description:**
+
+    This Chat Bot allows you to send and receive messages and MCC commands via a Discord channel.
+
+-   **Setup:**
+
+    In order for this to work you must create a Discord bot on the [Discord Developers portal](https://discord.com/developers/applications/).
+
+    First go to [Discord Developers portal](https://discord.com/developers/applications/), click on **New Application**, fill out the name of your bot and confirm the terms of service and click **Create**.
+
+    ![Image](http://i.pics.rs/FFLrU.png)
+
+    Copy the **Application ID** and save it somewhere.
+
+    Click on the **Bot** tab in the left menu.
+
+    Click on **Add Bot**
+
+    ![Image](http://i.pics.rs/NN9nC.png)
+
+    Click on the **Reset Token** button and copy the generated token, then paste it in the `Token` field in the MCC configuration.
+
+    Enable `Message Content Intent` and `Presence Intent`.
+
+    ![Image](http://i.pics.rs/XXwpQ.png)
+    ![Image](https://i.pics.rs/99d2e.png)
+
+    > **⚠️ WARNING ⚠️: Token is what gives you access to the Bot, do not share it with anyone and keep it safe!**
+
+    > **⚠️ IMPORTANT ⚠️: You must Enable `Message Content Intent` and `Presence Intent` for the bot to work!**
+
+    Then go to [Discord Permissions Calculator](https://discordapi.com/permissions.html).
+    Paste the **Application Id** that you've copied into the **Client ID** field, then Check/Enable the **Administrator** field in General Permissions section.
+    Finally click on the **Link** down bellow and invite the Bot on to a server you want to interact with the MCC on.
+
+    ![Image](http://i.pics.rs/HHFp8.png)
+
+    Go to your Discord Client and go to **Settings -> Advanced**, Enable **Developer Mode**.
+
+    Then **right click** on a server where you invited the bot to in the server list and click on **Copy ID**, paste the copied id in `GuildId` in your MCC configuration.
+
+    Then **right click** on a channel where you want to interact with the bot and click on **Copy ID**, paste the copied id in `ChannelId` in your MCC configuration.
+
+    Send a message in that channel and **right click** on your nick and click **Copy ID** and paste the copied id in `OwnersIds` list setting in your MCC configuration.
+
+    Enable the bot by setting `Enabled` to `true` in your MCC configuration and start the MCC.
+
+-   **Usage:**
+
+    To send a message simply type it out in the Discord channel and press enter.
+
+    To execute a MCC command, you must prefix it with a dot (`.`).
+    Example: `.move 145 64 832`
+
+-   **Settings:**
+
+    **Section:** **`ChatBot.DiscordBrdige`**
+
+    #### `Enabled`
+
+    -   **Description:**
+
+        This setting specifies if the Discord Bridge Chat Bot is enabled.
+
+    -   **Available values:** `true` and `false`.
+
+    -   **Type:** `boolean`
+
+    -   **Default:** `false`
+
+    #### `Token`
+
+    -   **Description:**
+
+        This is the token of your Discord bot.
+
+    -   **Type:** `string`
+
+    #### `GuildId`
+
+    -   **Description:**
+
+        This is the ID of your server/guild where you have invited the bot to.
+
+    -   **Type:** `unsigned long`
+
+    #### `ChannelId`
+
+    -   **Description:**
+
+        This is the ID of a channel on your server/guild where you want to interact with the bot.
+
+    -   **Type:** `unsigned long`
+
+    #### `OwnersIds`
+
+    -   **Description:**
+
+        This is a list of Discord user IDs which can interact with the bot.
+
+    -   **Type:** `list/array of: unsigned long`
+
+    #### `PrivateMessageFormat`
+
+    -   **Description:**
+
+        This is a format that will be used when someone has sent you a private message on the server.
+
+        Parts of the message that are between `{` and `}` will be replaced by the Chat Bot during runtime, you should not change them in any way!
+
+        For example `{message}` will be replaced with an actual message, `{username}` will be replaced with the username of the person who sent a message on the server and `{timestamp}` will be replaced with the current date and time.
+
+        For Discord message formatting/styling, refer to [this guide](https://bit.ly/3F8CUCm).
+
+    -   **Type:** `string`
+
+    -   **Default:** `**[Private Message]** {username}: {message}`
+
+    #### `PublicMessageFormat`
+
+    -   **Description:**
+
+        This is a format that will be used when sending a public message to the Discord channel.
+
+        Parts of the message that are between `{` and `}` will be replaced by the Chat Bot during runtime, you should not change them in any way!
+
+        For example `{message}` will be replaced with an actual message, `{username}` will be replaced with the username of the person who sent a message on the server and `{timestamp}` will be replaced with the current date and time.
+
+        For Discord message formatting/styling, refer to [this guide](https://bit.ly/3F8CUCm).
+
+    -   **Type:** `string`
+
+    -   **Default:** `{username}: {message}`
+
+    #### `TeleportRequestMessageFormat`
+
+    -   **Description:**
+
+        This is a format that will be used when someone has sent you a Teleport Request.
+
+        Parts of the message that are between `{` and `}` will be replaced by the Chat Bot during runtime, you should not change them in any way!
+
+        For example `{message}` will be replaced with an actual message, `{username}` will be replaced with the username of the person who sent a message on the server and `{timestamp}` will be replaced with the current date and time.
+
+        For Discord message formatting/styling, refer to [this guide](https://bit.ly/3F8CUCm).
+
+    -   **Type:** `string`
+
+    -   **Default:** `A new Teleport Request from **{username}**!`
+
 ## Farmer
 
 -   **Description:**
@@ -1288,10 +1441,10 @@
 
     **Current list of issues:**
 
-    -   Sometimes the bot will not bonemeal carrots/potatoes or melon/pumpkin stems (you will see it in a pattern of crops that have not been bonemealed)
-    -   Sometimes the bot can jump on to the crops and break the farmland when comming form a different height, it's advised to keep the farming area flat and fenced off so the items to not fly out of the farming area
-    -   If you have a farming platform that is 1 block thick and has air bellow, make it a few blocks thich because the bot can fall through sometimes whem logging in and standing on farmland
-    -   Sometimes the bot can be kicked for "invalid movement" packets when farming netherwart on soul sand, we haven't been abel to figure why this happens in some parts of the world, while on thers it's completely fine, it's advised to keep the farming area small and flat.
+    -   Sometimes the bot will not bone meal carrots/potatoes or melon/pumpkin stems (you will see it in a pattern of crops that have not been bonemealed)
+    -   Sometimes the bot can jump on to the crops and break the farmland when coming form a different height, it's advised to keep the farming area flat and fenced off so the items to not fly out of the farming area
+    -   If you have a farming platform that is 1 block thick and has air bellow, make it a few blocks thick because the bot can fall through sometimes when logging in and standing on farmland
+    -   Sometimes the bot can be kicked for "invalid movement" packets when farming netherwart on soul sand, we haven't been able to figure why this happens in some parts of the world, while on other it's completely fine, it's advised to keep the farming area small and flat.
 
     _We're working on solving these issues._
 
@@ -1314,7 +1467,8 @@
     /farmer <start <crop type> [radius:<radius = 30>] [unsafe:<true/false>] [teleport:<true/false>] [debug:<true/false>]|stop>
     ```
 
-    _Options makred with `[` and `]` are optional and in case of this command can have whatever order you prefer after the `<crop type>` field_
+    _Options marked with `[` and `]` are optional and in case of this command can have whatever order you prefer after the `<crop type>` field._
+
     _Options that have `=` means that the value after the `=` is a default value, in case of this command the default radius is 30 blocks._
 
     **Examples:**
@@ -1864,7 +2018,7 @@
 
         > **ℹ️ NOTE: It is recommended that you align subsections to the right by one tab or 4 spaces for better readability.**
 
-        **Avaliable settings/options:**
+        **Available settings/options:**
 
         -   `Trigger_On_First_Login`
 
