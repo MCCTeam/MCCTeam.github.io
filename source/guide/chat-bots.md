@@ -1290,14 +1290,14 @@
 
     Click on the **Reset Token** button and copy the generated token, then paste it in the `Token` field in the MCC configuration.
 
-    Enable `Message Content Intent` and `Presence Intent`.
+    Enable `Message Content Intent`, `Server Members Intent` and `Presence Intent`.
 
     ![Image](http://i.pics.rs/XXwpQ.png)
     ![Image](https://i.pics.rs/99d2e.png)
 
     > **⚠️ WARNING ⚠️: Token is what gives you access to the Bot, do not share it with anyone and keep it safe!**
 
-    > **⚠️ IMPORTANT ⚠️: You must Enable `Message Content Intent` and `Presence Intent` for the bot to work!**
+    > **⚠️ IMPORTANT ⚠️: You must Enable `Message Content Intent`, `Server Members Intent` and `Presence Intent` for the bot to work!**
 
     Then go to [Discord Permissions Calculator](https://discordapi.com/permissions.html).
     Paste the **Application Id** that you've copied into the **Client ID** field, then Check/Enable the **Administrator** field in General Permissions section.
