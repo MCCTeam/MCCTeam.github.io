@@ -1,0 +1,1 @@
+const s="/images/guide/VPS_Name.png",e="/images/guide/VPS_SelectOS.png",g="/images/guide/VPS_InstanceType.png",i="/images/guide/VPS_NetworkSettings.png",t="/images/guide/VPS_ConfigureStorage.png";export{s as _,e as a,g as b,i as c,t as d};

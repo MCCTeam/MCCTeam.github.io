@@ -1,0 +1,1 @@
+const s="/images/guide/Discord_Create_Application.png",i="/images/guide/Discord_Add_Bot.png",e="/images/guide/Discord_Reset_Token.png",o="/images/guide/Discord_Privileged_Intents.png",_="/images/guide/Discord_Permissions.png";export{s as _,i as a,e as b,o as c,_ as d};
