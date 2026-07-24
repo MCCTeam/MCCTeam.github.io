@@ -1,0 +1,4 @@
+User-agent:*
+Disallow:
+
+Sitemap: https://mccteam.github.io/sitemap.xml
