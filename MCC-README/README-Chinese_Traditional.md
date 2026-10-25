@@ -20,6 +20,20 @@
 
 </div>
 
+> [!IMPORTANT]
+> 
+> ## 📢 Major News
+> 
+> After 13 years of active development, we are rewriting MCC from the ground up to make development faster and enable powerful new features. The rewrite is currently being led by [@milutinke](https://github.com/milutinke). Along the refactoring, the client is being polished, the UX and UI are being improved, new features are being added and existing ones improved. ✨
+> 
+> **Update (25.09.2026)** The early access build (No. 9) for the 2.0 client is available for download: https://github.com/MCCTeam/Minecraft-Console-Client/releases/tag/MCC-2.0-early-access-build-9
+> 
+> Please leave feedback on Discord.
+> 
+> After the release of the Minecraft Console Client 2.0, the old client will remain available to use but will no longer be updated. The new client is expected for public testing in the coming weeks. 🚀
+> 
+> Follow progress in [#🚀refactor-updates](https://discord.com/channels/1018553894831403028/1543210248439992461) on our [Discord server](https://discord.gg/sfBv4TtpC9)!
+
 ## **關於 ℹ️**
 
 **Minecraft 主控台客戶端 (MCC)** 是一个輕量級、跨平台、基於命令列介面的 Minecraft 客戶端，適用於 **Java 版**，允許你連接到任何 Minecraft Java 版伺服器，以快速簡單的方式發送命令與接收文字信息，而無需打開 Minecraft 遊戲。
@@ -44,7 +58,7 @@ Windows（PowerShell）：
 iwr -useb https://mccteam.github.io/install.ps1 | iex
 ```
 
-腳本會檢測您的系統架構並下載相應的二進位檔案。 如需更多選項（包括使用 `wget` 和手動下載），請參閱[安裝指南](https://mccteam.github.io/guide/installation.html)。
+腳本會檢測您的系統架構並下載相應的二進位檔案。如需更多選項（包括使用 `wget` 和手動下載），請參閱[安裝指南](https://mccteam.github.io/guide/installation.html)。
 
 ## 如何使用 📚
 
@@ -57,7 +71,7 @@ iwr -useb https://mccteam.github.io/install.ps1 | iex
 
 ## 取得幫助 🙋
 
-查看[網站](https://mccteam.github.io/)，[README](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/config#minecraft-console-client-user-manual)及[討論區](https://github.com/MCCTeam/Minecraft-Console-Client/discussions)：可能你的問題已經得到解答。 如果沒有，請建立[新討論串](https://github.com/MCCTeam/Minecraft-Console-Client/discussions/new)來提出你的問題。 如果你找到程式錯誤，請到[問題頁面](https://github.com/MCCTeam/Minecraft-Console-Client/issues)回報。
+查看[網站](https://mccteam.github.io/)，[README](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/config#minecraft-console-client-user-manual)及[討論區](https://github.com/MCCTeam/Minecraft-Console-Client/discussions)：可能你的問題已經得到解答。如果沒有，請建立[新討論串](https://github.com/MCCTeam/Minecraft-Console-Client/discussions/new)來提出你的問題。如果你找到程式錯誤，請到[問題頁面](https://github.com/MCCTeam/Minecraft-Console-Client/issues)回報。
 
 ## Discord
 
@@ -65,11 +79,11 @@ iwr -useb https://mccteam.github.io/install.ps1 | iex
 
 ## 幫助我們 ❤️
 
-我們是一個較小的社區，所以我們需要幫忙來實現新 Minecraft 版本的升級，修復程式錯誤以及擴展項目。 我們一直在尋找有動力的人來參與貢獻。 如果你覺得你是那個人，請查看[問題頁面](https://github.com/MCCTeam/Minecraft-Console-Client/issues?q=is%3Aissue+is%3Aopen+label%3Awaiting-for%3Acontributor) :)
+我們是一個較小的社區，所以我們需要幫忙來實現新 Minecraft 版本的升級，修復程式錯誤以及擴展項目。我們一直在尋找有動力的人來參與貢獻。如果你覺得你是那個人，請查看[問題頁面](https://github.com/MCCTeam/Minecraft-Console-Client/issues?q=is%3Aissue+is%3Aopen+label%3Awaiting-for%3Acontributor) :)
 
 ## 如何貢獻 📝
 
-如果你希望為 Minecraft 主控台客戶端做出貢獻，很好，只需要 fork 倉庫並向 _Master_ 分支上提交 Pull Request 即可。 如果你希望為網站 / 線上文檔做出貢獻，請參閱[網站的 git 倉庫](https://github.com/MCCTeam/MCCTeam.github.io)。
+如果你希望為 Minecraft 主控台客戶端做出貢獻，很好，只需要 fork 倉庫並向 _Master_ 分支上提交 Pull Request 即可。如果你希望為網站 / 線上文檔做出貢獻，請參閱[網站的 git 倉庫](https://github.com/MCCTeam/MCCTeam.github.io)。
 
 ![Alt](https://repobeats.axiom.co/api/embed/c8a6c7c47fde8fcbe3727a21eab46e6b39dff60d.svg "Repobeats 圖相分析")
 
@@ -83,11 +97,11 @@ iwr -useb https://mccteam.github.io/install.ps1 | iex
 
 ## 許可 ⚖️
 
-除非特別說明，代碼均來自 MCC 團隊或貢獻者，並且可在 CDDL-1.0 許可下使用。 否則，許可證和原始作者將在原始文件開頭中提及。 CDDL-1.0 許可的主要條款基本上是以下內容：
+除非特別說明，代碼均來自 MCC 團隊或貢獻者，並且可在 CDDL-1.0 許可下使用。否則，許可證和原始作者將在原始文件開頭中提及。 CDDL-1.0 許可的主要條款基本上是以下內容：
 
--   如果您希望將其用於整個程式或部分程式，您都可以在任何程式中使用許可的程式碼，但需要考慮整體程式的許可證（或者說，除了您使用的程式碼之外的部分）。 程式本身可以是開源或閉源的，免費或商業的。
+-   如果您希望將其用於整個程式或部分程式，您都可以在任何程式中使用許可的程式碼，但需要考慮整體程式的許可證（或者說，除了您使用的程式碼之外的部分）。程式本身可以是開源或閉源的，免費或商業的。
 -   然而，在所有情況下，對 CDDL 程式碼的任何修改、改進或補充（任何直接修改 CDDL 程式碼的程式碼都被視為對 CDDL 程式碼的補充，因此需受到此約束；例如，使用快速查詢表，修改數學函式使得該表本身成為 CDDL 程式碼的補充，無論它是否在自己的原始碼檔案中）都必須在 CDDL 許可下以原始碼的形式在公共和免費的情況下提供。
--   在使用 CDDL 程式碼的任何程式（原始碼或二進制檔案）中，必須提及 CDDL 程式碼的來源（專案或作者）。 此外，對 CDDL 程式碼的修改（必須以原始碼的形式分發）不能刪除指示程式碼來源的聲明。
+-   在使用 CDDL 程式碼的任何程式（原始碼或二進制檔案）中，必須提及 CDDL 程式碼的來源（專案或作者）。此外，對 CDDL 程式碼的修改（必須以原始碼的形式分發）不能刪除指示程式碼來源的聲明。
 
 更多資訊：http://qstuff.blogspot.fr/2007/04/why-cddl.html 完整協議：http://opensource.org/licenses/CDDL-1.0
 

@@ -20,6 +20,20 @@
 
 </div>
 
+> [!IMPORTANT]
+> 
+> ## 📢 Major News
+> 
+> After 13 years of active development, we are rewriting MCC from the ground up to make development faster and enable powerful new features. The rewrite is currently being led by [@milutinke](https://github.com/milutinke). Along the refactoring, the client is being polished, the UX and UI are being improved, new features are being added and existing ones improved. ✨
+> 
+> **Update (25.09.2026)** The early access build (No. 9) for the 2.0 client is available for download: https://github.com/MCCTeam/Minecraft-Console-Client/releases/tag/MCC-2.0-early-access-build-9
+> 
+> Please leave feedback on Discord.
+> 
+> After the release of the Minecraft Console Client 2.0, the old client will remain available to use but will no longer be updated. The new client is expected for public testing in the coming weeks. 🚀
+> 
+> Follow progress in [#🚀refactor-updates](https://discord.com/channels/1018553894831403028/1543210248439992461) on our [Discord server](https://discord.gg/sfBv4TtpC9)!
+
 ## **概要 ℹ️**
 
 **Minecraft Console Client（MCC）**は、Minecraft を開かなくても、サーバーへ接続し、コマンドの送信、メッセージの受信などをすばやく簡単に行える、**Java** Edition 用の軽量クロスプラットフォームのオープン ソース Minecraft TUI クライアントです。
@@ -57,7 +71,7 @@ iwr -useb https://mccteam.github.io/install.ps1 | iex
 
 ## 困った時は 🙋
 
-[Web サイト](https://mccteam.github.io/l10n/ja/)や [README](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/config#minecraft-console-client-user-manual)、[Discussions](https://github.com/MCCTeam/Minecraft-Console-Client/discussions) に同じような質問がないかご確認ください。 見つからなかったら、[Discussion](https://github.com/MCCTeam/Minecraft-Console-Client/discussions/new) を開いて質問してください。 バグを見つけた場合は、[Issues](https://github.com/MCCTeam/Minecraft-Console-Client/issues) で報告してください。
+[Web サイト](https://mccteam.github.io/l10n/ja/)や [README](https://github.com/MCCTeam/Minecraft-Console-Client/tree/master/MinecraftClient/config#minecraft-console-client-user-manual)、[Discussions](https://github.com/MCCTeam/Minecraft-Console-Client/discussions) に同じような質問がないかご確認ください。見つからなかったら、[Discussion](https://github.com/MCCTeam/Minecraft-Console-Client/discussions/new) を開いて質問してください。バグを見つけた場合は、[Issues](https://github.com/MCCTeam/Minecraft-Console-Client/issues) で報告してください。
 
 ## Discord
 
@@ -65,7 +79,7 @@ Discord サーバーができました。[こちら](https://discord.gg/sfBv4Ttp
 
 ## 私たちに貢献する ❤️
 
-MCC は小さなコミュニティなので、新しい Minecraft バージョンのアップグレードを実装、バグを修正、プロジェクトを拡大をするための手助けが必要です。 私たちは常に貢献してくださる方を探しています。 貢献してくださる場合は、[Issues](https://github.com/MCCTeam/Minecraft-Console-Client/issues?q=is%3Aissue+is%3Aopen+label%3Awaiting-for%3Acontributor) セクションを見てください。
+MCC は小さなコミュニティなので、新しい Minecraft バージョンのアップグレードを実装、バグを修正、プロジェクトを拡大をするための手助けが必要です。私たちは常に貢献してくださる方を探しています。貢献してくださる場合は、[Issues](https://github.com/MCCTeam/Minecraft-Console-Client/issues?q=is%3Aissue+is%3Aopen+label%3Awaiting-for%3Acontributor) セクションを見てください。
 
 ## 貢献する方法 📝
 
@@ -83,9 +97,9 @@ Minecraft Console Client に貢献したい場合は、リポジトリをフォ�
 
 ## ライセンス ⚖️
 
-特に明記されていない限り、コードは MCC チームまたは貢献者からのものであり、CDDL-1.0 で利用できます。 それ以外の場合は、ライセンスと元の作成者がソース ファイルのヘッダーに記載されています。 CDDL-1.0 ライセンスの主な規約は基本的に以下の通りです。
+特に明記されていない限り、コードは MCC チームまたは貢献者からのものであり、CDDL-1.0 で利用できます。それ以外の場合は、ライセンスと元の作成者がソース ファイルのヘッダーに記載されています。 CDDL-1.0 ライセンスの主な規約は基本的に以下の通りです。
 
--   ライセンスされたコードの一部または全部を、プログラム全体のライセンスに関係なく（または借用しているコードを除外して）任意のプログラムで使用することができます。 プログラム自体は、オープン ソースまたはクローズド ソース、無料または商用である場合があります。
+-   ライセンスされたコードの一部または全部を、プログラム全体のライセンスに関係なく（または借用しているコードを除外して）任意のプログラムで使用することができます。プログラム自体は、オープン ソースまたはクローズド ソース、無料または商用である場合があります。
 -   ただしすべての状況において、変更や改善、追加\* した CDDL コードは、CDDL ライセンス自体の下でソースを公開し、自由に利用できるようにする必要があります。（\* CDDL コードを直接変更した際に参照されるすべてのコードは、CDDL コードへの追加と見なされます。例えば、高速ルックアップ テーブルを使用するために数学関数を変更すると、独自のソース コード ファイルに存在しているかに関係なく、そのテーブル自体が CDDL コードに追加されます。）
 -   CDDL コードを使用するプログラム（ソースまたはバイナリ）では、CDDL コードのソース（プロジェクトまたは作成者）を記載する必要があります。 CDDL コード（ソースとして配布する必要があります）を変更しても、コードのソースを削除することはできません。
 
